@@ -1,0 +1,65 @@
+<div class="Container-fluid" id="main-content">
+    <div class="container">
+        <div class="row" style="overflow-y: auto;">
+            <div class="izquierda col-2">
+                <h1>Tipos de Actividad</h1>
+                <div class="cartas">
+                    <div class="cards">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="text-center" style="width: 100px;">#</th>
+                                    <th scope="col" class="text-center">Titulo</th>
+                                    <th scope="col" class="text-center">Objetivo</th>
+                                    <th scope="col" class="text-center">Descripcion</th>
+                                    <th scope="co" class="text-center">Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let a of tipos">
+                                <tr style="width: 100%;">
+                                    <th scope="row" class="text-center text-overflow">{{a.id}}</th>
+                                    <td class="text-center text-overflow">{{a.titulo}}</td>
+                                    <td class="text-center text-overflow" style="width: 200px;">{{a.objetivo}}</td>
+                                    <td class="text-center text-overflow" style="width: 200px;">{{a.descripcion}}</td>
+                                    <td class="btnOp">
+                                        <button type="button" 
+                                                (click)="consultarTiposActividad(a.id)"
+                                                class="bi bi-pencil btn btn-primary m-1">
+                                        </button>
+                                        <button type="button" 
+                                                (click)="eliminarTiposActividad(a.id)" 
+                                                class="bi bi-trash btn btn-danger m-1">
+                                        </button>
+                                    </td>
+                                </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="derecha col-10 mt-5">
+                <div class="card p-3 mt-5">
+                    <div>
+                        <h1>Nuevo Tipo de Actividad</h1>
+                    </div>
+                    <hr>
+                    <div>titulo</div>
+                    <div><input type="text" [(ngModel)]="tipo.titulo" placeholder="Titulo" class="form-control me-2">
+                    </div>
+                    <div>Objetivo</div>
+                    <div><input type="text" [(ngModel)]="tipo.objetivo" placeholder="Objetivo"
+                            class="form-control me-2"></div>
+                    <div>Descripcion</div>
+                    <div><input type="text" [(ngModel)]="tipo.descripcion" placeholder="Descripcion"
+                            class="form-control me-2"></div>
+                    <hr>
+                    <div>
+                        <button (click)="crearTiposActividad()" class="btn btn-outline-success m-1">Agregar</button>
+                        <button type="button" (click)="actualizarTiposActividad(tipo.id, tipo) " class="btn btn-outline-primary m-1">Editar</button>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

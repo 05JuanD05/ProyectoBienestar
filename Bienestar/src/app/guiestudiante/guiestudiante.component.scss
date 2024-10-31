@@ -1,0 +1,31 @@
+.son {
+    display: block;
+    text-decoration: none;
+    padding: 0px 0px;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn1 {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background-color: rgb(206, 206, 206);
+    color: rgb(30, 30, 30);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    /* Si se trata de un enlace */
+}
+
+.btn1:hover {
+    background-color: #4ea3ff;
+}
+
+.sin {
+    list-style: none;
+}

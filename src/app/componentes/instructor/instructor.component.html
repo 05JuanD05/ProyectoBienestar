@@ -1,0 +1,105 @@
+<div class="Container-fluid" id="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="izquierda col-2">
+                <h1>Instructores</h1>
+                <hr>
+                <div class="cinst table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellido</th>
+                                <th scope="col">Identificacion</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Disciplina</th>
+                                <th scope="col">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let usuario of usuarios">
+                            <tr *ngIf="usuario.tipo == 'Instructor'">
+                                <td scope="row">{{ usuario.id }}</td>
+                                <td>{{ usuario.nombre }}</td>
+                                <td>{{ usuario.apellido }}</td>
+                                <td>{{ usuario.identificacion }}</td>
+                                <td>{{ usuario.tipo }}</td>
+                                <td>Disciplina</td>
+                                <td>
+                                    <button type="button" class="bi bi-pencil btn btn-primary m-1"></button>
+                                    <button type="button" (click)=" eliminarInstructor(usuario.id);" class="bi bi-trash btn btn-danger m-1"></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="derecha col-10">
+                <div class="cdis">
+                    <h4 style="text-align:center;">Disciplinas Disponibles</h4>
+                    <div class="lim">
+                        <table class="table table-bordered">
+                            <tr style="text-align: center;">
+                                <th scope="col">ID</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Opcion</th>
+                            </tr>
+                            <tr *ngFor="let d of disciplinas" style="text-align: center;">
+                                <th scope="row" *ngIf="d.estado == 'Activo'">{{ d.id}}</th>
+                                <th *ngIf="d.estado == 'Activo'">{{ d.nombre }}</th>
+                                <th *ngIf="d.estado == 'Activo'"><button (click)="seleccionarDisciplina(d)" class="btn btn-primary btn-sm">seleccionar</button></th>
+                            </tr>
+                        </table>  
+                    </div>
+                </div>
+                <div class="cform card p-3 mt-3">
+                    <div class="row gy-4 gy-xl-2 p-xl-2 cdar">
+                        <h4 style="text-align:center;"> Datos de instructor</h4>
+                        <div class="col-12 col-md-6">
+                            <a>Nombre:</a>
+                            <input type="text" [(ngModel)]="usuario.nombre" placeholder="Nombre" class="form-control me-2">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <a>Apellido:</a>
+                            <input type="text" [(ngModel)]="usuario.apellido" placeholder="Apellido" class="form-control me-2">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <a>Identificacion:</a>
+                            <input type="text" [(ngModel)]="usuario.identificacion" placeholder="Identificacion" class="form-control me-2">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <a>Email:</a>
+                            <input type="text" [(ngModel)]="usuario.email" placeholder="Email" class="form-control me-2">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <a>Telefono:</a>
+                            <input type="text" [(ngModel)]="usuario.telefono" placeholder="Telefono" class="form-control me-2">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <a>Especialidad:</a>
+                            <input type="text" [(ngModel)]="instructor.especialidad" placeholder="Especialidad" class="form-control me-2">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <a>Login:</a>
+                            <input type="text" [(ngModel)]="usuario.login" placeholder="Login" class="form-control me-2">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <a>Password:</a>
+                            <input type="text" [(ngModel)]="usuario.password" placeholder="Password" class="form-control me-2">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <a>Disciplina</a>
+                            <input type="text" value="{{instructor.disciplina.nombre}}" class="form-control me-2" disabled>
+                        </div>
+                        <div>
+                            <button (click)="crearInstructor()" class="btn btn-outline-success m-1">crear</button>
+                            <button type="button" class="btn btn-outline-primary m-1" id="esta2"
+                            disabled>Editar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

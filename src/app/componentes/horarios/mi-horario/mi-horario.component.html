@@ -1,0 +1,200 @@
+<div class="contenedor">
+    <div class="mb-lg-0 d-flex" style="width: 100%;">
+      
+      <!-- Lunes -->
+      <div class="dia mx-2">
+        <h1>Lunes</h1>
+        <div class="acti p-1" style="border-radius: 10px;">
+          <div *ngFor="let inscripcion of MisIncripciones" class="acti2">
+            <div *ngIf="usuario.id === inscripcion.usuario">
+              <div *ngFor="let acti of actividades" class="acti2">
+                <div *ngIf="acti.id === inscripcion.actividad_id && acti.dia === 'Lunes' ">
+                  <div class="card p-2 m-0">
+                    <h3 class="card-title m-0">{{ acti.titulo }}</h3>
+                    <hr class="m-1">
+                    <strong class="m-0" style="text-align: center;">Hora:</strong>
+                    <div class="row">
+                      <div class="col-md-6 mb-1">
+                        <h3 class="m-0">Inicio: </h3>
+                        <h5 class="card-subtitle m-0">{{ acti.horaInicial }}</h5>
+                      </div>
+                      <div class="col-md-6 mb-1">
+                        <h3 class="m-0">Final: </h3>
+                        <h5 class="card-subtitle m-0">{{ acti.horaFinal }}</h5>
+                      </div>
+                    </div>
+                    <!-- Mostrar el estado actual de la actividad -->
+                    <div class="alert" 
+                         [ngClass]="{'alert-success': acti.estado === 'Activo', 
+                                     'alert-warning': acti.estado === 'En proceso de eliminación'}" 
+                         role="alert">
+                      Estado: {{ acti.estado }}
+                    </div>
+                    <!-- Botón de eliminar que cambia el estado a "En proceso de eliminación" -->
+                    <button class="btn btn-danger" (click)="marcarEnProceso(acti.id)">Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Martes -->
+      <div class="dia mx-2">
+        <h1>Martes</h1>
+        <div class="acti p-1" style="border-radius: 10px;">
+          <div *ngFor="let inscripcion of MisIncripciones" class="acti2">
+            <div *ngIf="usuario.id === inscripcion.usuario">
+              <div *ngFor="let acti of actividades" class="acti2">
+                <div *ngIf="acti.id === inscripcion.actividad_id && acti.dia === 'Martes' ">
+                  <div class="card p-2 m-0">
+                    <h3 class="card-title m-0">{{ acti.titulo }}</h3>
+                    <hr class="m-1">
+                    <strong class="m-0" style="text-align: center;">Hora:</strong>
+                    <div class="row">
+                      <div class="col-md-6 mb-1">
+                        <h3 class="m-0">Inicio: </h3>
+                        <h5 class="card-subtitle m-0">{{ acti.horaInicial }}</h5>
+                      </div>
+                      <div class="col-md-6 mb-1">
+                        <h3 class="m-0">Final: </h3>
+                        <h5 class="card-subtitle m-0">{{ acti.horaFinal }}</h5>
+                      </div>
+                    </div>
+                    <!-- Mostrar el estado actual de la actividad -->
+                    <div class="alert" 
+                         [ngClass]="{'alert-success': acti.estado === 'Activo', 
+                                     'alert-warning': acti.estado === 'En proceso de eliminación'}" 
+                         role="alert">
+                      Estado: {{ acti.estado }}
+                    </div>
+                    <!-- Botón de eliminar que cambia el estado a "En proceso de eliminación" -->
+                    <button class="btn btn-danger" (click)="marcarEnProceso(acti.id)">Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Miércoles -->
+      <div class="dia mx-2">
+        <h1>Miércoles</h1>
+        <div class="acti p-1" style="border-radius: 10px;">
+          <div *ngFor="let inscripcion of MisIncripciones" class="acti2">
+            <div *ngIf="usuario.id === inscripcion.usuario">
+              <div *ngFor="let acti of actividades" class="acti2">
+                <div *ngIf="acti.id === inscripcion.actividad_id && acti.dia === 'Miércoles' ">
+                  <div class="card p-2 m-0">
+                    <h3 class="card-title m-0">{{ acti.titulo }}</h3>
+                    <hr class="m-1">
+                    <strong class="m-0" style="text-align: center;">Hora:</strong>
+                    <div class="row">
+                      <div class="col-md-6 mb-1">
+                        <h3 class="m-0">Inicio: </h3>
+                        <h5 class="card-subtitle m-0">{{ acti.horaInicial }}</h5>
+                      </div>
+                      <div class="col-md-6 mb-1">
+                        <h3 class="m-0">Final: </h3>
+                        <h5 class="card-subtitle m-0">{{ acti.horaFinal }}</h5>
+                      </div>
+                    </div>
+                    <!-- Mostrar el estado actual de la actividad -->
+                    <div class="alert" 
+                         [ngClass]="{'alert-success': acti.estado === 'Activo', 
+                                     'alert-warning': acti.estado === 'En proceso de eliminación'}" 
+                         role="alert">
+                      Estado: {{ acti.estado }}
+                    </div>
+                    <!-- Botón de eliminar que cambia el estado a "En proceso de eliminación" -->
+                    <button class="btn btn-danger" (click)="marcarEnProceso(acti.id)">Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Jueves -->
+      <div class="dia mx-2">
+        <h1>Jueves</h1>
+        <div class="acti p-1" style="border-radius: 10px;">
+          <div *ngFor="let inscripcion of MisIncripciones" class="acti2">
+            <div *ngIf="usuario.id === inscripcion.usuario">
+              <div *ngFor="let acti of actividades" class="acti2">
+                <div *ngIf="acti.id === inscripcion.actividad_id && acti.dia === 'Jueves' ">
+                  <div class="card p-2 m-0">
+                    <h3 class="card-title m-0">{{ acti.titulo }}</h3>
+                    <hr class="m-1">
+                    <strong class="m-0" style="text-align: center;">Hora:</strong>
+                    <div class="row">
+                      <div class="col-md-6 mb-1">
+                        <h3 class="m-0">Inicio: </h3>
+                        <h5 class="card-subtitle m-0">{{ acti.horaInicial }}</h5>
+                      </div>
+                      <div class="col-md-6 mb-1">
+                        <h3 class="m-0">Final: </h3>
+                        <h5 class="card-subtitle m-0">{{ acti.horaFinal }}</h5>
+                      </div>
+                    </div>
+                    <!-- Mostrar el estado actual de la actividad -->
+                    <div class="alert" 
+                         [ngClass]="{'alert-success': acti.estado === 'Activo', 
+                                     'alert-warning': acti.estado === 'En proceso de eliminación'}" 
+                         role="alert">
+                      Estado: {{ acti.estado }}
+                    </div>
+                    <!-- Botón de eliminar que cambia el estado a "En proceso de eliminación" -->
+                    <button class="btn btn-danger" (click)="marcarEnProceso(acti.id)">Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Viernes -->
+      <div class="dia mx-2">
+        <h1>Viernes</h1>
+        <div class="acti p-1" style="border-radius: 10px;">
+          <div *ngFor="let inscripcion of MisIncripciones" class="acti2">
+            <div *ngIf="usuario.id === inscripcion.usuario">
+              <div *ngFor="let acti of actividades" class="acti2">
+                <div *ngIf="acti.id === inscripcion.actividad_id && acti.dia === 'Viernes' ">
+                  <div class="card p-2 m-0">
+                    <h3 class="card-title m-0">{{ acti.titulo }}</h3>
+                    <hr class="m-1">
+                    <strong class="m-0" style="text-align: center;">Hora:</strong>
+                    <div class="row">
+                      <div class="col-md-6 mb-1">
+                        <h3 class="m-0">Inicio: </h3>
+                        <h5 class="card-subtitle m-0">{{ acti.horaInicial }}</h5>
+                      </div>
+                      <div class="col-md-6 mb-1">
+                        <h3 class="m-0">Final: </h3>
+                        <h5 class="card-subtitle m-0">{{ acti.horaFinal }}</h5>
+                      </div>
+                    </div>
+                    <!-- Mostrar el estado actual de la actividad -->
+                    <div class="alert" 
+                         [ngClass]="{'alert-success': acti.estado === 'Activo', 
+                                     'alert-warning': acti.estado === 'En proceso de eliminación'}" 
+                         role="alert">
+                      Estado: {{ acti.estado }}
+                    </div>
+                    <!-- Botón de eliminar que cambia el estado a "En proceso de eliminación" -->
+                    <button class="btn btn-danger" (click)="marcarEnProceso(acti.id)">Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>

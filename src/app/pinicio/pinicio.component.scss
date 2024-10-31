@@ -1,0 +1,81 @@
+/* Fondo blanco */
+.vh-100 {
+  position: relative;
+  background-color: #fff; /* Fondo blanco */
+  height: 100vh;
+}
+
+/* Ajustes en la tarjeta contenedora */
+.contis {
+  width: 500px; /* Ancho ajustado */
+  height: 600px; /* Altura ajustada */
+  margin: 0 auto;
+  padding: 30px; /* Espaciado adicional */
+  border: 2px solid #cc0000; /* Rojo */
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); /* Sombras para efecto flotante */
+  background-color: #fff; /* Fondo blanco */
+  position: absolute; 
+  top: 45%; /* Ajuste para subir la ventana */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Estilo para el título principal "Inicio de Sesión" */
+.card-title h1 {
+  color: #003366; /* Azul oscuro */
+  font-size: 20px; /* Mismo tamaño que los otros títulos */
+  font-weight: bold; /* Mismo grosor que los otros títulos */
+}
+
+/* Estilo para los títulos de los campos de usuario y contraseña en azul oscuro */
+.cllog, .clps {
+  font-size: 20px;
+  font-weight: bold;
+  color: #003366; /* Azul oscuro */
+  margin-bottom: 20px;
+}
+
+/* Restantes estilos */
+.input-group-text {
+  background-color: #003366; /* Azul oscuro */
+  color: white;
+  border: none;
+  border-radius: 4px 0 0 4px;
+}
+
+.form-control {
+  border-radius: 0 4px 4px 0;
+  padding: 12px;
+}
+
+button {
+  background-color: #003366;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #00509e;
+}
+
+.forg {
+  text-decoration: none;
+  color: #003366;
+}
+
+.forg:hover {
+  text-decoration: underline;
+}
+
+.cop {
+  margin-top: 20px;
+  font-style: italic;
+  color: #cc0000;
+}

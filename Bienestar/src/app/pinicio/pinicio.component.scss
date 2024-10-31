@@ -1,0 +1,84 @@
+
+/*
+.contis {  
+    display: grid;
+    grid-template-columns: 300px 300px;
+    grid-template-rows: 80px 80px 80px;
+    grid-auto-columns: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    align-content: center;
+    grid-template-areas:
+      "cllog clog"
+      "clps cps"
+      "cop cbi";
+  }
+  
+  .cllog { grid-area: cllog; }
+  
+  .clps { grid-area: clps; }
+  
+  .clog { grid-area: clog; }
+  
+  .cps { grid-area: cps; }
+  
+  .cbi { grid-area: cbi; }
+  
+  .cop { grid-area: cop; }
+  
+*/
+  
+.forg {
+  text-decoration: none;
+}
+
+
+/*
+.contis {
+  width: 300px; 
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  text-align: center;
+}
+
+.cllog, .clps {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.clog, .cps {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.cop {
+  margin-top: 10px;
+  font-style: italic;
+  color: #888;
+}
+*/

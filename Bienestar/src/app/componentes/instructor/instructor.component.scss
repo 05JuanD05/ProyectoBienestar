@@ -1,0 +1,65 @@
+/*
+.continstr  {
+    display: grid; 
+    grid-auto-columns: 1fr; 
+    grid-template-columns: 0.7fr 1.3fr; 
+    grid-template-rows: 1fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "cdis cform"
+      "cdis cinst"; 
+    align-content: center; 
+  }
+  .cform { grid-area: cform; }
+  .cinst { grid-area: cinst; }
+  .cdis { grid-area: cdis; }
+  */
+
+h1 {
+    text-align:center;
+    color:rgb(48, 48, 48);
+}
+
+.container {
+    width: 99.5%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.cinst {
+  height: 600px;
+  overflow-y: auto;
+}
+
+.izquierda{
+    width: 60%;
+}
+
+.lim {
+  width: 100%;
+  height: 200px;
+  min-height: 200px;
+  overflow-y: auto;
+}
+
+.derecha{
+    width: 40%;
+}
+
+.text-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 250px;
+}
+
+.cform {
+  width: 100%
+}
+
+.cdar {
+  width: 100%;
+  height: 420px;
+  min-height: 200px;
+  overflow-y: auto;
+}

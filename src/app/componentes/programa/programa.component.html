@@ -1,0 +1,70 @@
+<div class="Container-fluid" id="main-content">
+    <div class="container">
+        <div class="row" style="overflow-y: auto;">
+            <div class="izquierda col-2">
+                <h1>Programas</h1>
+                <div class="cartas">
+                    <div class="cards">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="text-center" style="width: 100px;">#</th>
+                                    <th scope="col" class="text-center">Codigo</th>
+                                    <th scope="col" class="text-center">Nombre</th>
+                                    <th scope="col" class="text-center">Estado</th>
+                                    <th scope="co" class="text-center">Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let a of programas">
+                                <tr style="width: 100%;">
+                                    <th scope="row" class="text-center text-overflow">{{a.id}}</th>
+                                    <td class="text-center text-overflow">{{a.codigo}}</td>
+                                    <td class="text-center text-overflow" style="width: 200px;">{{a.nombre}}</td>
+                                    <td class="text-center text-overflow" style="width: 200px;">{{a.estado}}</td>
+                                    <td class="btnOp">
+                                        <button type="button" 
+                                            id="esta"
+                                            (click)="consultarPrograma(a.id)"
+                                            (click)="cambioEstado($event)"
+                                            class="bi bi-pencil btn btn-primary m-1"></button>
+                                        <button type="button" 
+                                            (click)="eliminarPrograma(a.id)"
+                                            class="bi bi-trash btn btn-danger m-1">
+                                        </button>
+                                    </td>
+                                </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="derecha col-10 mt-5">
+                <div class="card p-3 mt-5">
+                    <div>
+                        <h1>Nuevo Programa</h1>
+                    </div>
+                    <div>Codigo</div>
+                    <div><input type="text" [(ngModel)]="programa.codigo" placeholder="Codigo"
+                            class="form-control me-2"></div>
+                    <div>Nombre</div>
+                    <div><input type="text" [(ngModel)]="programa.nombre" placeholder="Nombre"
+                            class="form-control me-2"></div>
+                    <label for="lang">Estado</label>
+                    <form action="#">
+                        <select [(ngModel)]="programa.estado" name="lenguajes" id="lang" style="width: auto;" class="form-select form-select-sm">
+                            <option value="" disabled selected hidden>Selecciona una opción</option>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                        </select>
+                    </form>
+
+                    <hr>
+                    <div>
+                        <button (click)="crearPrograma()" class="btn btn-outline-success" id="add">Agregar</button>
+                        <button (click)="actualizarPrograma(programa.id, programa)" (click)="cambioEstado($event)" class="btn btn-outline-primary m-1" id="esta2" disabled>Editar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+/*
+.contActividad {  display: grid;
+    grid-template-columns: 80px 80px 80px 80px 80px 80px;
+    grid-template-rows: 40px 40px 40px 40px 40px;
+    grid-auto-columns: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    align-content: center;
+    grid-template-areas:
+      "ctit ctit ctit ctit ctit ctit"
+      "op4 chi chi chf chf op1"
+      "op5 cesce cesce cesce cesce op2"
+      "op6 ctip ctip ctip ctip op3"
+      "cfii cfii op7 op7 cffi cffi";
+  }
+  
+  .chi { grid-area: chi; }
+  
+  .chf { grid-area: chf; }
+  
+  .ctit {justify-self: center; grid-area: ctit; }
+  
+  .cfii { grid-area: cfii; }
+  
+  .cffi { grid-area: cffi; }
+  
+  .cesce { grid-area: cesce; }
+  
+  .ctip { grid-area: ctip; }
+  
+  .op1 { grid-area: op1; }
+  
+  .op2 { grid-area: op2; }
+  
+  .op3 { grid-area: op3; }
+  
+  .op4 { grid-area: op4; }
+  
+  .op5 { grid-area: op5; }
+  
+  .op6 { grid-area: op6; }
+  
+  .op7 { grid-area: op7; }
+  
+
+  */
+.dia {
+  width: 200px;
+  text-align: center;
+}
+
+.acti {
+  background-color: #D6EAF8;
+  height: 500px;
+  position: relative;
+}
+
+.info {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+}
