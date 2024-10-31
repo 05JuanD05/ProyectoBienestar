@@ -34,6 +34,8 @@ import { GUIInstructorComponent } from './guiinstructor/guiinstructor.component'
 import { IPrincipalComponent } from './iprincipal/iprincipal.component';
 import { PInicioComponent } from './pinicio/pinicio.component';
 import { InformadorComponent } from './utilidades/informador/informador.component';
+import { DesvinculacionComponent } from './desvinculacion/desvinculacion.component';
+import { GestionJobsComponent } from './gestion-jobs/gestion-jobs.component';
 
 
 @NgModule({
@@ -64,7 +66,9 @@ import { InformadorComponent } from './utilidades/informador/informador.componen
     HorarioIDeportivoComponent,
     MiHorarioComponent,
     ListaInscripcionComponent,
-    CronogramaActividadesInstructorComponent
+    CronogramaActividadesInstructorComponent,
+    DesvinculacionComponent,
+    GestionJobsComponent
   ],
   imports: [
     BrowserModule,
