@@ -34,6 +34,7 @@ import { GUIInstructorComponent } from './guiinstructor/guiinstructor.component'
 import { IPrincipalComponent } from './iprincipal/iprincipal.component';
 import { PInicioComponent } from './pinicio/pinicio.component';
 import { InformadorComponent } from './utilidades/informador/informador.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { InformadorComponent } from './utilidades/informador/informador.componen
     FileSaverModule,
     HttpClientModule,ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
     
   ],
   providers: [DisciplinaComponent,InformadorComponent],
