@@ -1,0 +1,25 @@
+<div class="container mt-4">
+  <h2>Solicitudes de Desvinculación</h2>
+  
+  <table class="table table-striped mt-3">
+    <thead class="table-dark">
+      <tr>
+        <th>Nombre</th>
+        <th>Actividad</th>
+        <th>Motivo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let solicitud of solicitudes">
+        <td>{{ solicitud.nombre }}</td>
+        <td>{{ solicitud.actividad }}</td>
+        <td>{{ solicitud.motivo }}</td>
+        <td>
+          <button class="btn btn-success btn-sm me-2" (click)="aceptarSolicitud(solicitud.id)">Aceptar</button>
+          <button class="btn btn-danger btn-sm" (click)="rechazarSolicitud(solicitud.id)">Rechazar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

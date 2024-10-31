@@ -1,0 +1,44 @@
+h1 {
+    text-align:center;
+    color:rgb(48, 48, 48);
+}
+
+.container {
+    width: 99.5%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.izquierda{
+    width: 70%;
+    height: 700px;
+    overflow-y: auto;
+}
+
+.derecha{
+    width: 30%;
+}
+
+.cartas {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: 32% 32% 32%;
+    grid-template-rows: auto auto;
+}
+
+.carta {
+    width: calc(33.33% - 10px);
+    margin-bottom: 10px;
+    border: 2px solid #e7e7e7;
+    border-radius: 4px;
+    padding: .5rem;
+    box-sizing: border-box;
+}
+
+.text-overflow {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px;
+}
+

@@ -1,0 +1,66 @@
+<div class="Container-fluid" id="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="izquierda col-2">
+                <h1>Disciplinas</h1>
+                <hr>
+                <div class="cartas">
+                    <div class="cards col card shadow-sm" *ngFor="let a of disciplinas">
+                        <!--Moficar para que permita variables-->
+                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                            xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid slice"
+                            focusable="false">
+                            <rect width="100%" height="100%" fill="#55595c"></rect>
+                            <image xlink:href="./assets/images/unicolombo.jpg" height="225px" width="100%">
+                            </image>
+                        </svg>
+                        <div class="card-body">
+                            <h3 class="card-text text-overflow"><a>{{a.nombre}}</a></h3>
+                            <div style="font-size: 20px; font-weight: bold;">Descripcion:</div>
+                            <div class="text-overflow">{{a.descripcion}}</div>
+                            <div style="font-size: 20px; font-weight: bold;">Estado:</div>
+                            <div>{{a.estado}}</div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group2 justify-content-between ">
+                                    <button (click)="consultarDisciplina(a.id)" (click)="cambioEstado($event)"
+                                        class="btn btn-sm btn-outline-primary m-1" id="esta">Editar</button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger"
+                                        (click)="eliminarDisciplina(a.id)">Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="derecha col-10">
+                <div class="card p-3 mt-3">
+                    <div>
+                        <h1>Nueva Disciplina</h1>
+                    </div>
+                    <div>Nombre</div>
+                    <div><input type="text" [(ngModel)]="disciplina.nombre" placeholder="Nombre"
+                            class="form-control me-2"></div>
+                    <div>Descripcion</div>
+                    <div><input type="text" [(ngModel)]="disciplina.descripcion" placeholder="Descripcion"
+                            class="form-control me-2"></div>
+                    <div>Estado</div>
+                    <form action="#">
+                        <select [(ngModel)]="disciplina.estado" name="lenguajes" id="lang" style="width: auto;"
+                            class="form-select form-select-sm">
+                            <option value="" disabled selected hidden>Selecciona estado</option>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                        </select>
+                    </form>
+                    <br>
+                    <div>
+                        <button type="button" (click)="crearDisciplina()" class="btn btn-outline-success m-1" id="add">
+                            Agregar </button>
+                        <button type="button" (click)="actualizarDisciplina(disciplina.id, disciplina)" (click)="cambioEstado($event)" class="btn btn-outline-primary m-1" id="esta2" disabled>
+                            Editar </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
