@@ -22,10 +22,6 @@
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
     "@popperjs/core": "^2.11.8",
-<<<<<<< HEAD
-    "bienestar": "file:",
-=======
->>>>>>> Instructor
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.1",
     "express": "^4.18.2",

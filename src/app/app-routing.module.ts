@@ -5,12 +5,7 @@ import { GUIDirectorComponent } from './guidirector/guidirector.component';
 import { GUIEstudianteComponent } from './guiestudiante/guiestudiante.component';
 import { GUIInstructorComponent } from './guiinstructor/guiinstructor.component';
 import { IPrincipalComponent } from './iprincipal/iprincipal.component';
-<<<<<<< HEAD
 import { GestionJobsComponent } from './gestion-jobs/gestion-jobs.component';
-
-const routes: Routes = [
-  { path: '', component: IPrincipalComponent },
-=======
 import { ListaInscripcionComponent } from './componentes/lista-inscripcion/lista-inscripcion.component';
 import { CronogramaActividadesInstructorComponent } from './componentes/cronograma-actividades-instructor/cronograma-actividades-instructor.component';
 import { HorarioDeportivoComponent } from './componentes/horarios/horario-deportivo/horario-deportivo.component';
@@ -19,14 +14,11 @@ import { HorarioCulturalComponent } from './componentes/horarios/horario-cultura
 const routes: Routes = [
   { path: '', component: IPrincipalComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
->>>>>>> Instructor
   { path: 'guiEstudiante', component: GUIEstudianteComponent },
   { path: 'guiCoordinador', component: GUICoordinadorComponent },
   { path: 'guiInstructor', component: GUIInstructorComponent },
   { path: 'guiDirector', component: GUIDirectorComponent},
-<<<<<<< HEAD
-  { path: 'gestionJobs', component: GestionJobsComponent}
-=======
+  { path: 'gestionJobs', component: GestionJobsComponent},
   { path:'lista-inscripcion',component: ListaInscripcionComponent },
   { path:'cronograma-actividades',component: CronogramaActividadesInstructorComponent},
   { path:'horario-deportivo',component: HorarioDeportivoComponent},
@@ -37,7 +29,6 @@ const routes: Routes = [
   { path: '', redirectTo: '/horario-deportivo', pathMatch: 'full' },
   { path: '', redirectTo: '/horario-cultural', pathMatch: 'full' },
 
->>>>>>> Instructor
 ];
 
 @NgModule({
