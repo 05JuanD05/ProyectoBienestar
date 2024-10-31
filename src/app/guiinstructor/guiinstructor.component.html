@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+    <nav class="nav-top">
+
+        <div class="nav-left">
+            <a href="#">Inicio</a>
+            <a href="#">Acerca de</a>
+            <a href="#">Servicios</a>
+            <a href="#">Contacto</a>
+        </div>
+        <div class="nav-right">
+            <div class="user-avatar" id="userAvatar">
+                {{usuario.nombre}} {{usuario.apellido}}
+            </div>
+            <a href="#" class="cerrar-sesion">Cerrar Sesión</a>
+        </div>
+    </nav>
+    <div class="contenedor">
+        <div class="menu">
+            <ul>
+                <div class="nav-left1">
+
+                </div>
+
+                <div class="user-container">
+                    <div class="user-avatar1" id="userAvatar1">
+
+                    </div>
+
+                    <a href="#" class="sesion">Cerrar Sesión</a>
+
+                </div>
+
+                <li><a (click)="_mostrarmostrarCronogramaActividadInstructor()" >📅 Cronograma de Actividades</a></li>
+                <li><a (click)="_mostrarListarInscripcion()">📅 Agregar asistencia</a></li>
+                <li><a href="#">📅 Horario Deportivo</a></li>
+                <li><a href="#">📅 Mi horario</a></li>
+            </ul>
+        </div>
+        <div class="contenedor-tabla">
+            <table class="cuadro" id="tabla">
+                <tr>
+                    <th>Actividades</th>
+
+                </tr>
+                <tr>
+                    <div>
+                        <div class="me-auto mb-2 mb-lg-0">
+                            <app-cronograma-actividades-instructor *ngIf="mostrarCronogramaActividadInstructor">
+                                
+                            </app-cronograma-actividades-instructor>
+                            <app-lista-inscripcion *ngIf="mostrarListarInscripcion"></app-lista-inscripcion>
+
+                            
+                        </div>
+                    </div>
+
+                </tr>
+                
+        
+            </table>
+        </div>
+    </div>
+    <footer>
+        <p>Unicolombo</p>
+    </footer>
+
+</body>
+
+</html>

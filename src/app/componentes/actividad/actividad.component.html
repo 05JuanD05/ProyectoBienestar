@@ -1,0 +1,335 @@
+<!--
+    <div>{{actividad.horaInicial |date: 'HH:mm:ss' }} Hora Inicial</div>
+    <div>{{actividad.dia |date: 'HH:mm:ss' }} Hora Final</div>
+    <div>{{actividad.titulo}} Titulo</div>
+    <div>{{actividad.fechaInicioInscripcion| date: 'shortDate'}} Fecha Inicio de inscripcion</div>
+    <div>{{actividad.fechaFinalInscripcion| date: 'shortDate'}} Fecha final de inscripcion</div>
+    <div>Coliceo Norton Madrid</div>
+    <div>Deportiva</div>
+-->
+
+<div class="cform card p-3 m-2" style="height: 700px; overflow-y: auto;">
+    <h1 style="text-align:center;"> Actividad</h1>
+    <div class="row gy-4 gy-xl-2 p-xl-2 cdar">
+        <div class="col-12 col-md-6">
+            <h4 style="text-align:center;"> Instructores</h4>
+            <div style="height: 300px; overflow-y: auto;">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Disciplina</th>
+                            <th scope="col">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let usuario of usuarios">
+                        <tr *ngIf="usuario.tipo == 'Instructor'">
+                            <td scope="row"><img src="./assets/usuariosImagenes/{{usuario.id}}.jpg" width="80px"></td>
+                            <td>{{ usuario.nombre }}</td>
+                            <td>{{ usuario.apellido }}</td>
+                            <td>{{ usuario.tipo }}</td>
+                            <td>Disciplina</td>
+                            <td>
+                                <button type="button" class="btn btn-primary m-1"
+                                    (click)="seleccionarInstructor(usuario)">Seleccionar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <h4 style="text-align:center;"> Escenarios </h4>
+            <div style="height: 300px; overflow-y: auto;">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let escenario of escenarios">
+                        <tr *ngIf="escenario.estado == 'Activo'">
+                            <td scope="row"><img src="./assets/images/unicolombo.jpg" width="100px"></td>
+                            <td>{{ escenario.nombre }}</td>
+                            <td>
+                                <button type="button" (click)="seleccionarEscenario(escenario)"
+                                    class="btn btn-primary m-1">Seleccionar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <h4 style="text-align:center;"> Tipo de Actividad </h4>
+            <div style="height: 350px; overflow-y: auto;">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let tipo of tipos">
+                        <tr>
+                            <td scope="row"><img src="./assets/images/unicolombo.jpg" width="100px"></td>
+                            <td>{{ tipo.titulo }}</td>
+                            <td>
+                                <button type="button" (click)="seleccionarTipoActividad(tipo)"
+                                    class="btn btn-primary m-1">Seleccionar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <h4 style="text-align:center;">Datos de Actividad </h4>
+            <div class="row gy-4 gy-xl-2 p-xl-2 cdar">
+                <div class="col-12 col-md-6">
+                    <a>Titulo:</a>
+                    <input type="text" [(ngModel)]="actividad.titulo" placeholder="Nombre" class="form-control me-2">
+                </div>
+                <div class="col-12 col-md-6">
+                    <a>Fecha Final de Inscripcion:</a>
+                    <input type="date" [(ngModel)]="actividad.fechaFinalInscripcion" class="form-control me-2">
+                </div>
+                <div class="col-12 col-md-6">
+                    <a>Hora de inicio:</a>
+                    <input type="time" [(ngModel)]="actividad.horaInicial" class="form-control me-2">
+                </div>
+                <div class="col-12 col-md-6">
+                    <a>Hora de finalizacion:</a>
+                    <input type="time" [(ngModel)]="actividad.horaFinal" class="form-control me-2">
+                </div>
+                <div class="col-12 col-md-6">
+                    <a>Dia de Actividad</a>
+                    <form action="#">
+                        <select [(ngModel)]="actividad.dia" name="dia" id="lang" style="width: 100%;"
+                            class="form-select form-select">
+                            <option value="" disabled selected hidden>Selecciona Dia</option>
+                            <option value="Lunes">Lunes</option>
+                            <option value="Martes">Martes</option>
+                            <option value="Miercoles">Miercoles</option>
+                            <option value="Jueves">Jueves</option>
+                            <option value="Viernes">Viernes</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="col-12 col-md-6">
+                    <a>Estado</a>
+                    <form action="#">
+                        <select [(ngModel)]="actividad.estado" name="estados" id="lang" style="width: 100%;"
+                            class="form-select form-select">
+                            <option value="" disabled selected hidden>Selecciona estado</option>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="col-12 col-md-6">
+                    <a>Escenario</a>
+                    <input type="text" value="{{escenario.nombre}}" disabled
+                        class="form-control me-2">
+                </div>
+                <div class="col-12 col-md-6">
+                    <a>Tipo de Actividad</a>
+                    <input type="text" value="{{tipo.titulo}}"  disabled
+                        class="form-control me-2">
+                </div>
+                <div class="col-12 col-md-6" >
+                    <a>Instructor</a>
+                    <input type="text" value="{{usuario.nombre}}" disabled
+                        class="form-control me-2">
+                </div>
+                <div class="col-12 col-md-6" hidden>
+                    <input type="text" value="{{usuario.id}}" disabled class="form-control me-2">
+                </div>
+                <div class="col-12 col-md-6">
+                    <br>
+                    <button class="btn btn-outline-primary m-1" (click)="crearActividad()">Crear Actividad</button>
+                </div>
+            </div>
+        </div>
+        <!-- Horario de Activides -->
+        <hr>
+        <div>
+            <h1 style="text-align:center;"> Horario </h1>
+            <div class="contenedor">
+
+                <div class="tabla mb-lg-0 container-fluid d-flex justify-content-md-center" style="width: 100%;">
+                    <div class="dia mx-2">
+                        <h1>Lunes</h1>
+                        <div class="acti p-1" style="border-radius: 10px;">
+                            <div *ngFor="let acti of actividades" class="acti2">
+                                <div *ngIf="acti.dia === 'Lunes'">
+                                    <div class="card p-2 m-0">
+                                        <h3 class="card-title m-0">{{ acti.titulo }}</h3>
+                                        <hr class="m-1">
+                                        <strong class="m-0" style="text-align: center;">Hora:</strong>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-1">
+                                                <h3 class="m-0">Inicio: </h3>
+                                                <h5 class="card-subtitle m-0">
+                                                    {{acti.horaInicial}}
+                                                </h5>
+                                            </div>
+                                            <div class="col-md-6 mb-1">
+                                                <h3 class="m-0">Final: </h3>
+                                                <h5 class="card-subtitle m-0">
+                                                    {{acti.horaFinal}}
+                                                </h5>
+                                            </div>
+                                            <div class="row">
+                                                <button class="col-md-6 bi bi-trash btn btn-danger mx-3" style="width: 40px; height: 30px;" (click)="eliminarActividad(acti.id)"></button>
+                                                <p class="info col-md-6 m-0 bi bi-info-circle bi-2x" style="text-align: end; width: 45%; height: auto;"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dia mx-2">
+                        <h1>Martes</h1>
+                        <div class="acti p-1" style="border-radius: 10px;">
+                            <div *ngFor="let acti of actividades">
+                                <div *ngIf="acti.dia === 'Martes'">
+                                    <div class="card p-2 m-0">
+                                        <h3 class="card-title m-0">{{ acti.titulo }}</h3>
+                                        <hr class="m-1">
+                                        <strong class="m-0" style="text-align: center;">Hora:</strong>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-1">
+                                                <h3 class="m-0">Inicio: </h3>
+                                                <h5 class="card-subtitle m-0">
+                                                    {{acti.horaInicial}}
+                                                </h5>
+                                            </div>
+                                            <div class="col-md-6 mb-1">
+                                                <h3 class="m-0">Final: </h3>
+                                                <h5 class="card-subtitle m-0">
+                                                    {{acti.horaFinal}}
+                                                </h5>
+                                            </div>
+                                            <div class="row">
+                                                <button class="col-md-6 bi bi-trash btn btn-danger mx-3" style="width: 40px; height: 30px;" (click)="eliminarActividad(acti.id)"></button>
+                                                <p class="info col-md-6 m-0 bi bi-info-circle bi-2x" style="text-align: end; width: 45%; height: auto;"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dia mx-2">
+                        <h1>Miercoles</h1>
+                        <div class="acti p-1" style="border-radius: 10px;">
+                            <div *ngFor="let acti of actividades">
+                                <div *ngIf="acti.dia === 'Miercoles'">
+                                    <div class="card p-2 m-0">
+                                        <h3 class="card-title m-0">{{ acti.titulo }}</h3>
+                                        <hr class="m-1">
+                                        <strong class="m-0" style="text-align: center;">Hora:</strong>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-1">
+                                                <h3 class="m-0">Inicio: </h3>
+                                                <h5 class="card-subtitle m-0">
+                                                    {{acti.horaInicial}}
+                                                </h5>
+                                            </div>
+                                            <div class="col-md-6 mb-1">
+                                                <h3 class="m-0">Final: </h3>
+                                                <h5 class="card-subtitle m-0">
+                                                    {{acti.horaFinal}}
+                                                </h5>
+                                            </div>
+                                            <div class="row">
+                                                <button class="col-md-6 bi bi-trash btn btn-danger mx-3" style="width: 40px; height: 30px;" (click)="eliminarActividad(acti.id)"></button>
+                                                <p class="info col-md-6 m-0 bi bi-info-circle bi-2x" style="text-align: end; width: 45%; height: auto;"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dia mx-2">
+                        <h1>Jueves</h1>
+                        <div class="acti p-1" style="border-radius: 10px;">
+                            <div *ngFor="let acti of actividades">
+                                <div *ngIf="acti.dia === 'Jueves'">
+                                    <div class="card p-2 m-0">
+                                        <h3 class="card-title m-0">{{ acti.titulo }}</h3>
+                                        <hr class="m-1">
+                                        <strong class="m-0" style="text-align: center;">Hora:</strong>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-1">
+                                                <h3 class="m-0">Inicio: </h3>
+                                                <h5 class="card-subtitle m-0">
+                                                    {{acti.horaInicial}}
+                                                </h5>
+                                            </div>
+                                            <div class="col-md-6 mb-1">
+                                                <h3 class="m-0">Final: </h3>
+                                                <h5 class="card-subtitle m-0">
+                                                    {{acti.horaFinal}}
+                                                </h5>
+                                            </div>
+                                            <div class="row">
+                                                <button class="col-md-6 bi bi-trash btn btn-danger mx-3" style="width: 40px; height: 30px;" (click)="eliminarActividad(acti.id)"></button>
+                                                <p class="info col-md-6 m-0 bi bi-info-circle bi-2x" style="text-align: end; width: 45%; height: auto;"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dia mx-2">
+                        <h1>Viernes</h1>
+                        <div class="acti p-1" style="border-radius: 10px;">
+                            <div *ngFor="let acti of actividades">
+                                <div *ngIf="acti.dia === 'Viernes'">
+                                    <div class="card p-2 m-0">
+                                        <h3 class="card-title m-0">{{ acti.titulo }}</h3>
+                                        <hr class="m-1">
+                                        <strong class="m-0" style="text-align: center;">Hora:</strong>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-1">
+                                                <h3 class="m-0">Inicio: </h3>
+                                                <h5 class="card-subtitle m-0">
+                                                    {{acti.horaInicial}}
+                                                </h5>
+                                            </div>
+                                            <div class="col-md-6 mb-1">
+                                                <h3 class="m-0">Final: </h3>
+                                                <h5 class="card-subtitle m-0">
+                                                    {{acti.horaFinal}}
+                                                </h5>
+                                            </div>
+                                            <div class="row">
+                                                <button class="col-md-6 bi bi-trash btn btn-danger mx-3" style="width: 40px; height: 30px;" (click)="eliminarActividad(acti.id)"></button>
+                                                <p class="info col-md-6 m-0 bi bi-info-circle bi-2x" style="text-align: end; width: 45%; height: auto;"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <button class="btn btn-outline-primary m-1">Publicar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

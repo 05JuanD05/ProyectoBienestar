@@ -1,0 +1,177 @@
+<div class="contenedor">
+
+    <div class="mb-lg-0 d-flex" style="width: 100%;">
+        <div class="dia mx-2">
+            <h1>Lunes</h1>
+            <div class="acti p-1" style="border-radius: 10px;">
+                <div *ngFor="let acti of actividades" class="acti2">
+                    <div *ngIf="acti.dia === 'Lunes'">
+                        <div class="card p-2 m-0">
+                            <h3 class="card-title m-0">{{ acti.titulo }}</h3>
+                            <hr class="m-1">
+                            <strong class="m-0" style="text-align: center;">Hora:</strong>
+                            <div class="row">
+                                <div class="col-md-6 mb-1">
+                                    <h3 class="m-0">Inicio: </h3>
+                                    <h5 class="card-subtitle m-0">
+                                        {{acti.horaInicial}}
+                                    </h5>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <h3 class="m-0">Final: </h3>
+                                    <h5 class="card-subtitle m-0">
+                                        {{acti.horaFinal}}
+                                    </h5>
+                                </div>
+                                <div class="row">
+                                    <p class="info col-md-6 m-0 bi bi-info-circle bi-2x" style="text-align: end; width: 45%; height: auto;"></p>
+                                </div>  
+                            </div>
+                            <div>
+                            <button (click)="agregar(acti.id)" class="btn btn-primary btn-sm" type="button" >agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dia mx-2">
+            <h1>Martes</h1>
+            <div class="acti p-1" style="border-radius: 10px;">
+                <div *ngFor="let acti of actividades" class="acti2">
+                    <div *ngIf="acti.dia === 'Martes'">
+                        <div class="card p-2 m-0">
+                            <h3 class="card-title m-0">{{ acti.titulo }}</h3>
+                            <hr class="m-1">
+                            <strong class="m-0" style="text-align: center;">Hora:</strong>
+                            <div class="row">
+                                <div class="col-md-6 mb-1">
+                                    <h3 class="m-0">Inicio: </h3>
+                                    <h5 class="card-subtitle m-0">
+                                        {{acti.horaInicial}}
+                                    </h5>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <h3 class="m-0">Final: </h3>
+                                    <h5 class="card-subtitle m-0">
+                                        {{acti.horaFinal}}
+                                    </h5>
+                                </div>
+                                <div class="row">
+                                    <p class="info col-md-6 m-0 bi bi-info-circle bi-2x" style="text-align: end; width: 45%; height: auto;"></p>
+                                </div>  
+                            </div>
+                            <div>
+                            <button (click)="agregar(acti.id)" class="btn btn-primary btn-sm" type="button" >agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dia mx-2">
+            <h1>Miercoles</h1>
+            <div class="acti p-1" style="border-radius: 10px;">
+                <div *ngFor="let acti of actividades" class="acti2">
+                    <div *ngIf="acti.dia === 'Miercoles'">
+                        <div class="card p-2 m-0">
+                            <h3 class="card-title m-0">{{ acti.titulo }}</h3>
+                            <hr class="m-1">
+                            <strong class="m-0" style="text-align: center;">Hora:</strong>
+                            <div class="row">
+                                <div class="col-md-6 mb-1">
+                                    <h3 class="m-0">Inicio: </h3>
+                                    <h5 class="card-subtitle m-0">
+                                        {{acti.horaInicial}}
+                                    </h5>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <h3 class="m-0">Final: </h3>
+                                    <h5 class="card-subtitle m-0">
+                                        {{acti.horaFinal}}
+                                    </h5>
+                                </div>
+                                <div class="row">
+                                    <p class="info col-md-6 m-0 bi bi-info-circle bi-2x" style="text-align: end; width: 45%; height: auto;"></p>
+                                </div>  
+                            </div>
+                            <div>
+                            <button (click)="agregar(acti.id)" class="btn btn-primary btn-sm" type="button" >agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dia mx-2">
+            <h1>Jueves</h1>
+            <div class="acti p-1" style="border-radius: 10px;">
+                <div *ngFor="let acti of actividades" class="acti2">
+                    <div *ngIf="acti.dia === 'Jueves'">
+                        <div class="card p-2 m-0">
+                            <h3 class="card-title m-0">{{ acti.titulo }}</h3>
+                            <hr class="m-1">
+                            <strong class="m-0" style="text-align: center;">Hora:</strong>
+                            <div class="row">
+                                <div class="col-md-6 mb-1">
+                                    <h3 class="m-0">Inicio: </h3>
+                                    <h5 class="card-subtitle m-0">
+                                        {{acti.horaInicial}}
+                                    </h5>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <h3 class="m-0">Final: </h3>
+                                    <h5 class="card-subtitle m-0">
+                                        {{acti.horaFinal}}
+                                    </h5>
+                                </div>
+                                <div class="row">
+                                    <p class="info col-md-6 m-0 bi bi-info-circle bi-2x" style="text-align: end; width: 45%; height: auto;"></p>
+                                </div>  
+                            </div>
+                            <div>
+                            <button (click)="agregar(acti.id)" class="btn btn-primary btn-sm" type="button" >agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dia mx-2">
+            <h1>Viernes</h1>
+            <div class="acti p-1" style="border-radius: 10px;">
+                <div *ngFor="let acti of actividades" class="acti2">
+                    <div *ngIf="acti.dia === 'Viernes'">
+                        <div class="card p-2 m-0">
+                            <h3 class="card-title m-0">{{ acti.titulo }}</h3>
+                            <hr class="m-1">
+                            <strong class="m-0" style="text-align: center;">Hora:</strong>
+                            <div class="row">
+                                <div class="col-md-6 mb-1">
+                                    <h3 class="m-0">Inicio: </h3>
+                                    <h5 class="card-subtitle m-0">
+                                        {{acti.horaInicial}}
+                                    </h5>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <h3 class="m-0">Final: </h3>
+                                    <h5 class="card-subtitle m-0">
+                                        {{acti.horaFinal}}
+                                    </h5>
+                                </div>
+                                <div class="row">
+                                    <p class="info col-md-6 m-0 bi bi-info-circle bi-2x" style="text-align: end; width: 45%; height: auto;"></p>
+                                </div>  
+                            </div>
+                            <div>
+                            <button (click)="agregar(acti.id)" class="btn btn-primary btn-sm" type="button" >agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
