@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Periodo } from 'src/app/modelo/Periodo';
 import { PeriodoService } from 'src/app/servicios/periodo.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-periodo',
@@ -14,8 +16,9 @@ export class PeriodoComponent implements OnInit {
   public periodo: Periodo[] = [];
   newPeriodo: Periodo = new Periodo(0, 0, false, '', new Date(), new Date()); // Cambiado a 0 para 'anio'
   loading: boolean = false;
+  loadingEsta: { [key: number]: boolean } = {};
  
-  constructor(private peri: PeriodoService) {}
+  constructor(private peri: PeriodoService, , private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.listarPeriodo();
@@ -33,12 +36,24 @@ export class PeriodoComponent implements OnInit {
       }
     );    
   }
+  
+//creaando del toast
+  mostrarMensaje(mensaje: string, tipo: 'success' | 'error') {
+    this.snackBar.open(mensaje, 'Cerrar', {
+      duration: 3000,
+      panelClass: tipo === 'success' ? 'snackbar-success' : 'snackbar-error',
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+    });
+  }
 
+  
   crearSemestre(): void {
     const yearPattern = /^\d{4}$/;
 
     if (!yearPattern.test(this.newPeriodo.anio.toString())) {
       this.errorMensaje = 'Por favor ingrese un año válido';
+      this.mostrarMensaje(this.errorMensaje, 'error');
       return;
     }
 
@@ -47,11 +62,13 @@ export class PeriodoComponent implements OnInit {
         !this.newPeriodo.fechaInicial ||
         !this.newPeriodo.fechaFinal) {
       this.errorMensaje = 'Por favor, complete todos los campos';
+      this.mostrarMensaje(this.errorMensaje, 'error');
       return;
     }
 
     if (new Date(this.newPeriodo.fechaFinal) < new Date(this.newPeriodo.fechaInicial)) {
       this.errorMensaje = 'La fecha final debe ser posterior a la fecha inicial.';
+      this.mostrarMensaje(this.errorMensaje, 'error');
       return;
     }
     
@@ -65,8 +82,7 @@ export class PeriodoComponent implements OnInit {
         this.listarPeriodo();
         this.newPeriodo = new Periodo(0, 0, false, '', new Date(), new Date()); // Cambiado a 0 para 'anio'
         this.goodMensaje = 'Semestre Creado';
-        this.goodMensaje = 'Semestre Creado';
-
+        this.mostrarMensaje(this.goodMensaje, 'success');
       setTimeout(() => { this.loading = false;}, 2000);
 
         // Establecer el nuevo periodo como activo
@@ -75,6 +91,7 @@ export class PeriodoComponent implements OnInit {
       (error) => {
         console.error('Error al crear el Periodo: ', error);
         this.errorMensaje = 'Ocurrió un error al crear el semestre. Inténtelo otra vez';
+        this.mostrarMensaje(this.errorMensaje, 'error');
         setTimeout(() => { this.loading = false; }, 2000);
       }
     );
@@ -82,6 +99,7 @@ export class PeriodoComponent implements OnInit {
   
   cambiarEstado(semestre: Periodo): void {
     const nuevoEstado = !semestre.actual;
+    this.loadingEsta[semestre.id] = true;
 
     if (nuevoEstado) {
       const semestreActivo = this.periodo.find(p => p.actual);
@@ -90,10 +108,13 @@ export class PeriodoComponent implements OnInit {
         this.peri.cambiarEstadoSemestre(semestreActivo.id, false).subscribe(
           (response) => {
             console.log('Estado del semestre desactivado:', response);
+            this.goodMensaje = 'Estado del semestre desactivado';
+            this.mostrarMensaje(this.goodMensaje, 'success');
           },
           (error) => {
             console.error('Error al desactivar el semestre:', error);
-            this.errorMensaje2 = 'Ocurrió un error al desactivar el semestre. Inténtelo otra vez';
+            this.errorMensaje = 'Ocurrió un error al desactivar el estado. Inténtelo otra vez';
+            this.mostrarMensaje(this.errorMensaje, 'error');
           }
         );
       }
@@ -104,10 +125,15 @@ export class PeriodoComponent implements OnInit {
         semestre.actual = nuevoEstado;
         console.log('Estado del semestre actualizado:', response);
         this.listarPeriodo();  // Asegúrate de que la lista se actualice
+        this.goodMensaje = 'Estado del semestre actualizado';
+        this.mostrarMensaje(this.goodMensaje, 'success');
+        setTimeout(() => { this.loadingEsta[semestre.id] = false; }, 2000);
       },
       (error) => {
         console.error('Error al cambiar el estado del semestre:', error);
-        this.errorMensaje2 = 'Ocurrió un error al cambiar el estado. Inténtelo otra vez';
+        this.errorMensaje = 'Ocurrió un error al cambiar el estado. Inténtelo otra vez';
+        this.mostrarMensaje(this.errorMensaje, 'error');
+        setTimeout(() => { this.loadingEsta[semestre.id] = false; }, 2000);
       }
     );
   }
