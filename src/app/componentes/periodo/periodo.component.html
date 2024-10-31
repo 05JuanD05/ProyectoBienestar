@@ -57,13 +57,19 @@
             class="btn btn-activar m-1"
             *ngIf="!p.actual"
             (click)="cambiarEstado(p)">
-            Activar
+            [disabled]="loadingEsta[p.id]">           
+            <span *ngIf="loadingEsta[p.id]" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            <span *ngIf="!loadingEsta[p.id]">Activar</span>
+            <span *ngIf="loadingEsta[p.id]">Activando...</span>
           </button>
           <button
             class="btn btn-desactivar m-1"
             *ngIf="p.actual"
             (click)="cambiarEstado(p)">
-            Desactivar
+            [disabled]="loadingEsta[p.id]"> 
+            <span *ngIf="loadingEsta[p.id]" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            <span *ngIf="!loadingEsta[p.id]">Desactivar</span>
+            <span *ngIf="loadingEsta[p.id]">Desactivando...</span>
           </button>
         </li>
       </ul>
