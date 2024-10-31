@@ -1,0 +1,31 @@
+.izquierda {
+    width: 70%;
+    height: 700px;
+    overflow-y: auto;
+}
+
+.derecha {
+    width: 30%;
+}
+
+.table {
+    width: 100%;
+}
+
+.text-overflow {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px;
+}
+
+.btnOp {
+    display: flex;
+    justify-content: center;
+    padding: 2px;
+}
+
+h1 {
+    text-align:center;
+    color:rgb(48, 48, 48);
+}

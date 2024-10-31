@@ -1,0 +1,29 @@
+<p>coordinador works!</p>
+<input type="text" [(ngModel)]="coordinador.nombre" placeholder="Nombre">
+<input type="text" [(ngModel)]="coordinador.apellido" placeholder="Apellido">
+<input type="text" [(ngModel)]="coordinador.identificacion" placeholder="Identificacion">
+<input type="text" [(ngModel)]="coordinador.email" placeholder="Email">
+<input type="text" [(ngModel)]="coordinador.telefono" placeholder="Telefono">
+<input type="text" [(ngModel)]="coordinador.login" placeholder="Login">
+<input type="text" [(ngModel)]="coordinador.password" placeholder="Password">
+<button (click)="crearCoordinador()">crear</button>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Correo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of usuarios">
+        <td>{{ usuario.id }}</td>
+        <td>{{ usuario.nombre }}</td>
+        <td>{{ usuario.apellido }}</td>
+        <td>{{ usuario.identificacion }}</td>
+        <td>{{ usuario.tipo }}</td>
+      </tr>
+    </tbody>
+  </table>
+

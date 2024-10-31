@@ -1,0 +1,268 @@
+/* Estilos para el navbar en la parte superior */
+nav {
+    background-color: #0074D9; 
+    overflow: hidden; 
+    text-align: center; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 0px; 
+}
+
+nav a {
+    display: inline-block; /* Hacer que los enlaces sean elementos en línea */
+    color: white; /* Color del texto */
+    text-decoration: none; /* Quitar la decoración de enlace (subrayado) */
+    padding: 14px 16px; /* Espaciado interior (arriba y abajo, izquierda y derecha) */
+    margin: 0 10px; /* Márgenes horizontales para separar los enlaces */
+    font-weight: bold; 
+    font-size: 16px; 
+    transition: background-color 0.3s; 
+}
+
+.nav-top {
+    background-color: #0074D9;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+nav a:hover {
+    background-color: #0056b3; 
+    color: white; 
+}
+
+.nav-right {
+    display: flex;
+    justify-content: flex-end; /* Alinea los elementos a la derecha */
+    align-items: center;
+}
+
+.nav-left {
+    flex: 1; /* Expande el espacio disponible en la parte izquierda */
+}
+.nav-left1 img {
+    margin-left: 0px;
+    position: relative;
+    width: 14rem;
+    height: 90px;
+    display: block;
+    padding: 10px;
+}
+
+/* Estilos para la imagen del usuario en el navbar */
+.user-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-avatar1 img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.user-avatar1 {
+    width: 155px;
+    height: 130px;
+    
+}
+
+.user-container {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    display: block
+}
+.sesion{
+    display: block; 
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 100px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    padding: 0px;
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+/* Estilos para el botón de cerrar sesión en el navbar */
+.cerrar-sesion {
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    padding: 0px;
+}
+
+/* Estilos para el menú de la izquierda */
+.menu {
+    width: 15%; /* Ancho del menú */
+    background-color: #333; /* Color de fondo del menú */
+    color: white; /* Color del texto del menú */
+    position: fixed; /* Para que el menú se mantenga fijo en la página */
+    top: 0px; /* Anclaje superior con espacio para el navbar */
+    bottom: 0; /* Anclaje inferior */
+    overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
+    z-index: 1; /* Establece un valor de z-index inferior para que esté detrás del navbar */
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu ul li {
+    padding: 10px;
+    
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+
+footer {
+    background-color: #156cc3;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin-bottom: 10px; /* Agrega espacio entre los botones */
+}
+
+a {
+    display: block; /* Hacer que los botones ocupen todo el ancho del contenedor */
+    text-decoration: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+a:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para el botón activo (por ejemplo, Opción 2) */
+li.active a {
+    background-color: #0056b3;
+}
+
+.actividad {
+    border-radius: 5px;
+    background-color: #d0e8ff; 
+    color: rgb(36, 36, 36); 
+    padding: 10px; 
+    width: auto; 
+    text-align: center; 
+    position: relative; 
+}
+
+.info-popup {
+    display: none; /* Oculta la ventana emergente inicialmente */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 200px; /* Ancho de la ventana emergente */
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.popup-content {
+    text-align: left;
+}
+
+/* Estilo para el botón de cerrar */
+#cerrarPopup {
+    background-color: #0074D9;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Cambia el color del botón al pasar el mouse sobre él */
+#cerrarPopup:hover {
+    background-color: #0056b3;
+}
+
+
+/*///////////////////////////////////////////////////////*/
+
+/* Estilos para la tabla */
+.contenedor-tabla {
+    display: flex; /* Utilizar flexbox */
+    margin-left: 250px; /* Ajustar el margen izquierdo para dar espacio al menú */
+    max-height: calc(100vh - 50px); /* Altura máxima para evitar que se extienda más allá del contenido visible */
+    overflow: auto; /* Agregar una barra de desplazamiento si es necesario */
+    z-index: 1; /* Asegurar que el contenedor esté detrás del navbar */
+    padding: 10px;
+}
+
+/* Ajusta otros estilos de la tabla aquí si es necesario */
+.cuadro {
+    width: 100%; /* Ancho de la tabla al 100% del contenedor */
+    border-collapse: collapse; /* Colapsar bordes de celda */
+    
+    
+}
+
+/* Estilos para las celdas de encabezado (th) */
+.cuadro th {
+    background-color: #0074D9; /* Color de fondo del encabezado */
+    color: white; /* Color del texto del encabezado */
+    font-weight: bold; /* Texto en negrita */
+    padding: 10px; /* Espaciado interior del encabezado */
+    text-align: center; 
+    position: relative;
+    width: auto;
+}
+
+.dia {
+    width: 200px;
+    text-align: center;
+}
+
+.acti {
+    background-color: #D6EAF8;
+    height: 500px;
+    position: relative;
+}
+
+.info {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+}
+

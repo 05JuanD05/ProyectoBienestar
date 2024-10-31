@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+    <nav class="nav-top">
+
+        <div class="nav-left">
+            <a [routerLink]="['/horario-cultural']">Horario Cultural</a>
+            <a [routerLink]="['/horario-deportivo']">Horario Deportivo</a>
+            <a (click)="_mostrarmostrarCronogramaActividadInstructor()" > Cronograma de Actividades</a>
+            <a (click)="_mostrarListarInscripcion()"> Agregar asistencia</a>
+        </div>
+        <div class="nav-right">
+            <div class="user-avatar" id="userAvatar">
+                {{usuario.nombre}} {{usuario.apellido}}
+            </div>
+            <a href="#" class="cerrar-sesion">Cerrar Sesión</a>
+        </div>
+    </nav>
+
+
+        
+            <table class="cuadro" id="tabla">
+                <tr>
+                    <th>Actividades</th>
+
+                </tr>
+                <tr>
+                    <div>
+                        <div class="me-auto mb-2 mb-lg-0">
+                            <app-cronograma-actividades-instructor *ngIf="mostrarCronogramaActividadInstructor">
+                            </app-cronograma-actividades-instructor>
+                            <app-lista-inscripcion *ngIf="mostrarListarInscripcion"></app-lista-inscripcion>
+
+                            
+                        </div>
+                    </div>
+
+                </tr>
+                
+        
+            </table>
+    
+  
+    <footer>
+        <p>Unicolombo</p>
+    </footer>
+
+</body>
+
+</html>

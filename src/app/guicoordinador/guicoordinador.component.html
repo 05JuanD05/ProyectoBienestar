@@ -1,0 +1,131 @@
+<div class="contcoordinador">
+
+    <div class="left d-flex flex-nowrap">
+        <div class="d-flex flex-column flex-shrink-1 p-3 text-bg-dark" style="width: 300px;">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <svg class="bi pe-none me-2" width="40" height="32">
+
+                </svg>
+                <span class="fs-4"><img src="./assets/images/Logo-Unicolombo.png" href="/" style="width: 100%;"></span>
+            </a>
+            <hr>
+
+            <div class="user-container">
+                <div class="user-avatar1" id="userAvatar1">
+                    <img src="./assets/usuariosImagenes/{{usuario.id}}.jpg" alt="Usuario">
+                </div>
+                <br>
+                <a class="d-flex flex-row justify-content-center alig-items-center">{{usuario.nombre}}
+                    {{usuario.apellido}} - {{ usuario.id }}</a>
+                <!--
+                <a href="#" class="sesion">Cerrar Sesión</a>
+                -->
+                <hr>
+            </div>
+
+            <ul class="nav nav-pills flex-column mb-auto mt-5">
+                <!--
+                <li class="nav-item">
+                    <a class="nav-link text-white">
+                        <svg class="bi bi-file-ruled" width="16" height="16">
+                            <use xlink:href="#table"></use>
+                        </svg>
+                        <button (click)="mostrarComponenteArea()" class="btn1 bi bi-file-ruled" style="text-align: start;" aria-current="page"> Gestor Areas </button>
+                    </a>                   
+                </li> -->
+                <li>
+                    <a class="nav-link text-white">
+                        <svg class="bi bi-file-ruled" width="16" height="16">
+                            <use xlink:href="#table"></use>
+                        </svg>
+                        <button (click)="mostrarComponenteDisciplina()" class="btn1 bi bi-file-ruled"
+                            style="text-align: start;" aria-current="page"> Gestor Disciplinas</button>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link text-white">
+                        <svg class="bi bi-file-ruled" width="16" height="16">
+                            <use xlink:href="#table"></use>
+                        </svg>
+                        <button (click)="mostrarComponenteInstructor()" class="btn1 bi bi-file-ruled"
+                            style="text-align: start;" aria-current="page"> Gestor Instructores</button>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link text-white">
+                        <svg class="bi bi-file-ruled" width="16" height="16">
+                            <use xlink:href="#table"></use>
+                        </svg>
+                        <button (click)="mostrarComponenteEscenario()" class="btn1 bi bi-file-ruled"
+                            style="text-align: start;" aria-current="page"> Gestor Escenarios</button>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link text-white">
+                        <svg class="bi bi-file-ruled" width="16" height="16">
+                            <use xlink:href="#table"></use>
+                        </svg>
+                        <button (click)="mostrarComponentePrograma()" class="btn1 bi bi-file-ruled"
+                            style="text-align: start;" aria-current="page"> Gestor Programas</button>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link text-white">
+                        <svg class="bi bi-file-ruled" width="16" height="16">
+                            <use xlink:href="#table"></use>
+                        </svg>
+                        <button (click)="mostrarComponenteTipoActividad()" class="btn1 bi bi-file-ruled"
+                            style="text-align: start;" aria-current="page"> Gestor Tipo Actividad</button>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link text-white">
+                        <svg class="bi bi-file-ruled" width="16" height="16">
+                            <use xlink:href="#table"></use>
+                        </svg>
+                        <button (click)="mostrarComponenteActividad()" class="btn1 bi bi-file-ruled"
+                            style="text-align: start;" aria-current="page"> Gestor Actividad</button>
+                    </a>
+                </li>
+            </ul>
+            <hr>
+            <div class="dropdown">
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="./assets/usuariosImagenes/{{usuario.id}}.jpg" alt="" width="32" height="32"
+                        class="rounded-circle me-2">
+                    <strong>{{usuario.nombre}}</strong>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow p-2">
+                    <li><a class="dropdown-item" href="#">Configuraciones</a></li>
+                    <li><a class="dropdown-item" href="#">Perfil</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="contenido">
+        <div class="container-fluid p-3 mb-1 border-bottom bg-primary" style="height: 60px;">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+                <!-- algo va aqui-->
+
+            </div>
+        </div>
+        <div>
+            <app-area *ngIf="mostrarParea"></app-area>
+            <app-escenario *ngIf="mostrarPescenario"></app-escenario>
+            <app-instructor *ngIf="mostrarPinstructor"></app-instructor>
+            <app-disciplina *ngIf="mostrarPdisciplina"></app-disciplina>
+            <app-programa *ngIf="mostrarPprograma"></app-programa>
+            <app-tipo-actividad *ngIf="mostrarPtipoActividad"></app-tipo-actividad>
+            <app-actividad *ngIf="mostrarPactividad"></app-actividad>
+        </div>
+
+    </div>
+
+</div>
