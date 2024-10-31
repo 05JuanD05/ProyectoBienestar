@@ -74,4 +74,17 @@ export class PInicioComponent implements OnInit {
   ngOnInit(): void {
   
   }
+  passwordFieldType: string = 'password';
+  passwordIcon: string = 'fas fa-eye';
+
+  togglePasswordVisibility() {
+    // Cambia el tipo de campo de 'password' a 'text' y viceversa
+    if (this.passwordFieldType === 'password') {
+      this.passwordFieldType = 'text';
+      this.passwordIcon = 'fas fa-eye-slash'; // Cambia el icono a un ojo tachado
+    } else {
+      this.passwordFieldType = 'password';
+      this.passwordIcon = 'fas fa-eye'; // Cambia el icono a un ojo abierto
+    }
+  }
 }

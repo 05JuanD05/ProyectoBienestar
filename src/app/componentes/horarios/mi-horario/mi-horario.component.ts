@@ -47,8 +47,11 @@ ngOnInit() {
       }
     );
   }
-
+   // Función para cambiar el estado a "En proceso de eliminación"
+   marcarEnProceso(id: number): void {
+    const actividad = this.actividades.find(acti => acti.id === id);
+    if (actividad) {
+      actividad.estado = 'En proceso de eliminación'; // Cambia el estado de la actividad
+    }
+  }
 }
-
-
-

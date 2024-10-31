@@ -1,17 +1,8 @@
-<!--
-    <div>{{actividad.horaInicial |date: 'HH:mm:ss' }} Hora Inicial</div>
-    <div>{{actividad.dia |date: 'HH:mm:ss' }} Hora Final</div>
-    <div>{{actividad.titulo}} Titulo</div>
-    <div>{{actividad.fechaInicioInscripcion| date: 'shortDate'}} Fecha Inicio de inscripcion</div>
-    <div>{{actividad.fechaFinalInscripcion| date: 'shortDate'}} Fecha final de inscripcion</div>
-    <div>Coliceo Norton Madrid</div>
-    <div>Deportiva</div>
--->
-
 <div class="cform card p-3 m-2" style="height: 700px; overflow-y: auto;">
     <h1 style="text-align:center;"> Actividad</h1>
     <div class="row gy-4 gy-xl-2 p-xl-2 cdar">
         <div class="col-12 col-md-6">
+            <!-- Instructores -->
             <h4 style="text-align:center;"> Instructores</h4>
             <div style="height: 300px; overflow-y: auto;">
                 <table class="table table-striped">
@@ -27,20 +18,21 @@
                     </thead>
                     <tbody *ngFor="let usuario of usuarios">
                         <tr *ngIf="usuario.tipo == 'Instructor'">
-                            <td scope="row"><img src="./assets/usuariosImagenes/{{usuario.id}}.jpg" width="80px"></td>
+                            <td scope="row"><img src="/assets/usuariosImagenes/1.jpg" width="80px"></td>
                             <td>{{ usuario.nombre }}</td>
                             <td>{{ usuario.apellido }}</td>
                             <td>{{ usuario.tipo }}</td>
                             <td>Disciplina</td>
                             <td>
-                                <button type="button" class="btn btn-primary m-1"
-                                    (click)="seleccionarInstructor(usuario)">Seleccionar</button>
+                                <button type="button" class="btn btn-primary m-1" (click)="seleccionarInstructor(usuario)">Seleccionar</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
+
+        <!--  -->
         <div class="col-12 col-md-6">
             <h4 style="text-align:center;"> Escenarios </h4>
             <div style="height: 300px; overflow-y: auto;">
@@ -89,80 +81,91 @@
                 </table>
             </div>
         </div>
+
+        <!-- Formulario -->
         <div class="col-12 col-md-6">
-            <h4 style="text-align:center;">Datos de Actividad </h4>
-            <div class="row gy-4 gy-xl-2 p-xl-2 cdar">
-                <div class="col-12 col-md-6">
-                    <a>Titulo:</a>
-                    <input type="text" [(ngModel)]="actividad.titulo" placeholder="Nombre" class="form-control me-2">
-                </div>
-                <div class="col-12 col-md-6">
-                    <a>Fecha Final de Inscripcion:</a>
-                    <input type="date" [(ngModel)]="actividad.fechaFinalInscripcion" class="form-control me-2">
-                </div>
-                <div class="col-12 col-md-6">
-                    <a>Hora de inicio:</a>
-                    <input type="time" [(ngModel)]="actividad.horaInicial" class="form-control me-2">
-                </div>
-                <div class="col-12 col-md-6">
-                    <a>Hora de finalizacion:</a>
-                    <input type="time" [(ngModel)]="actividad.horaFinal" class="form-control me-2">
-                </div>
-                <div class="col-12 col-md-6">
-                    <a>Dia de Actividad</a>
-                    <form action="#">
-                        <select [(ngModel)]="actividad.dia" name="dia" id="lang" style="width: 100%;"
-                            class="form-select form-select">
-                            <option value="" disabled selected hidden>Selecciona Dia</option>
-                            <option value="Lunes">Lunes</option>
-                            <option value="Martes">Martes</option>
-                            <option value="Miercoles">Miercoles</option>
-                            <option value="Jueves">Jueves</option>
-                            <option value="Viernes">Viernes</option>
-                        </select>
-                    </form>
-                </div>
-                <div class="col-12 col-md-6">
-                    <a>Estado</a>
-                    <form action="#">
-                        <select [(ngModel)]="actividad.estado" name="estados" id="lang" style="width: 100%;"
-                            class="form-select form-select">
-                            <option value="" disabled selected hidden>Selecciona estado</option>
-                            <option value="Activo">Activo</option>
-                            <option value="Inactivo">Inactivo</option>
-                        </select>
-                    </form>
-                </div>
-                <div class="col-12 col-md-6">
-                    <a>Escenario</a>
-                    <input type="text" value="{{escenario.nombre}}" disabled
-                        class="form-control me-2">
-                </div>
-                <div class="col-12 col-md-6">
-                    <a>Tipo de Actividad</a>
-                    <input type="text" value="{{tipo.titulo}}"  disabled
-                        class="form-control me-2">
-                </div>
-                <div class="col-12 col-md-6" >
-                    <a>Instructor</a>
-                    <input type="text" value="{{usuario.nombre}}" disabled
-                        class="form-control me-2">
-                </div>
-                <div class="col-12 col-md-6" hidden>
-                    <input type="text" value="{{usuario.id}}" disabled class="form-control me-2">
-                </div>
-                <div class="col-12 col-md-6">
-                    <br>
-                    <button class="btn btn-outline-primary m-1" (click)="crearActividad()">Crear Actividad</button>
+          <h4 style="text-align:center;">Datos de Actividad</h4>
+          <div class="row gy-2 p-2 cdar">
+              <div class="col-12 col-md-6">
+                  <label>Titulo:</label>
+                  <input type="text" [(ngModel)]="actividad.titulo" name="titulo" #titulo="ngModel" placeholder="Nombre" class="form-control form-control-sm me-2" required (input)="cambiarEstado('Activo')" (blur)="cambiarEstado('Inactivo')">
+              </div>
+              <div class="col-12 col-md-6">
+                  <label>Fecha Final de Inscripción:</label>
+                  <input type="date" [(ngModel)]="actividad.fechaFinalInscripcion" name="fechaFinalInscripcion" #fechaFinalInscripcion="ngModel" class="form-control form-control-sm me-2" required (input)="cambiarEstado('Activo')" (blur)="cambiarEstado('Inactivo')">
+              </div>
+              <div class="col-12 col-md-6">
+                  <label>Hora de inicio:</label>
+                  <input type="time" [(ngModel)]="actividad.horaInicial" name="horaInicial" #horaInicial="ngModel" class="form-control form-control-sm me-2" required (input)="cambiarEstado('Activo')" (blur)="cambiarEstado('Inactivo')">
+              </div>
+              <div class="col-12 col-md-6">
+                  <label>Hora de finalización:</label>
+                  <input type="time" [(ngModel)]="actividad.horaFinal" name="horaFinal" #horaFinal="ngModel" class="form-control form-control-sm me-2" required>
+              </div>
+              <div class="col-12 col-md-6">
+                  <label>Día de Actividad:</label>
+                  <select [(ngModel)]="actividad.dia" name="dia" id="lang"
+                          #dia="ngModel" required class="form-select form-select-sm">
+                      <option value="" disabled selected hidden>Selecciona Día</option>
+                      <option value="Lunes">Lunes</option>
+                      <option value="Martes">Martes</option>
+                      <option value="Miercoles">Miercoles</option>
+                      <option value="Jueves">Jueves</option>
+                      <option value="Viernes">Viernes</option>
+                  </select>
+
+              </div>
+              <div class="col-12 col-md-6">
+                <label>Estado:</label>
+                <div class="form-control form-control-sm">
+                    {{ actividad.estado }}
                 </div>
             </div>
+            
+              <div class="col-12 col-md-6">
+                  <label>Escenario:</label>
+                  <input type="text" value="{{escenario.nombre}}" disabled class="form-control form-control-sm me-2">
+              </div>
+              <div class="col-12 col-md-6">
+                  <label>Tipo de Actividad:</label>
+                  <input type="text" value="{{tipo.titulo}}" disabled class="form-control form-control-sm me-2">
+              </div>
+              <div class="col-12 col-md-6">
+                  <label>Instructor:</label>
+                  <input type="text" value="{{usuario.nombre}}" disabled class="form-control form-control-sm me-2">
+              </div>
+              <div class="col-12 col-md-6" hidden>
+                  <input type="text" value="{{usuario.id}}" disabled class="form-control form-control-sm me-2">
+              </div>
+              <div *ngIf="mensajeError" class="alert alert-danger">
+                {{ mensajeError }}
+            </div>
+              <div class="col-12 col-md-6">
+                  <br>
+                  <button class="btn btn-outline-primary m-1" (click)="crearActividad()">Crear Actividad</button>
+              </div>
+
+          </div>
         </div>
+
+        <!-- Semestre  -->
+        <div class="col-12 col-md-6">
+            <h4 style="text-align:center;"> Semestre </h4>
+            <div class="col-12 col-md-6">
+                <label>Periodo:</label>
+                <input type="text" [value]="semes?.denominacion" disabled class="form-control form-control-sm me-2">
+                <br>
+                <label>Año:</label>
+                <br>
+                <input type="text" [value]="semes?.anio" disabled class="form-control form-control-sm me-2">
+            </div>
+        </div>
+
         <!-- Horario de Activides -->
-        <hr>
+        <hr class="enter">
         <div>
             <h1 style="text-align:center;"> Horario </h1>
             <div class="contenedor">
-
                 <div class="tabla mb-lg-0 container-fluid d-flex justify-content-md-center" style="width: 100%;">
                     <div class="dia mx-2">
                         <h1>Lunes</h1>

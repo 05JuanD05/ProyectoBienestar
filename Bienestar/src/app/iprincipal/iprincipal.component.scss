@@ -1,0 +1,21 @@
+.contprin {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-auto-columns: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    align-content: center;
+    grid-template-areas:
+      "ciprin ciprin cop1"
+      "ciprin ciprin clog"
+      "ciprin ciprin cop2";
+  }
+  
+  .clog { grid-area: clog; }
+  
+  .ciprin { grid-area: ciprin; }
+  
+  .cop1 { grid-area: cop1; }
+  
+  .cop2 { grid-area: cop2; }
+  

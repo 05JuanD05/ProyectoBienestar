@@ -1,10 +1,3 @@
-import { Coordinador } from "./Coordinador";
-import { Disciplina } from "./Disciplina";
-import { Escenario } from "./Escenario";
-import { Instructor } from "./Instructor";
-import { Periodo } from "./Periodo";
-import { TipoActividad } from "./TipoActividad";
-
 export class Actividad {
     id: number = 0;
     titulo: String = "";

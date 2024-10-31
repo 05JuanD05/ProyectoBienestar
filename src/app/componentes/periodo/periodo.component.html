@@ -1,1 +1,72 @@
-<p>periodo works!</p>
+<div class="cform card p-4 m-2" style="height: auto; max-height: 700px; overflow-y: auto;">
+  <h4 class="text-center mb-4">Semestre</h4>
+  <div class="row gy-4 p-2">
+      <div class="col-12 col-md-6">
+          <label>Año</label>
+          <input type="text" [(ngModel)]="newPeriodo.anio" name="anio" #anio="ngModel" class="form-control form-control-lg mb-2" required  placeholder="Ej: 2024" maxlength="4">
+      </div>
+
+      <div class="col-12 col-md-6">
+          <label>Denominación</label>
+          <select [(ngModel)]="newPeriodo.denominacion" name="denominacion" #denominacion="ngModel" required class="form-select form-select-lg mb-2">
+              <option value="" disabled selected hidden>Seleccione la denominación</option>
+              <option value="I">Semestre - I</option>
+              <option value="II">Semestre - II</option>
+          </select>
+      </div>
+
+      <div class="col-12 col-md-6">
+          <label>Fecha Inicial del Semestre:</label>
+          <input type="date" [(ngModel)]="newPeriodo.fechaInicial" name="fechaInicial" #fechaInicial="ngModel" class="form-control form-control-lg mb-2" required>
+      </div>
+
+      <div class="col-12 col-md-6">
+          <label>Fecha Final del Semestre:</label>
+          <input type="date" [(ngModel)]="newPeriodo.fechaFinal" name="fechaFinal" #fechaFinal="ngModel" class="form-control form-control-lg mb-2" required>
+      </div>
+
+      <div *ngIf="errorMensaje" class="alert alert-danger">
+        {{ errorMensaje }}
+      </div>
+      
+      <div *ngIf="goodMensaje" class="alert alert-success">
+        {{ goodMensaje }}
+      </div>
+
+      <div class="col-12">
+        <button class="btn btn-primary btn-lg m-1" (click)="crearSemestre()" [disabled]="loading">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            <span *ngIf="!loading">Crear Periodo</span>
+            <span *ngIf="loading">Creando...</span>
+        </button>
+    </div>
+  </div>
+</div>
+
+<div class="cform card p-4 m-2" style="height: auto; max-height: 700px; overflow-y: auto;">
+  <h4 class="text-center mb-4">Cambio de Semestre</h4>
+  <div class="row gy-4 p-2">
+
+    <div class="col-12">
+      <h5>Semestres Disponibles:</h5>
+      <ul class="list-unstyled">
+        <li *ngFor="let p of periodo" [class.font-weight-bold]="p.actual">
+          {{ p.anio }} - Semestre {{ p.denominacion }}
+          <span *ngIf="p.actual">(Actual)</span>
+          <button
+            class="btn btn-activar m-1"
+            *ngIf="!p.actual"
+            (click)="cambiarEstado(p)">
+            Activar
+          </button>
+          <button
+            class="btn btn-desactivar m-1"
+            *ngIf="p.actual"
+            (click)="cambiarEstado(p)">
+            Desactivar
+          </button>
+        </li>
+      </ul>
+    </div>
+</div>
+

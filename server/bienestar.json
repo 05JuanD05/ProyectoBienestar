@@ -413,12 +413,52 @@
   ],
   "periodo": [
     {
+      "id": "0",
+      "anio": "2024",
+      "actual": false,
+      "denominacion": "I",
+      "fechaInicial": "2024-02-01",
+      "fechaFinal": "2024-07-02"
+    },
+    {
       "id": "1",
+      "anio": "2024",
       "actual": true,
-      "anio": 2023,
       "denominacion": "II",
-      "fechaFinal": "08/01/2023",
-      "fechaInicial": "11/30/2023"
+      "fechaInicial": "2024-08-02",
+      "fechaFinal": "2024-10-03"
+    },
+    {
+      "id": 0,
+      "anio": "2024",
+      "actual": false,
+      "denominacion": "I",
+      "fechaInicial": "2024-10-25",
+      "fechaFinal": "2024-11-01"
+    },
+    {
+      "id": 0,
+      "anio": "2023",
+      "actual": false,
+      "denominacion": "II",
+      "fechaInicial": "2024-10-25",
+      "fechaFinal": "2024-10-25"
+    },
+    {
+      "id": 0,
+      "anio": "2023",
+      "actual": false,
+      "denominacion": "II",
+      "fechaInicial": "2024-10-17",
+      "fechaFinal": "2024-10-25"
+    },
+    {
+      "id": 0,
+      "anio": "2003",
+      "actual": false,
+      "denominacion": "II",
+      "fechaInicial": "2024-10-24",
+      "fechaFinal": "2024-11-01"
     }
   ],
   "programa": [
@@ -595,7 +635,7 @@
       "estado": "Activo"
     },
     {
-      "id": 11,
+      "id": "11",
       "nombre": "everest",
       "apellido": "everest",
       "identificacion": "10233",

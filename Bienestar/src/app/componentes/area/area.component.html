@@ -1,0 +1,29 @@
+<span class="tex">
+    <h2>Gestion de Areas</h2>
+</span><br>
+<div class="contarea">
+    <div class="cln">Nombre</div>
+    <div class="cn"><input type="text" [(ngModel)]="area.nombre" placeholder="Nombre"></div>
+    <div class="cbt"><button (click)="crearArea()">+</button></div>
+    <div class="clisa">
+        <ul>
+            <div class="row">
+                <div class="col-md-4" *ngFor="let a of areas">
+                    <div class="card">
+                        <div class="card-body" >
+                            <h5 class="card-title">{{ a.id}} </h5>
+                            <p class="card-text">{{ a.nombre }}</p>
+                            
+                            <button class="btn btn-primary" (click)="consultarArea(a.id)"><i class="bi bi-search">Consultar</i></button>
+                            <button class="btn btn-danger" (click)="eliminarArea(a.id)">-</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+
+
+        </ul>
+    </div>
+</div>
