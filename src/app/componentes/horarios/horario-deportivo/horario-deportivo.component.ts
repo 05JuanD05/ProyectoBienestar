@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Actividad } from 'src/app/modelo/Actividad';
 import { ActividadService } from 'src/app/servicios/actividad.service';
 import { Inscripcion } from 'src/app/modelo/Inscripcion';
@@ -13,19 +13,18 @@ import { SessionService } from 'src/app/servicios/session.service';
 export class HorarioDeportivoComponent {
 
   public actividades: Actividad[] = this.acti.actividades;
-  public insc: Inscripcion | undefined;
+  public insc:Inscripcion | undefined;
   public a: Actividad | undefined;
   public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "");
+  
 
-  constructor(
-    private acti: ActividadService,
-    private inscripcion: InscripcionService,
-    private sesSer: SessionService
-  ) { }
+  constructor(private acti: ActividadService,private inscripcion: InscripcionService,private sesSer: SessionService) {
+    
+  }
 
   ngOnInit() {
     this.listarActividades();
-    this.usuario = this.sesSer.getUser();
+    this.usuario=this.sesSer.getUser();
   }
 
   listarActividades() {

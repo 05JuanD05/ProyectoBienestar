@@ -1,41 +1,47 @@
-<p>lista-inscripcion works!</p>
-
 <div class="Container-fluid" id="main-content">
     <div class="container">
         <div class="row" style="overflow-y: auto;">
             <div class="izquierda col-2">
                 <h1>Asistencia</h1>
+                <button [routerLink]="['/guiInstructor']"class="btn btn-primary btn-sm" type="button" >cronograma</button>
                 <div class="cartas">
                     <div class="cards">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col" class="text-center">Codigo</th>
+                                    <th scope="col" class="text-center">Código</th>
                                     <th scope="col" class="text-center">Nombre</th>
-                                    <th scope="col" class="text-center">vinculacion</th>
-                                    <th scope="co" class="text-center">fecha de la inscripcion</th>
-                                    <th scope="co" class="text-center">ID actividad_id</th>
-                                    <th scope="co" class="text-center">Opciones</th>
+                                    <th scope="col" class="text-center">Vinculación</th>
+                                    <th scope="col" class="text-center">Fecha</th>
+                                    <th scope="col" class="text-center">Actividad</th>
+                                    <th scope="col" class="text-center">Asistencia</th>
+                                    <th scope="col" class="text-center">Opciones</th>
                                 </tr>
                             </thead>
                             <tbody *ngFor="let insc of incripcionesActividad">
-                                <tr style="width: 100%;">
-                                    <th scope="row" class="text-center text-overflow">{{insc.id}}</th>
-                                    <td class="text-center text-overflow">{{insc.usuario}}</td>
-                                    <td class="text-center text-overflow" style="width: 200px;">{{insc.tipoVinculacion}}</td>
-                                    <td class="text-center text-overflow" style="width: 200px;">{{insc.fechaInscripcion}}</td>
-                                    <td class="text-center text-overflow" style="width: 200px;">{{insc.actividad_id }}</td>
+                                <tr>
+                                    <th scope="row" class="text-center text-overflow">{{ insc.id }}</th>
+                                    <td class="text-center text-overflow">{{ insc.usuario }}</td>
+                                    <td class="text-center text-overflow">{{ insc.tipoVinculacion }}</td>
+                                    <td class="text-center text-overflow">{{ insc.fechaInscripcion }}</td>
+                                    <td class="text-center text-overflow">{{ insc.actividad_id }}</td>
+                                    <!-- Checkbox para cada usuario -->
+                                    <td class="text-center">
+                                        <input type="checkbox" (change)="onCheckboxChange($event, insc.id)" />
+                                    </td>
                                     <td class="btnOp">
                                         <button type="button" (click)="agregarAsistencia(insc.id)" 
-                                            id="estado"
                                             class="bi bi-check btn btn-primary m-1"></button>
-                                        <button type="button"
-                                            (click)=" eliminarEscenario(insc.id)"
-                                            class="bi bi-trash btn btn-danger m-1">
-                                        </button>
+                                        <button type="button" (click)="eliminarEscenario(insc.id)" 
+                                            class="bi bi-trash btn btn-danger m-1"></button>
                                     </td>
                                 </tr>
+                            </tbody>
                         </table>
+                        
+                        <!-- Boton para guardar la asistencia -->
+                        <button type="button" class="btn btn-success mt-3" (click)="guardarAsistencia()">Guardar Asistencia</button>
+                        
                     </div>
                 </div>
             </div>
