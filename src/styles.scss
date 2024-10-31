@@ -1,4 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */@import '~bootstrap/dist/css/bootstrap.min.css';
 @import '~bootstrap/dist/css/bootstrap.min.css';
-@import '~font-awesome/css/font-awesome.min.css'
+@import '~font-awesome/css/font-awesome.min.css';
 
+
+html, body { height: 100%; };
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.snackbar-success {
+    background-color: #4caf50; /* Verde para éxito */
+    color: #ffffff;
+  }
+  
+  .snackbar-error {
+    background-color: #f44336; /* Rojo para error */
+    color: #ffffff;
+  }
