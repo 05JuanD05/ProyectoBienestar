@@ -34,7 +34,9 @@ import { GUIInstructorComponent } from './guiinstructor/guiinstructor.component'
 import { IPrincipalComponent } from './iprincipal/iprincipal.component';
 import { PInicioComponent } from './pinicio/pinicio.component';
 import { InformadorComponent } from './utilidades/informador/informador.component';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DesvinculacionComponent } from './desvinculacion/desvinculacion.component';
+import { GestionJobsComponent } from './gestion-jobs/gestion-jobs.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 
 @NgModule({
@@ -65,7 +67,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     HorarioIDeportivoComponent,
     MiHorarioComponent,
     ListaInscripcionComponent,
-    CronogramaActividadesInstructorComponent
+    CronogramaActividadesInstructorComponent,
+    DesvinculacionComponent,
+    GestionJobsComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +80,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     BrowserAnimationsModule,
     MatDialogModule,
     MatSnackBarModule
-    
   ],
   providers: [DisciplinaComponent,InformadorComponent],
   bootstrap: [AppComponent]

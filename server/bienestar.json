@@ -101,6 +101,23 @@
       "periodo_id": 0,
       "coordinador_id": 0,
       "instructor_id": "1"
+    },
+    {
+      "id": "0",
+      "titulo": " Ajedrez",
+      "dia": "Lunes",
+      "estado": "Activo",
+      "horaInicial": "16:48",
+      "horaFinal": "18:48",
+      "fechaCreacion": "2024-10-28T20:47:56.507Z",
+      "fechaPublicacion": "2024-10-28T20:47:56.507Z",
+      "fechaInicioInscripcion": "2024-10-28T20:47:56.507Z",
+      "fechaFinalInscripcion": "2025-02-02",
+      "escenario_id": "3",
+      "tipoActividad_id": "1",
+      "periodo_id": 0,
+      "coordinador_id": 0,
+      "instructor_id": "8"
     }
   ],
   "area": [
@@ -129,13 +146,13 @@
       "inscripcion_id": 1
     },
     {
-      "id": 3,
+      "id": "3",
       "asistio": true,
       "fecha": "2024-05-22T17:46:24.533Z",
       "inscripcion_id": "10"
     },
     {
-      "id": 1,
+      "id": "1",
       "asistio": true,
       "fecha": "2024-05-22T18:24:06.569Z",
       "inscripcion_id": "9"
@@ -251,6 +268,34 @@
       "fechaInscripcion": "2024-04-10T9:33:34.828Z",
       "usuario": "6",
       "actividad_id": "4"
+    },
+    {
+      "id": "1",
+      "tipoVinculacion": "Estudiante",
+      "fechaInscripcion": "2024-10-10T18:41:25.988Z",
+      "usuario": "3",
+      "actividad_id": "2"
+    },
+    {
+      "id": "1",
+      "tipoVinculacion": "Estudiante",
+      "fechaInscripcion": "2024-10-16T20:20:24.884Z",
+      "usuario": "3",
+      "actividad_id": "100"
+    },
+    {
+      "id": "0",
+      "tipoVinculacion": "Estudiante",
+      "fechaInscripcion": "2024-10-31T20:34:30.401Z",
+      "usuario": "3",
+      "actividad_id": "4"
+    },
+    {
+      "id": "0",
+      "tipoVinculacion": "Estudiante",
+      "fechaInscripcion": "2024-10-31T20:34:52.955Z",
+      "usuario": "3",
+      "actividad_id": "5"
     }
   ],
   "instructor": [
@@ -391,7 +436,7 @@
       "id": "9"
     },
     {
-      "id": 11,
+      "id": "11",
       "especialidad": "erered",
       "disciplina": {
         "id": "2",
@@ -401,8 +446,28 @@
       }
     },
     {
-      "id": 11,
+      "id": "11",
       "especialidad": "",
+      "disciplina": {
+        "id": "2",
+        "nombre": "Ajedrez",
+        "descripcion": "Ajedrez",
+        "estado": "Activo"
+      }
+    },
+    {
+      "id": 12,
+      "especialidad": "Domador de Caballos",
+      "disciplina": {
+        "id": "1",
+        "descripcion": "Futbol Sala",
+        "estado": "Activo",
+        "nombre": "Futbol Sala"
+      }
+    },
+    {
+      "id": 13,
+      "especialidad": "je",
       "disciplina": {
         "id": "2",
         "nombre": "Ajedrez",
@@ -429,7 +494,7 @@
       "fechaFinal": "2024-10-03"
     },
     {
-      "id": 0,
+      "id": "0",
       "anio": "2024",
       "actual": false,
       "denominacion": "I",
@@ -437,7 +502,7 @@
       "fechaFinal": "2024-11-01"
     },
     {
-      "id": 0,
+      "id": "0",
       "anio": "2023",
       "actual": false,
       "denominacion": "II",
@@ -445,7 +510,7 @@
       "fechaFinal": "2024-10-25"
     },
     {
-      "id": 0,
+      "id": "0",
       "anio": "2023",
       "actual": false,
       "denominacion": "II",
@@ -453,7 +518,7 @@
       "fechaFinal": "2024-10-25"
     },
     {
-      "id": 0,
+      "id": "0",
       "anio": "2003",
       "actual": false,
       "denominacion": "II",
@@ -623,26 +688,26 @@
       "estado": "Activo"
     },
     {
-      "id": 11,
-      "nombre": "everest",
-      "apellido": "everest",
-      "identificacion": "10233",
-      "email": "pop@gmail.com",
-      "telefono": "4333",
-      "login": "qwer",
-      "password": "1234",
+      "id": 12,
+      "nombre": "Jhonny",
+      "apellido": "Joestar",
+      "identificacion": "1043643404",
+      "email": "jojo@gmail.com",
+      "telefono": "3114013998",
+      "login": "jhonny",
+      "password": "jhonny",
       "tipo": "Instructor",
       "estado": "Activo"
     },
     {
-      "id": "11",
-      "nombre": "everest",
-      "apellido": "everest",
-      "identificacion": "10233",
-      "email": "pop@gmail.com",
-      "telefono": "4333",
-      "login": "qwer",
-      "password": "1234",
+      "id": 13,
+      "nombre": "hola",
+      "apellido": "hola",
+      "identificacion": "12",
+      "email": "hola@gmail.com",
+      "telefono": "23",
+      "login": "hola",
+      "password": "hola",
       "tipo": "Instructor",
       "estado": "Activo"
     }

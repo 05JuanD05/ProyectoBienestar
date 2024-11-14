@@ -42,4 +42,13 @@ export class InstructorService {
     return this.http.get<any[]>(this.apiUrlUsuario);
   }
 
+  actualizarUsuario(usuario: Usuario): Observable<Usuario> {
+    const url = `${this.apiUrlInstructor}/${usuario.id}`;
+    return this.http.put<Usuario>(url, usuario);
+  }
+
+  actualizarInstructor(instructor: Instructor): Observable<Instructor> {
+    const url = `${this.apiUrlInstructor}/${instructor.id}`;
+    return this.http.put<Instructor>(url, instructor);
+  }
 }

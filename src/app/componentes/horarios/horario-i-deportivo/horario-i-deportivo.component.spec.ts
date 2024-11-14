@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { HorarioIDeportivoComponent } from './horario-i-deportivo.component';
 
 describe('HorarioIDeportivoComponent', () => {
@@ -11,6 +10,17 @@ describe('HorarioIDeportivoComponent', () => {
       declarations: [HorarioIDeportivoComponent]
     });
     fixture = TestBed.createComponent(HorarioIDeportivoComponent);
+
+  describe('HorarioDeportivoComponent', () => {
+    let component: HorarioIDeportivoComponent;
+    let fixture: ComponentFixture<HorarioIDeportivoComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [HorarioIDeportivoComponent]
+    });
+    fixture = TestBed.createComponent(HorarioIDeportivoComponent);
+
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -18,4 +28,10 @@ describe('HorarioIDeportivoComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});
+
+  })
+
+}
+)
+}
+)

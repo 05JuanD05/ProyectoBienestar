@@ -18,7 +18,7 @@ export class PeriodoComponent implements OnInit {
   loading: boolean = false;
   loadingEsta: { [key: number]: boolean } = {};
  
-  constructor(private peri: PeriodoService, , private snackBar: MatSnackBar) {}
+  constructor(private peri: PeriodoService, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.listarPeriodo();

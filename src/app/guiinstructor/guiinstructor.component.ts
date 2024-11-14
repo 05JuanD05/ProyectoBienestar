@@ -4,8 +4,6 @@ import { Usuario } from '../modelo/Usuario';
 import { SessionService } from '../servicios/session.service';
 import { Actividad } from '../modelo/Actividad';
 import { ActividadService } from '../servicios/actividad.service';
-import { PeriodoEstadoService } from '../servicios/periodo-estado.service'; // Importar el servicio
-import { Periodo } from '../modelo/Periodo'; // Importar el modelo de Periodo
 
 @Component({
   selector: 'app-guiinstructor',

@@ -10,6 +10,10 @@ import { SessionService } from '../servicios/session.service';
 })
 
 export class GUICoordinadorComponent implements OnInit {
+mostrarSolicitudesDesvinculacion: any;
+mostrarComponenteDesvincular() {
+throw new Error('Method not implemented.');
+}
   mostrarParea: boolean = false;
   mostrarPinstructor: boolean = false;
   mostrarPescenario: boolean = false;
