@@ -36,6 +36,7 @@ import { PInicioComponent } from './pinicio/pinicio.component';
 import { InformadorComponent } from './utilidades/informador/informador.component';
 import { DesvinculacionComponent } from './desvinculacion/desvinculacion.component';
 import { GestionJobsComponent } from './gestion-jobs/gestion-jobs.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 
 @NgModule({
@@ -77,8 +78,8 @@ import { GestionJobsComponent } from './gestion-jobs/gestion-jobs.component';
     FileSaverModule,
     HttpClientModule,ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    MatDialogModule
-    
+    MatDialogModule,
+    MatSnackBarModule
   ],
   providers: [DisciplinaComponent,InformadorComponent],
   bootstrap: [AppComponent]

@@ -2,12 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Disciplina } from 'src/app/modelo/Disciplina';
 import { Instructor } from 'src/app/modelo/Instructor';
 import { Usuario } from 'src/app/modelo/Usuario';
-import { DisciplinaComponent } from '../disciplina/disciplina.component';
 import { InstructorService } from 'src/app/servicios/instructor.service';
 import { InformadorComponent } from 'src/app/utilidades/informador/informador.component';
 import { DisciplinaService } from 'src/app/servicios/disciplina.service';
-import { response } from 'express';
-import { SessionService } from 'src/app/servicios/session.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-instructor',
@@ -23,9 +21,7 @@ export class InstructorComponent implements OnInit {
   public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "");
 
 
-  constructor(private discser:DisciplinaService, private instser: InstructorService, private infcom: InformadorComponent, private sesSer: SessionService) {
-
-  }
+  constructor(private discser:DisciplinaService, private instser: InstructorService, private infcom: InformadorComponent, private readonly snackBar: MatSnackBar) {}
 
   ngOnInit() {
     this.listarDisciplinas();
@@ -42,16 +38,7 @@ export class InstructorComponent implements OnInit {
     );    
   }
 
-  eliminarInstructor(id: number) {
-    this.instser.eliminarUsuario(id).subscribe(
-      (response) => {
-        console.log('El instructor se elimino', response);
-        this.listarUsuarios();
-        this.usuario = new Usuario(0, "", "", "", "", "", "", "", "", "");
-      }
-    )
-  }
-
+  
   listarUsuarios() {
     this.instser.obtenerUsuarios().subscribe(
       (data) => {
@@ -82,24 +69,78 @@ export class InstructorComponent implements OnInit {
         this.instser.createUsuario(this.usuario).subscribe(
           (resp) => {
             console.log('Usuario Agregado', resp);
+            this.snackBar.open('Instructor agregado exitosamente!!', 'Cerrar', { duration: 3000});
+          },
+          (error) => {
+            console.log('El usuario no se pudo registrar', error);
+            this.snackBar.open('Error al agregar al Instructor.', 'Cerrar', { duration: 3000});
           }
         );
         this.instser.createInstructor(this.instructor).subscribe(
           (response) => {
             console.log('Instructor agregado:', response);
-            //this.listarUsuarios();
             this.instructor = new Instructor("", new Disciplina(0, "", "", ""), 0);
+            this.snackBar.open('Instructor agregado.', 'Cerrar', { duration: 3000});
+            this.listarUsuarios();
           });
-          this.listarUsuarios();
       } else {
+        this.snackBar.open('Debe completar todos los campos porfavor.', 'Cerrar', { duration: 3000});
         console.log("Debe digitar todos los datos");
       }
     } else {
+      this.snackBar.open('Debe agregar una disciplina.', 'Cerrar', { duration: 3000});
       console.log("Debe agregar la disciplina");
-      this.infcom.mostrarError("Debe agregar la disciplina");
     }
-
   }
 
+  editarInstructor(instructor: Instructor) {
+    this.usuario.id = instructor.id;
+    this.usuario.tipo = "Instructor";
+    this.usuario.estado = instructor.especialidad;
+  }
 
+  guardarCambios() {
+    if (this.usuario.validar() && this.instructor.validar()) {
+      this.instser.actualizarUsuario(this.usuario).subscribe(
+        (resp) => {
+          console.log('Instructor actualizado', resp);
+          this.snackBar.open('Instructor actualizado correctamente!', 'Cerrar', { duration: 3000});
+        },
+        (error) => {
+          console.log('Error al actualizar el Instructor', error);
+          this.snackBar.open('Error al actualizar correctamente!', 'Cerrar', { duration: 3000});
+        }
+      );
+
+      this.instser.actualizarInstructor(this.instructor).subscribe(
+      (response) => {
+        console.log('Instructor actualizado:', response);
+        this.snackBar.open('Instructor actualizado correctamente!', 'Cerrar', { duration: 3000 });
+        this.listarInstructores();  // Actualiza la lista después de editar
+      },
+      (error) => {
+        console.log('Error al actualizar instructor', error);
+        this.snackBar.open('Error al actualizar el instructor.', 'Cerrar', { duration: 3000 });
+      }
+    );
+  } else {
+    console.log("Debe digitar todos los datos");
+    this.snackBar.open('Debe completar todos los datos.', 'Cerrar', { duration: 3000 });
+  }
+}
+  
+  eliminarInstructor(id: number) {
+    this.instser.eliminarUsuario(id).subscribe(
+      (response) => {
+        console.log('El instructor se elimino', response);
+        this.listarUsuarios();
+        this.snackBar.open('Instructor eliminado correctamente!!.', 'Cerrar', { duration: 3000});
+        this.usuario = new Usuario(0, "", "", "", "", "", "", "", "", "");
+      },
+      (error) => {
+        console.log('Error al eliminar al Instructor', error);
+        this.snackBar.open('Error al eliminar al Instructor.', 'Cerrar', { duration: 3000});
+      }
+    )
+  }
 }

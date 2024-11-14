@@ -284,14 +284,14 @@
       "actividad_id": "100"
     },
     {
-      "id": 0,
+      "id": "0",
       "tipoVinculacion": "Estudiante",
       "fechaInscripcion": "2024-10-31T20:34:30.401Z",
       "usuario": "3",
       "actividad_id": "4"
     },
     {
-      "id": 0,
+      "id": "0",
       "tipoVinculacion": "Estudiante",
       "fechaInscripcion": "2024-10-31T20:34:52.955Z",
       "usuario": "3",
@@ -454,6 +454,26 @@
         "descripcion": "Ajedrez",
         "estado": "Activo"
       }
+    },
+    {
+      "id": 12,
+      "especialidad": "Domador de Caballos",
+      "disciplina": {
+        "id": "1",
+        "descripcion": "Futbol Sala",
+        "estado": "Activo",
+        "nombre": "Futbol Sala"
+      }
+    },
+    {
+      "id": 13,
+      "especialidad": "je",
+      "disciplina": {
+        "id": "2",
+        "nombre": "Ajedrez",
+        "descripcion": "Ajedrez",
+        "estado": "Activo"
+      }
     }
   ],
   "periodo": [
@@ -474,7 +494,7 @@
       "fechaFinal": "2024-10-03"
     },
     {
-      "id": 0,
+      "id": "0",
       "anio": "2024",
       "actual": false,
       "denominacion": "I",
@@ -482,7 +502,7 @@
       "fechaFinal": "2024-11-01"
     },
     {
-      "id": 0,
+      "id": "0",
       "anio": "2023",
       "actual": false,
       "denominacion": "II",
@@ -490,7 +510,7 @@
       "fechaFinal": "2024-10-25"
     },
     {
-      "id": 0,
+      "id": "0",
       "anio": "2023",
       "actual": false,
       "denominacion": "II",
@@ -498,7 +518,7 @@
       "fechaFinal": "2024-10-25"
     },
     {
-      "id": 0,
+      "id": "0",
       "anio": "2003",
       "actual": false,
       "denominacion": "II",
@@ -668,26 +688,26 @@
       "estado": "Activo"
     },
     {
-      "id": "11",
-      "nombre": "everest",
-      "apellido": "everest",
-      "identificacion": "10233",
-      "email": "pop@gmail.com",
-      "telefono": "4333",
-      "login": "qwer",
-      "password": "1234",
+      "id": 12,
+      "nombre": "Jhonny",
+      "apellido": "Joestar",
+      "identificacion": "1043643404",
+      "email": "jojo@gmail.com",
+      "telefono": "3114013998",
+      "login": "jhonny",
+      "password": "jhonny",
       "tipo": "Instructor",
       "estado": "Activo"
     },
     {
-      "id": "11",
-      "nombre": "everest",
-      "apellido": "everest",
-      "identificacion": "10233",
-      "email": "pop@gmail.com",
-      "telefono": "4333",
-      "login": "qwer",
-      "password": "1234",
+      "id": 13,
+      "nombre": "hola",
+      "apellido": "hola",
+      "identificacion": "12",
+      "email": "hola@gmail.com",
+      "telefono": "23",
+      "login": "hola",
+      "password": "hola",
       "tipo": "Instructor",
       "estado": "Activo"
     }
