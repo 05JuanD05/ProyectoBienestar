@@ -191,13 +191,7 @@
     {
       "id": "2",
       "nombre": "Ajedrez",
-      "descripcion": "Ajedrez",
-      "estado": "Activo"
-    },
-    {
-      "id": "3",
-      "nombre": "Voleybol",
-      "descripcion": "Voleybol",
+      "descripcion": "nose",
       "estado": "Activo"
     }
   ],
@@ -456,7 +450,7 @@
       }
     },
     {
-      "id": 12,
+      "id": "12",
       "especialidad": "Domador de Caballos",
       "disciplina": {
         "id": "1",
@@ -466,7 +460,7 @@
       }
     },
     {
-      "id": 13,
+      "id": "13",
       "especialidad": "je",
       "disciplina": {
         "id": "2",
@@ -568,22 +562,6 @@
       "tipo": "Coordinador"
     },
     {
-      "id": "2",
-      "apellido": "Usuario2",
-      "email": "xxxxx",
-      "estado": "Activo",
-      "identificacion": "2",
-      "login": "usuario2",
-      "nombre": "Usuario2",
-      "password": "usuario2",
-      "telefono": "2",
-      "tipo": "Instructor",
-      "disciplina": {
-        "id": 1,
-        "nombre": "Futbol Sala"
-      }
-    },
-    {
       "id": "3",
       "apellido": "Usuario3",
       "email": "xxxxxx",
@@ -640,42 +618,6 @@
       }
     },
     {
-      "id": "7",
-      "nombre": "Miguel",
-      "apellido": "Hernandez",
-      "identificacion": "654654",
-      "email": "miguel@gmail.com",
-      "telefono": "654654",
-      "login": "miguel",
-      "password": "miguel",
-      "tipo": "Instructor",
-      "estado": "Activo"
-    },
-    {
-      "id": "8",
-      "nombre": "Jorge",
-      "apellido": "Cantillo",
-      "identificacion": "35465",
-      "email": "jorge@gmail.com",
-      "telefono": "35435",
-      "login": "jorge",
-      "password": "jorge",
-      "tipo": "Instructor",
-      "estado": "Activo"
-    },
-    {
-      "id": "9",
-      "nombre": "Jose Carlos",
-      "apellido": "Ibarra Herrera",
-      "identificacion": "8",
-      "email": "jcibarrah1423@gmail.com",
-      "telefono": "3164749242",
-      "login": "si",
-      "password": "si",
-      "tipo": "Instructor",
-      "estado": "Activo"
-    },
-    {
       "id": "10",
       "nombre": "Jose C",
       "apellido": "Ibarra Herrera",
@@ -688,7 +630,7 @@
       "estado": "Activo"
     },
     {
-      "id": 12,
+      "id": "12",
       "nombre": "Jhonny",
       "apellido": "Joestar",
       "identificacion": "1043643404",
@@ -700,7 +642,7 @@
       "estado": "Activo"
     },
     {
-      "id": 13,
+      "id": "13",
       "nombre": "hola",
       "apellido": "hola",
       "identificacion": "12",
