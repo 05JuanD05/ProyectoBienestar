@@ -43,7 +43,7 @@ export class InstructorService {
   }
 
   actualizarUsuario(usuario: Usuario): Observable<Usuario> {
-    const url = `${this.apiUrlInstructor}/${usuario.id}`;
+    const url = `${this.apiUrlUsuario}/${usuario.id}`;
     return this.http.put<Usuario>(url, usuario);
   }
 

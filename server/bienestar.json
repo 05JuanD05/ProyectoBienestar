@@ -306,14 +306,14 @@
       "id": "493c"
     },
     {
-      "especialidad": "Educacion Fisica",
-      "id": "7",
+      "especialidad": "Instructor",
       "disciplina": {
-        "id": 1,
-        "descripcion": "Futbol Sala",
-        "estado": true,
-        "nombre": "Futbol Sala"
-      }
+        "id": "2",
+        "nombre": "Ajedrez",
+        "descripcion": "Ajedrez",
+        "estado": "Activo"
+      },
+      "id": "7"
     },
     {
       "especialidad": "Deporte",
@@ -456,7 +456,7 @@
       }
     },
     {
-      "id": 12,
+      "id": "12",
       "especialidad": "Domador de Caballos",
       "disciplina": {
         "id": "1",
@@ -466,7 +466,7 @@
       }
     },
     {
-      "id": 13,
+      "id": "13",
       "especialidad": "je",
       "disciplina": {
         "id": "2",
@@ -569,19 +569,15 @@
     },
     {
       "id": "2",
-      "apellido": "Usuario2",
-      "email": "xxxxx",
-      "estado": "Activo",
-      "identificacion": "2",
-      "login": "usuario2",
-      "nombre": "Usuario2",
-      "password": "usuario2",
-      "telefono": "2",
-      "tipo": "Instructor",
-      "disciplina": {
-        "id": 1,
-        "nombre": "Futbol Sala"
-      }
+      "nombre": "Juan",
+      "apellido": "Martin",
+      "identificacion": "30323232",
+      "email": "martin@hotmail.com",
+      "telefono": "31111032",
+      "login": "juan",
+      "password": "juan",
+      "tipo": "usuario2",
+      "estado": "2"
     },
     {
       "id": "3",
@@ -688,7 +684,7 @@
       "estado": "Activo"
     },
     {
-      "id": 12,
+      "id": "12",
       "nombre": "Jhonny",
       "apellido": "Joestar",
       "identificacion": "1043643404",
@@ -700,7 +696,7 @@
       "estado": "Activo"
     },
     {
-      "id": 13,
+      "id": "13",
       "nombre": "hola",
       "apellido": "hola",
       "identificacion": "12",

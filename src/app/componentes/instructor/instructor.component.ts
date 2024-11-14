@@ -50,10 +50,26 @@ export class InstructorComponent implements OnInit {
   listarInstructores() {
     this.instser.obtenerInstructores().subscribe(
       (data) => {
-        this.instructores = data;
+        this.instructores = data.map(
+          (inst) =>
+            new Instructor(
+              inst.especialidad,
+              new Disciplina(
+                inst.disciplina.id,
+                inst.disciplina.nombre,
+                inst.disciplina.descripcion,
+                inst.disciplina.categoria
+              ),
+              inst.id
+            )
+        );
+      },
+      (error) => {
+        console.error('Error al listar instructores:', error);
       }
     );
   }
+  
 
   seleccionarDisciplina(disc: Disciplina) {
     this.instructor.disciplina = disc;
@@ -93,41 +109,97 @@ export class InstructorComponent implements OnInit {
     }
   }
 
-  editarInstructor(instructor: Instructor) {
-    this.usuario.id = instructor.id;
-    this.usuario.tipo = "Instructor";
-    this.usuario.estado = instructor.especialidad;
+  editarInstructor(instructorData: any) {
+    if (!instructorData) {
+      console.error("No se recibieron datos del instructor.");
+      return;
+    }
+  
+    // Crear una copia profunda de disciplina
+    const disciplina = instructorData.disciplina
+      ? new Disciplina(
+          instructorData.disciplina.id || 0,
+          instructorData.disciplina.nombre || "",
+          instructorData.disciplina.descripcion || "",
+          instructorData.disciplina.categoria || ""
+        )
+      : new Disciplina(0, "", "", "");
+  
+    // Crear una copia del instructor
+    this.instructor = new Instructor(
+      instructorData.especialidad || "",
+      disciplina,
+      instructorData.id || 0
+    );
+  
+    // Crear una copia del usuario
+    this.usuario = new Usuario(
+      instructorData.id || 0,
+      instructorData.nombre || "",
+      instructorData.apellido || "",
+      instructorData.email || "",
+      instructorData.tipo || "",
+      instructorData.estado || "",
+      instructorData.telefono || "",
+      instructorData.login || "",
+      instructorData.password || "",
+      instructorData.identificacion || ""
+    );
+  
+    // Habilitar el botón "Editar"
+    const editarBtn = document.getElementById("esta2") as HTMLButtonElement;
+    if (editarBtn) editarBtn.disabled = false;
+  
+    console.log("Datos cargados para edición:", this.usuario, this.instructor);
   }
-
+  
   guardarCambios() {
-    if (this.usuario.validar() && this.instructor.validar()) {
-      this.instser.actualizarUsuario(this.usuario).subscribe(
-        (resp) => {
-          console.log('Instructor actualizado', resp);
-          this.snackBar.open('Instructor actualizado correctamente!', 'Cerrar', { duration: 3000});
+    if (this.validarDatos()) { // Valida los datos antes de intentar guardar
+      this.instser.actualizarInstructor(this.instructor).subscribe(
+        (respuesta) => {
+          console.log("Instructor actualizado correctamente:", respuesta);
+          this.snackBar.open('Instructor actualizado correctamente!', 'Cerrar', {
+            duration: 3000,
+            panelClass: ['snack-success'], // Clase CSS personalizada opcional
+          });
+          this.listarInstructores(); // Refresca la lista después de guardar
         },
         (error) => {
-          console.log('Error al actualizar el Instructor', error);
-          this.snackBar.open('Error al actualizar correctamente!', 'Cerrar', { duration: 3000});
+          console.error("Error al actualizar el instructor:", error);
+          this.snackBar.open('Error al actualizar el instructor.', 'Cerrar', {
+            duration: 3000,
+            panelClass: ['snack-error'], // Clase CSS personalizada opcional
+          });
         }
       );
-
-      this.instser.actualizarInstructor(this.instructor).subscribe(
-      (response) => {
-        console.log('Instructor actualizado:', response);
-        this.snackBar.open('Instructor actualizado correctamente!', 'Cerrar', { duration: 3000 });
-        this.listarInstructores();  // Actualiza la lista después de editar
-      },
-      (error) => {
-        console.log('Error al actualizar instructor', error);
-        this.snackBar.open('Error al actualizar el instructor.', 'Cerrar', { duration: 3000 });
-      }
-    );
-  } else {
-    console.log("Debe digitar todos los datos");
-    this.snackBar.open('Debe completar todos los datos.', 'Cerrar', { duration: 3000 });
+    } else {
+      console.log("Debe completar todos los datos.");
+      this.snackBar.open('Debe completar todos los datos.', 'Cerrar', {
+        duration: 3000,
+        panelClass: ['snack-warning'], // Clase CSS personalizada opcional
+      });
+    }
   }
-}
+  
+  validarDatos(): boolean {
+    if (!this.instructor || !this.usuario) return false;
+  
+    // Valida campos obligatorios del instructor
+    if (!this.instructor.especialidad.trim() || !this.instructor.disciplina) return false;
+  
+    // Valida campos obligatorios del usuario
+    if (
+      !this.usuario.nombre.trim() ||
+      !this.usuario.apellido.trim() ||
+      !this.usuario.email.trim() ||
+      !this.usuario.identificacion.trim()
+    ) {
+      return false;
+    }
+  
+    return true; // Todos los datos son válidos
+  }
+  
   
   eliminarInstructor(id: number) {
     this.instser.eliminarUsuario(id).subscribe(
@@ -143,4 +215,6 @@ export class InstructorComponent implements OnInit {
       }
     )
   }
+
+
 }
