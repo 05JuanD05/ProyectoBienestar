@@ -1,6 +1,6 @@
 h1 {
     text-align:center;
-    color:rgb(48, 48, 48);
+    color:rgb(80, 59, 59);
 }
 
 .container {
@@ -19,12 +19,46 @@ h1 {
     width: 30%;
 }
 
+input[type="text"]:hover,
+.form-select:hover,
+#formFileSm:hover{
+    transform: translateY(-3px);
+
+}
+
+input[type="text"]:focus,
+.form-select:focus,
+#formFileSm:focus {
+    width: 100%;
+    margin-top: 0.75rem; 
+    border-radius: 35px;
+}
+
 .cartas {
     display: grid;
     grid-gap: 1rem;
     grid-template-columns: 32% 32% 32%;
     grid-template-rows: auto auto;
 }
+
+.cards {
+    border-radius: 35px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cards:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.199);
+
+}
+
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
 
 .carta {
     width: calc(33.33% - 10px);
@@ -41,4 +75,3 @@ h1 {
     text-overflow: ellipsis;
     max-width: 250px;
 }
-
