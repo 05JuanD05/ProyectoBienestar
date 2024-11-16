@@ -7,6 +7,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ActividadService {
+  actualizarActividad(id: number, datosActualizados: { estado: string; }) {
+    throw new Error('Method not implemented.');
+  }
   actividades: Actividad[] = [];
   private apiUrlActividad = 'http://localhost:3000/actividad';
 
