@@ -21,7 +21,7 @@ throw new Error('Method not implemented.');
   mostrarPprograma: boolean = false;
   mostrarPtipoActividad: boolean = false;
   mostrarPactividad: boolean = true;
-  public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "");
+  public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "", "");
 
   constructor(private sesSer: SessionService) {
 

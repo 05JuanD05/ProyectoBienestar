@@ -18,7 +18,7 @@ export class InstructorComponent implements OnInit {
   public instructores: Instructor[] = [];
   public usuarios: Usuario[] = [];
   public disciplinas: Disciplina[] = [];
-  public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "");
+  public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "", "");
 
 
   constructor(private discser:DisciplinaService, private instser: InstructorService, private infcom: InformadorComponent, private readonly snackBar: MatSnackBar) {}
@@ -143,7 +143,8 @@ export class InstructorComponent implements OnInit {
       instructorData.telefono || "",
       instructorData.login || "",
       instructorData.password || "",
-      instructorData.identificacion || ""
+      instructorData.identificacion || "",
+      instructorData.disciplina || ""
     );
   
     // Habilitar el botón "Editar"
@@ -207,7 +208,7 @@ export class InstructorComponent implements OnInit {
         console.log('El instructor se elimino', response);
         this.listarUsuarios();
         this.snackBar.open('Instructor eliminado correctamente!!.', 'Cerrar', { duration: 3000});
-        this.usuario = new Usuario(0, "", "", "", "", "", "", "", "", "");
+        this.usuario = new Usuario(0, "", "", "", "", "", "", "", "", "", "");
       },
       (error) => {
         console.log('Error al eliminar al Instructor', error);

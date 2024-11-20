@@ -13,7 +13,7 @@ export class GUIEstudianteComponent {
   mostrarPhorarioCultural: boolean = false;
   mostrarPhorarioIdeportiva: boolean = false;
   mostrarPmiHorario: boolean = true;
-  public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "");
+  public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "", "");
   
   constructor(private sesSer: SessionService) {
   }

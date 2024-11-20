@@ -474,6 +474,16 @@
         "descripcion": "Ajedrez",
         "estado": "Activo"
       }
+    },
+    {
+      "id": 13,
+      "especialidad": "Instructor",
+      "disciplina": {
+        "id": "3",
+        "nombre": "Voleybol",
+        "descripcion": "Voleybol",
+        "estado": "Activo"
+      }
     }
   ],
   "periodo": [
@@ -706,6 +716,19 @@
       "password": "hola",
       "tipo": "Instructor",
       "estado": "Activo"
+    },
+    {
+      "id": 13,
+      "nombre": "Nose",
+      "apellido": "Hola",
+      "identificacion": "1231234",
+      "email": "nose@gmail.com",
+      "telefono": "31140034",
+      "login": "hola",
+      "password": "hola",
+      "tipo": "Instructor",
+      "estado": "Activo",
+      "disciplina": ""
     }
   ]
 }

@@ -2,26 +2,27 @@ import { Injectable } from '@angular/core';
 import { Instructor } from '../modelo/Instructor';
 import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../modelo/Usuario';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InstructorService {
-  private apiUrlUsuario = 'http://localhost:3000/usuario';
-  private apiUrlInstructor = 'http://localhost:3000/instructor';
+  private apiURL = 'http://localhost:3000';
+  private apiUrlUsuario = `${this.apiURL}/usuario`;
+  private apiUrlInstructor = `${this.apiURL}/instructor`;
 
   instructores: Instructor[] = [];
 
 
   constructor(private http: HttpClient) { }
 
-  eliminarInstructor(id: number): Observable<void>{
+  eliminarInstructor(id: number): Observable<any>{
     const url = `${this.apiUrlInstructor}/${id}`;
     return this.http.delete<void>(url);
   }
 
-  eliminarUsuario(id: number): Observable<void>{
+  eliminarUsuario(id: number): Observable<any>{
     const url = `${this.apiUrlUsuario}/${id}`;
     return this.http.delete<void>(url);
   }
@@ -38,8 +39,13 @@ export class InstructorService {
     return this.http.get<any[]>(this.apiUrlInstructor);
   }
 
-  obtenerUsuarios(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrlUsuario);
+  obtenerUsuarios(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(this.apiUrlUsuario).pipe(
+      catchError(error => {
+        console.error('Error al obtener los usuarios: ', error);
+        return throwError(error);
+      })
+    );
   }
 
   actualizarUsuario(usuario: Usuario): Observable<Usuario> {

@@ -13,7 +13,7 @@ import { ActividadService } from '../servicios/actividad.service';
 export class GUIInstructorComponent implements OnInit {
   mostrarCronogramaActividadInstructor: boolean = true;
   mostrarListarInscripcion: boolean = false;
-  public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "");
+  public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "", "");
 
   public actividades: Actividad[] = this.acti.actividades;
   constructor(private sesSer: SessionService,private acti: ActividadService) {
