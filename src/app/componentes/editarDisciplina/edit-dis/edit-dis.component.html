@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>Editar Instructor</h2>
+<mat-dialog-content>
+  <form>
+    <mat-form-field class="full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput [(ngModel)]="data.instructor.nombre" name="nombre">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Apellido</mat-label>
+      <input matInput [(ngModel)]="data.instructor.apellido" name="apellido">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Identificación</mat-label>
+      <input matInput [(ngModel)]="data.instructor.identificacion" name="identificacion">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="data.instructor.email" name="email">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Teléfono</mat-label>
+      <input matInput [(ngModel)]="data.instructor.telefono" name="telefono">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Especialidad</mat-label>
+      <input matInput [(ngModel)]="data.instructor.especialidad" name="especialidad">
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button color="primary" (click)="guardar()">Guardar</button>
+</mat-dialog-actions>

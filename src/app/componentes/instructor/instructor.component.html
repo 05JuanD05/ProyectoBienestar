@@ -31,9 +31,18 @@
                                     <td>{{ usuario.tipo }}</td>
                                     <td>Disciplina</td>
                                     <td>
-                                        <button type="button" (click)="editarInstructor(usuario)" class="bi bi-pencil btn btn-primary m-1"></button>
-                                        <button type="button" (click)="eliminarInstructor(usuario.id);" class="bi bi-trash btn btn-danger m-1"></button>
-                                    </td>
+                                        <button
+                                          mat-raised-button
+                                          color="primary"
+                                          (click)="abrirDialogoEditar(usuario)"
+                                        >
+                                          Editar
+                                        </button>
+                                        <button type="button" (click)="eliminarInstructor(usuario.id);" class="btn btn-danger">
+                                          Eliminar
+                                        </button>
+                                      </td>
+                                      
                                 </tr>
                             </tbody>
                         </table>
