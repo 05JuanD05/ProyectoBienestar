@@ -16,7 +16,7 @@ export class CronogramaActividadesInstructorComponent implements OnInit {
 
   public MisIncripciones: Inscripcion[] = this.inscripcion.inscripcion;
   public actividades: Actividad[] = this.acti.actividades;
-  public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "");
+  public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "", "");
   constructor(private inscripcion: InscripcionService,private sesSer: SessionService,private acti: ActividadService) {
       
   }

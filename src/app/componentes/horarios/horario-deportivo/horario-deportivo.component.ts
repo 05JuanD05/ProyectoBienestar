@@ -15,7 +15,7 @@ export class HorarioDeportivoComponent {
   public actividades: Actividad[] = this.acti.actividades;
   public insc:Inscripcion | undefined;
   public a: Actividad | undefined;
-  public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "");
+  public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "", "");
   
 
   constructor(private acti: ActividadService,private inscripcion: InscripcionService,private sesSer: SessionService) {

@@ -1,10 +1,10 @@
 export class Disciplina {
     id: number = 0;;
-    nombre: String = "";
-    descripcion: String = "";
-    estado: String = "";
+    nombre: string = "";
+    descripcion: string = "";
+    estado: string = "";
 
-    constructor(id: number, nombre: String, descripcion: String, estado: String) {
+    constructor(id: number, nombre: string, descripcion: string, estado: string) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;

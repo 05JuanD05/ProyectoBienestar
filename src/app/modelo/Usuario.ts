@@ -1,17 +1,18 @@
 export class Usuario {
     id: number = 0;
-    nombre: String = "";
-    apellido: String = "";
-    identificacion: String = "";
-    email: String = "";
-    telefono: String = "";
-    login: String = "";
-    password: String = "";
-    tipo: String = "";//Para saber que tipo de usuario ingresa al sistema
-    estado: String = "";
+    nombre: string = "";
+    apellido: string = "";
+    identificacion: string = "";
+    email: string = "";
+    telefono: string = "";
+    login: string = "";
+    password: string = "";
+    tipo: string = "";//Para saber que tipo de usuario ingresa al sistema
+    estado: string = "";
+    disciplina: string = "";
 
-    constructor(id: number, nom: String, ape: String, ident: String, ema: String, tel: String, log: String,
-        pass: String, tip: String, est: String) {
+    constructor(id: number, nom: string, ape: string, ident: string, ema: string, tel: string, log: string,
+        pass: string, tip: string, est: string, dis: string) {
         this.id = id;
         this.nombre = nom;
         this.apellido = ape;
@@ -22,6 +23,7 @@ export class Usuario {
         this.password = pass;
         this.tipo = tip;
         this.estado = est;
+        this.disciplina = dis;
     }
 
     public informacion(): string {

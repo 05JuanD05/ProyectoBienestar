@@ -6,6 +6,8 @@ import { InstructorService } from 'src/app/servicios/instructor.service';
 import { InformadorComponent } from 'src/app/utilidades/informador/informador.component';
 import { DisciplinaService } from 'src/app/servicios/disciplina.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { EditDisComponent } from '../editarDisciplina/edit-dis/edit-dis.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-instructor',
@@ -18,10 +20,10 @@ export class InstructorComponent implements OnInit {
   public instructores: Instructor[] = [];
   public usuarios: Usuario[] = [];
   public disciplinas: Disciplina[] = [];
-  public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "");
+  public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "", "");
 
 
-  constructor(private discser:DisciplinaService, private instser: InstructorService, private infcom: InformadorComponent, private readonly snackBar: MatSnackBar) {}
+  constructor(private discser:DisciplinaService, private instser: InstructorService, private infcom: InformadorComponent, private readonly snackBar: MatSnackBar, private readonly dialog: MatDialog) {}
 
   ngOnInit() {
     this.listarDisciplinas();
@@ -143,7 +145,8 @@ export class InstructorComponent implements OnInit {
       instructorData.telefono || "",
       instructorData.login || "",
       instructorData.password || "",
-      instructorData.identificacion || ""
+      instructorData.identificacion || "",
+      instructorData.disciplina || ""
     );
   
     // Habilitar el botón "Editar"
@@ -151,6 +154,21 @@ export class InstructorComponent implements OnInit {
     if (editarBtn) editarBtn.disabled = false;
   
     console.log("Datos cargados para edición:", this.usuario, this.instructor);
+  }
+
+  abrirDialogoEditar(usuario: any): void {
+    const dialogRef = this.dialog.open(EditDisComponent, {
+      width: '400px',
+      data: { instructor: { ...usuario } }, // Pasar una copia del usuario
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // Actualizar los datos del instructor
+        Object.assign(usuario, result);
+        console.log('Instructor actualizado:', usuario);
+      }
+    });
   }
   
   guardarCambios() {
@@ -207,7 +225,7 @@ export class InstructorComponent implements OnInit {
         console.log('El instructor se elimino', response);
         this.listarUsuarios();
         this.snackBar.open('Instructor eliminado correctamente!!.', 'Cerrar', { duration: 3000});
-        this.usuario = new Usuario(0, "", "", "", "", "", "", "", "", "");
+        this.usuario = new Usuario(0, "", "", "", "", "", "", "", "", "", "");
       },
       (error) => {
         console.log('Error al eliminar al Instructor', error);

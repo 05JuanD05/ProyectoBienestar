@@ -14,7 +14,7 @@ export class GUIDirectorComponent implements OnInit{
   mostrarPrograma: boolean = false;
   mostrarCoordinador: boolean = false;
   mostrarArea: boolean = false;
-  public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "");
+  public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "", "");
 
   constructor(private sesSer: SessionService) {
 

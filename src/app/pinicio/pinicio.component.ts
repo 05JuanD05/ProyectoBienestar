@@ -10,7 +10,7 @@ import { SessionService } from '../servicios/session.service';
   styleUrls: ['./pinicio.component.scss']
 })
 
-export class PInicioComponent implements OnInit { usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "");
+export class PInicioComponent implements OnInit { usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "", "");
   usuarios: Usuario[] = [];
   passwordFieldType: string = 'password';
   passwordIcon: string = 'fas fa-eye';
