@@ -31,14 +31,13 @@
                                     <td>{{ usuario.tipo }}</td>
                                     <td>{{ usuario.disciplina }}</td>
                                     <td>
-                                        <button mat-raised-button color="primary" (click)="abrirDialogoEditar(usuario)">
+                                        <button mat-raised-button color="primary" (click)="abrirDialogoEditar(usuario)" >
                                           Editar
                                         </button>
                                         <button type="button" (click)="eliminarInstructor(usuario.id);" class="btn btn-danger">
                                           Eliminar
                                         </button>
-                                      </td>
-                                      
+                                    </td> 
                                 </tr>
                             </tbody>
                         </table>
@@ -98,7 +97,7 @@
                         </div>
                         <div class="col-12 col-md-6">
                             <label>Especialidad:</label>
-                            <input type="text" [(ngModel)]="instructor.especialidad" placeholder="Especialidad" class="form-control">
+                            <input type="text" [(ngModel)]="instructor.especialidad" placeholder="Instructor" class="form-control" disabled>
                         </div>
                         <div class="col-12 col-md-6">
                             <label>Login:</label>
@@ -110,13 +109,10 @@
                         </div>
                         <div class="col-12 col-md-6">
                             <label>Disciplina:</label>
-                            <input type="text" value="{{instructor.disciplina.nombre}}" class="form-control" disabled>
+                            <input type="text" [(ngModel)]="instructor.disciplina.nombre" class="form-control" disabled>
                         </div>
-                        <!-- Botones -->
                         <div>
                             <button (click)="crearInstructor()" class="btn btn-outline-success m-1">Crear</button>
-                            <button type="button" (click)="editarInstructor(usuario)" class="bi bi-pencil btn btn-primary m-1"></button>
-                            <button (click)="guardarCambios()" class="btn btn-outline-primary m-1" id="esta2" disabled>Editar</button>
                         </div>
                     </div>
                 </article>

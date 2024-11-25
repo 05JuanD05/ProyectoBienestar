@@ -3,11 +3,11 @@ import { Disciplina } from 'src/app/modelo/Disciplina';
 import { Instructor } from 'src/app/modelo/Instructor';
 import { Usuario } from 'src/app/modelo/Usuario';
 import { InstructorService } from 'src/app/servicios/instructor.service';
-import { InformadorComponent } from 'src/app/utilidades/informador/informador.component';
 import { DisciplinaService } from 'src/app/servicios/disciplina.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EditDisComponent } from '../editarDisciplina/edit-dis/edit-dis.component';
 import { MatDialog } from '@angular/material/dialog';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-instructor',
@@ -16,19 +16,26 @@ import { MatDialog } from '@angular/material/dialog';
 })
 
 export class InstructorComponent implements OnInit {
-  public instructor: Instructor = new Instructor("", new Disciplina(0, "", "",""), 0);
-  public instructores: Instructor[] = [];
-  public usuarios: Usuario[] = [];
-  public disciplinas: Disciplina[] = [];
   public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "", "");
+  public instructor: Instructor = new Instructor("", new Disciplina(0, "", "",""), 0, new Usuario(0, "", "", "", "", "", "", "", "", "", ""));
+  public usuarios: Usuario[] = [];
+  public instructores: Instructor[] = [];
+  public disciplinas: Disciplina[] = [];
 
 
-  constructor(private discser:DisciplinaService, private instser: InstructorService, private infcom: InformadorComponent, private readonly snackBar: MatSnackBar, private readonly dialog: MatDialog) {}
+  constructor(
+    private discser:DisciplinaService,
+    private instser: InstructorService,
+    private readonly snackBar: MatSnackBar,
+    private readonly dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.listarDisciplinas();
     this.listarUsuarios();
-    this.listarInstructores()
+    this.listarInstructores();
+    this.usuario = new Usuario(0, "", "", "", "", "", "", "", "Instructor", "Activo", "");
+    this.instructor = new Instructor("", new Disciplina(0, "", "",""), 0); // O el valor que corresponda
   }
 
 
@@ -36,6 +43,7 @@ export class InstructorComponent implements OnInit {
     this.discser.obtenerDisciplinas().subscribe(
       (data) => {
         this.disciplinas = data;
+        console.log(this.disciplinas);
       }
     );    
   }
@@ -60,9 +68,10 @@ export class InstructorComponent implements OnInit {
                 inst.disciplina.id,
                 inst.disciplina.nombre,
                 inst.disciplina.descripcion,
-                inst.disciplina.categoria
+                inst.disciplina.estado
               ),
-              inst.id
+              inst.id,
+              inst.usuario
             )
         );
       },
@@ -74,165 +83,75 @@ export class InstructorComponent implements OnInit {
   
 
   seleccionarDisciplina(disc: Disciplina) {
-    this.instructor.disciplina = disc;
+    this.instructor.disciplina = {
+      ... disc, 
+      id: +disc.id
+    };
+    console.log("Disciplina seleccionada:", this.instructor.disciplina);
   }
 
+  
+
   crearInstructor(): void {
+    this.instructor.especialidad = "Instructor";
     this.usuario.id = this.usuarios.length + 1;
     this.instructor.id = this.usuario.id;
-    this.usuario.tipo = "Instructor";
+    this.instructor.usuario = this.usuario;
     this.usuario.estado = "Activo";
-    if (this.instructor.disciplina.id > 0) {
-      if (this.usuario.validar() && this.instructor.validar()) {
-        this.instser.createUsuario(this.usuario).subscribe(
-          (resp) => {
-            console.log('Usuario Agregado', resp);
-            this.snackBar.open('Instructor agregado exitosamente!!', 'Cerrar', { duration: 3000});
-          },
-          (error) => {
-            console.log('El usuario no se pudo registrar', error);
-            this.snackBar.open('Error al agregar al Instructor.', 'Cerrar', { duration: 3000});
-          }
-        );
-        this.instser.createInstructor(this.instructor).subscribe(
-          (response) => {
-            console.log('Instructor agregado:', response);
-            this.instructor = new Instructor("", new Disciplina(0, "", "", ""), 0);
-            this.snackBar.open('Instructor agregado.', 'Cerrar', { duration: 3000});
-            this.listarUsuarios();
-          });
+    this.usuario.disciplina = this.instructor.disciplina.nombre;
+
+    if (this.usuario.validar() && this.instructor.validar() && this.instructor.disciplina.id > 0) {
+      this.instser.createUsuario(this.usuario).pipe(
+        switchMap(() => this.instser.createInstructor(this.instructor))
+      ).subscribe({
+        next: () => {
+          this.snackBar.open('Instructor agregado exitosamente!!', 'Cerrar');
+          this.resetFormulario();
+          this.listarUsuarios();
+          this.listarInstructores();
+        },
+        error: (err) => {
+          console.error('Error al agregar instructor: ', err);
+          this.snackBar.open('Error al agregar al Instructor.', 'error');
+        }
+      });
       } else {
         this.snackBar.open('Debe completar todos los campos porfavor.', 'Cerrar', { duration: 3000});
         console.log("Debe digitar todos los datos");
       }
-    } else {
-      this.snackBar.open('Debe agregar una disciplina.', 'Cerrar', { duration: 3000});
-      console.log("Debe agregar la disciplina");
     }
-  }
 
-  editarInstructor(instructorData: any) {
-    if (!instructorData) {
-      console.error("No se recibieron datos del instructor.");
-      return;
+    private resetFormulario(): void {
+      this.instructor = new Instructor("", new Disciplina(0, "", "", ""), 0, new Usuario(0, "", "", "", "", "", "", "", "", "", ""));
+      this.usuario = new Usuario(0, "", "", "", "", "", "", "", "", "", "");
     }
-  
-    // Crear una copia profunda de disciplina
-    const disciplina = instructorData.disciplina
-      ? new Disciplina(
-          instructorData.disciplina.id || 0,
-          instructorData.disciplina.nombre || "",
-          instructorData.disciplina.descripcion || "",
-          instructorData.disciplina.categoria || ""
-        )
-      : new Disciplina(0, "", "", "");
-  
-    // Crear una copia del instructor
-    this.instructor = new Instructor(
-      instructorData.especialidad || "",
-      disciplina,
-      instructorData.id || 0
-    );
-  
-    // Crear una copia del usuario
-    this.usuario = new Usuario(
-      instructorData.id || 0,
-      instructorData.nombre || "",
-      instructorData.apellido || "",
-      instructorData.email || "",
-      instructorData.tipo || "",
-      instructorData.estado || "",
-      instructorData.telefono || "",
-      instructorData.login || "",
-      instructorData.password || "",
-      instructorData.identificacion || "",
-      instructorData.disciplina || ""
-    );
-  
-    // Habilitar el botón "Editar"
-    const editarBtn = document.getElementById("esta2") as HTMLButtonElement;
-    if (editarBtn) editarBtn.disabled = false;
-  
-    console.log("Datos cargados para edición:", this.usuario, this.instructor);
-  }
 
   abrirDialogoEditar(usuario: any): void {
     const dialogRef = this.dialog.open(EditDisComponent, {
       width: '400px',
-      data: { instructor: { ...usuario } }, // Pasar una copia del usuario
+      data: { instructor: { ...usuario } },
     });
-
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        // Actualizar los datos del instructor
         Object.assign(usuario, result);
         console.log('Instructor actualizado:', usuario);
       }
     });
   }
   
-  guardarCambios() {
-    if (this.validarDatos()) { // Valida los datos antes de intentar guardar
-      this.instser.actualizarInstructor(this.instructor).subscribe(
-        (respuesta) => {
-          console.log("Instructor actualizado correctamente:", respuesta);
-          this.snackBar.open('Instructor actualizado correctamente!', 'Cerrar', {
-            duration: 3000,
-            panelClass: ['snack-success'], // Clase CSS personalizada opcional
-          });
-          this.listarInstructores(); // Refresca la lista después de guardar
-        },
-        (error) => {
-          console.error("Error al actualizar el instructor:", error);
-          this.snackBar.open('Error al actualizar el instructor.', 'Cerrar', {
-            duration: 3000,
-            panelClass: ['snack-error'], // Clase CSS personalizada opcional
-          });
-        }
-      );
-    } else {
-      console.log("Debe completar todos los datos.");
-      this.snackBar.open('Debe completar todos los datos.', 'Cerrar', {
-        duration: 3000,
-        panelClass: ['snack-warning'], // Clase CSS personalizada opcional
-      });
-    }
-  }
-  
-  validarDatos(): boolean {
-    if (!this.instructor || !this.usuario) return false;
-  
-    // Valida campos obligatorios del instructor
-    if (!this.instructor.especialidad.trim() || !this.instructor.disciplina) return false;
-  
-    // Valida campos obligatorios del usuario
-    if (
-      !this.usuario.nombre.trim() ||
-      !this.usuario.apellido.trim() ||
-      !this.usuario.email.trim() ||
-      !this.usuario.identificacion.trim()
-    ) {
-      return false;
-    }
-  
-    return true; // Todos los datos son válidos
-  }
-  
-  
-  eliminarInstructor(id: number) {
-    this.instser.eliminarUsuario(id).subscribe(
-      (response) => {
-        console.log('El instructor se elimino', response);
-        this.listarUsuarios();
-        this.snackBar.open('Instructor eliminado correctamente!!.', 'Cerrar', { duration: 3000});
-        this.usuario = new Usuario(0, "", "", "", "", "", "", "", "", "", "");
-      },
-      (error) => {
-        console.log('Error al eliminar al Instructor', error);
-        this.snackBar.open('Error al eliminar al Instructor.', 'Cerrar', { duration: 3000});
-      }
-    )
+     eliminarInstructor(id: number) {
+       this.instser.eliminarUsuario(id).subscribe(
+         (response) => {
+           console.log('El instructor se elimino', response);
+           this.listarUsuarios();
+           this.snackBar.open('Instructor eliminado correctamente!!.', 'Cerrar', { duration: 3000});
+           this.usuario = new Usuario(0, "", "", "", "", "", "", "", "", "", "");
+         },
+         (error) => {
+           console.log('Error al eliminar al Instructor', error);
+          this.snackBar.open('Error al eliminar al Instructor.', 'Cerrar', { duration: 3000});
+         }
+       )
+     }
   }
 
-
-}

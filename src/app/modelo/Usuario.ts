@@ -33,16 +33,13 @@ export class Usuario {
     }
 
     public validar(): boolean {
-        let valido: boolean = true;
-        if (this.nombre.trim() === '' || this.apellido.trim() === '' || this.identificacion.trim() === '') {
-            valido = false;
-        }
-        if (this.email.trim() === '' || this.login.trim() === '' || this.password.trim() === '') {
-            valido = false;
-        }
-        if (this.tipo.trim() === '' || this.estado.trim() === '' || this.telefono.trim() === '') {
-            valido = false;
-        }
-        return valido;
+        return (
+            this.nombre.trim() !== '' &&
+            this.apellido.trim() !== '' &&
+            this.identificacion.trim() !== '' &&
+            this.email.trim() !== '' &&
+            this.telefono.trim() !== '' &&
+            this.estado.trim() !== ''
+        );
     }
   }

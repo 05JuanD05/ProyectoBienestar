@@ -199,6 +199,18 @@
       "nombre": "Voleybol",
       "descripcion": "Voleybol",
       "estado": "Activo"
+    },
+    {
+      "id": "0",
+      "nombre": "Pin Pon",
+      "descripcion": "Pin Pon",
+      "estado": "Activo"
+    },
+    {
+      "id": "0",
+      "nombre": "Natacion",
+      "descripcion": "Natacion",
+      "estado": "Activo"
     }
   ],
   "escenario": [
@@ -300,189 +312,72 @@
   ],
   "instructor": [
     {
-      "especialidad": "Deporte",
-      "idusuario": 2,
-      "disciplina_id": 1,
-      "id": "493c"
+      "id": "7",
+      "nombre": "Marta",
+      "apellido": "Del Mar",
+      "identificacion": "adasdad",
+      "email": "marta@gmail.com",
+      "telefono": "31140596",
+      "login": "marta",
+      "password": "marta",
+      "tipo": "Instructor",
+      "estado": "Activo",
+      "disciplina": "Natacion"
     },
     {
+      "id": "8",
+      "nombre": "America",
+      "apellido": "Fox",
+      "identificacion": "000000",
+      "email": "america@gmail.com",
+      "telefono": "321312313",
+      "login": "america",
+      "password": "america",
+      "tipo": "Instructor",
+      "estado": "Activo",
+      "disciplina": "Pin Pon"
+    },
+    {
+      "id": "9",
+      "nombre": "Oscarasd",
+      "apellido": "Perezasd",
+      "identificacion": "2313213",
+      "email": "oscar@gmail.com",
+      "telefono": "131321232332",
+      "login": "oscar",
+      "password": "oscar",
+      "tipo": "Instructor",
+      "estado": "Activo",
+      "disciplina": "Natacion"
+    },
+    {
+      "id": 10,
+      "nombre": "",
+      "apellido": "",
+      "identificacion": "",
+      "email": "",
+      "telefono": "",
+      "tipo": "",
+      "estado": "",
       "especialidad": "Instructor",
       "disciplina": {
-        "id": "2",
-        "nombre": "Ajedrez",
-        "descripcion": "Ajedrez",
-        "estado": "Activo"
-      },
-      "id": "7"
-    },
-    {
-      "especialidad": "Deporte",
-      "disciplina": {
-        "id": 3,
-        "nombre": "Voleybol",
-        "descripcion": "Voleybol",
-        "estado": true
-      },
-      "id": "8"
-    },
-    {
-      "especialidad": "a",
-      "disciplina": {
-        "id": 3,
-        "nombre": "Voleybol",
-        "descripcion": "Voleybol",
-        "estado": true
-      },
-      "id": "10"
-    },
-    {
-      "especialidad": "12",
-      "disciplina": {
-        "id": 4,
-        "nombre": "jokie",
-        "descripcion": "soi",
-        "estado": true
-      },
-      "id": "11"
-    },
-    {
-      "especialidad": "",
-      "disciplina": {
         "id": 2,
         "nombre": "Ajedrez",
         "descripcion": "Ajedrez",
-        "estado": true
-      },
-      "id": "12"
-    },
-    {
-      "especialidad": "",
-      "disciplina": {
-        "id": 4,
-        "nombre": "jokie",
-        "descripcion": "soi",
-        "estado": true
-      },
-      "id": "13"
-    },
-    {
-      "especialidad": "a",
-      "disciplina": {
-        "id": 5,
-        "nombre": "ja",
-        "descripcion": "a",
-        "estado": true
-      },
-      "id": "14"
-    },
-    {
-      "especialidad": "as",
-      "disciplina": {
-        "id": 2,
-        "nombre": "Ajedrez",
-        "descripcion": "Ajedrez",
-        "estado": true
-      },
-      "id": "15"
-    },
-    {
-      "especialidad": "as",
-      "disciplina": {
-        "id": 5,
-        "nombre": "ja",
-        "descripcion": "a",
-        "estado": true
-      },
-      "id": "16"
-    },
-    {
-      "especialidad": "as",
-      "disciplina": {
-        "id": 3,
-        "nombre": "Voleybol",
-        "descripcion": "Voleybol",
-        "estado": true
-      },
-      "id": "17"
-    },
-    {
-      "especialidad": "as",
-      "disciplina": {
-        "id": 4,
-        "nombre": "jokie",
-        "descripcion": "soi",
-        "estado": true
-      },
-      "id": "18"
-    },
-    {
-      "especialidad": "as",
-      "disciplina": {
-        "id": 4,
-        "nombre": "jokie",
-        "descripcion": "soi",
-        "estado": true
-      },
-      "id": "19"
-    },
-    {
-      "especialidad": "si",
-      "disciplina": {
-        "id": 4,
-        "nombre": "Baloncesto",
-        "descripcion": "si",
-        "estado": true
-      },
-      "id": "9"
-    },
-    {
-      "id": "11",
-      "especialidad": "erered",
-      "disciplina": {
-        "id": "2",
-        "nombre": "Ajedrez",
-        "descripcion": "Ajedrez",
         "estado": "Activo"
-      }
-    },
-    {
-      "id": "11",
-      "especialidad": "",
-      "disciplina": {
-        "id": "2",
-        "nombre": "Ajedrez",
-        "descripcion": "Ajedrez",
-        "estado": "Activo"
-      }
-    },
-    {
-      "id": "12",
-      "especialidad": "Domador de Caballos",
-      "disciplina": {
-        "id": "1",
-        "descripcion": "Futbol Sala",
+      },
+      "usuario": {
+        "id": 10,
+        "nombre": "asd",
+        "apellido": "asd",
+        "identificacion": "505050",
+        "email": "asd@gmail.com",
+        "telefono": "50505",
+        "login": "asd",
+        "password": "asd",
+        "tipo": "Instructor",
         "estado": "Activo",
-        "nombre": "Futbol Sala"
-      }
-    },
-    {
-      "id": "13",
-      "especialidad": "je",
-      "disciplina": {
-        "id": "2",
-        "nombre": "Ajedrez",
-        "descripcion": "Ajedrez",
-        "estado": "Activo"
-      }
-    },
-    {
-      "id": 13,
-      "especialidad": "Instructor",
-      "disciplina": {
-        "id": "3",
-        "nombre": "Voleybol",
-        "descripcion": "Voleybol",
-        "estado": "Activo"
+        "disciplina": "Ajedrez"
       }
     }
   ],
@@ -647,88 +542,55 @@
     },
     {
       "id": "7",
-      "nombre": "Miguel",
-      "apellido": "Hernandez",
-      "identificacion": "654654",
-      "email": "miguel@gmail.com",
-      "telefono": "654654",
-      "login": "miguel",
-      "password": "miguel",
+      "nombre": "Marta",
+      "apellido": "Rodriguez",
+      "identificacion": "31190190",
+      "email": "marta@gmail.com",
+      "telefono": "31140596",
+      "login": "marta",
+      "password": "marta",
       "tipo": "Instructor",
-      "estado": "Activo"
+      "estado": "Activo",
+      "disciplina": "Futbol Sala"
     },
     {
       "id": "8",
-      "nombre": "Jorge",
-      "apellido": "Cantillo",
-      "identificacion": "35465",
-      "email": "jorge@gmail.com",
-      "telefono": "35435",
-      "login": "jorge",
-      "password": "jorge",
+      "nombre": "America",
+      "apellido": "Gutierrez",
+      "identificacion": "1232313132",
+      "email": "america@gmail.com",
+      "telefono": "321312313",
+      "login": "america",
+      "password": "america",
       "tipo": "Instructor",
-      "estado": "Activo"
+      "estado": "Activo",
+      "disciplina": "Voleybol"
     },
     {
       "id": "9",
-      "nombre": "Jose Carlos",
-      "apellido": "Ibarra Herrera",
-      "identificacion": "8",
-      "email": "jcibarrah1423@gmail.com",
-      "telefono": "3164749242",
-      "login": "si",
-      "password": "si",
-      "tipo": "Instructor",
-      "estado": "Activo"
-    },
-    {
-      "id": "10",
-      "nombre": "Jose C",
-      "apellido": "Ibarra Herrera",
-      "identificacion": "7",
-      "email": "jcibarrah1423@gmail.com",
-      "telefono": "3164749242",
-      "login": "si",
-      "password": "si",
-      "tipo": "Instructor",
-      "estado": "Activo"
-    },
-    {
-      "id": "12",
-      "nombre": "Jhonny",
-      "apellido": "Joestar",
-      "identificacion": "1043643404",
-      "email": "jojo@gmail.com",
-      "telefono": "3114013998",
-      "login": "jhonny",
-      "password": "jhonny",
-      "tipo": "Instructor",
-      "estado": "Activo"
-    },
-    {
-      "id": "13",
-      "nombre": "hola",
-      "apellido": "hola",
-      "identificacion": "12",
-      "email": "hola@gmail.com",
-      "telefono": "23",
-      "login": "hola",
-      "password": "hola",
-      "tipo": "Instructor",
-      "estado": "Activo"
-    },
-    {
-      "id": 13,
-      "nombre": "Nose",
-      "apellido": "Hola",
-      "identificacion": "1231234",
-      "email": "nose@gmail.com",
-      "telefono": "31140034",
-      "login": "hola",
-      "password": "hola",
+      "nombre": "Oscar",
+      "apellido": "Perez",
+      "identificacion": "12312312",
+      "email": "oscar@gmail.com",
+      "telefono": "1313213",
+      "login": "oscar",
+      "password": "oscar",
       "tipo": "Instructor",
       "estado": "Activo",
-      "disciplina": ""
+      "disciplina": "Ajedrez"
+    },
+    {
+      "id": 10,
+      "nombre": "asd",
+      "apellido": "asd",
+      "identificacion": "505050",
+      "email": "asd@gmail.com",
+      "telefono": "50505",
+      "login": "asd",
+      "password": "asd",
+      "tipo": "Instructor",
+      "estado": "Activo",
+      "disciplina": "Ajedrez"
     }
   ]
 }

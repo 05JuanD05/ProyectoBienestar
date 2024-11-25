@@ -41,6 +41,7 @@ import { EditDisComponent } from './componentes/editarDisciplina/edit-dis/edit-d
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select'
 
 
 @NgModule({
@@ -88,7 +89,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatButtonModule,
     MatDialogModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [DisciplinaComponent,InformadorComponent],
   bootstrap: [AppComponent]
