@@ -29,13 +29,9 @@
                                     <td>{{ usuario.apellido }}</td>
                                     <td>{{ usuario.identificacion }}</td>
                                     <td>{{ usuario.tipo }}</td>
-                                    <td>Disciplina</td>
+                                    <td>{{ usuario.disciplina }}</td>
                                     <td>
-                                        <button
-                                          mat-raised-button
-                                          color="primary"
-                                          (click)="abrirDialogoEditar(usuario)"
-                                        >
+                                        <button mat-raised-button color="primary" (click)="abrirDialogoEditar(usuario)">
                                           Editar
                                         </button>
                                         <button type="button" (click)="eliminarInstructor(usuario.id);" class="btn btn-danger">
