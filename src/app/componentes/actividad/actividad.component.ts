@@ -50,7 +50,8 @@ export class ActividadComponent implements OnInit {
   public instructor: Instructor = new Instructor("", new Disciplina(0, "", "",""), 0);
   public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "");
   public tipo: TipoActividad = new TipoActividad(0,"", "", "");
-  public escenario: Escenario = new Escenario(0, "", "", "", "", "","");
+  public escenario: Escenario = new Escenario("", "", "", "", "", "", "");
+
   public escenarios: Escenario[] = [];
   public disciplinas: Disciplina[] = [];
   public coordinadores: Coordinador[] = [];
@@ -81,9 +82,9 @@ export class ActividadComponent implements OnInit {
 
   seleccionarEscenario(esce: Escenario) {
     this.escenario = esce;
-    this.actividad.escenario_id = this.escenario.id;
+    this.actividad.escenario_id = Number(this.escenario.id); // Conversión a número
   }
-
+  
   listarActividades(): void {
     this.acti.obtenerActividades().subscribe(
       (data) => {

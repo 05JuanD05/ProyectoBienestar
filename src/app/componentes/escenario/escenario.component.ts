@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ResolveEnd } from '@angular/router';
 import { Escenario } from 'src/app/modelo/Escenario';
 import { EscenarioService } from 'src/app/servicios/escenario.service';
-import { FileSaverService } from 'ngx-filesaver';
-import * as FileSaver from 'file-saver';
-
 
 @Component({
   selector: 'app-escenario',
@@ -14,21 +10,18 @@ import * as FileSaver from 'file-saver';
 })
 export class EscenarioComponent implements OnInit {
 
-  public escenario: Escenario = new Escenario(0, "", "", "", "", "","");
-  public escenarios: Escenario[] = this.escenar.escenarios;
-
+  public escenario: Escenario = new Escenario("0", "", "", "", "", "", "");
+  public escenarios: Escenario[] = [];
   public previsualizacion: string;
-  
   private imagenSeleccionada: File | null = null;
-
   estadoEscenario: boolean = false;
 
-  constructor(private escenar: EscenarioService, private sanitizer: DomSanitizer, private fileSaverService: FileSaverService) {
+  constructor(private escenar: EscenarioService, private sanitizer: DomSanitizer) {
     this.previsualizacion = '';
   }
 
   imagenPrevia: any;
-  files: any = []
+  files: any = [];
 
   ngOnInit(): void {
     this.listarEscenarios();
@@ -36,7 +29,6 @@ export class EscenarioComponent implements OnInit {
 
   cambioEstado(event: Event) {
     const id = (event.target as HTMLElement).id;
-    
     const boton = document.getElementById('esta2') as HTMLButtonElement;
     const boton2 = document.getElementById('add') as HTMLButtonElement;
 
@@ -48,18 +40,19 @@ export class EscenarioComponent implements OnInit {
       boton.disabled = true;
     }
   }
- 
-
 
   listarEscenarios() {
     this.escenar.obtenerEscenarios().subscribe(
       (data) => {
-        this.escenarios = data;
+        this.escenarios = data.map((escenario: any) => ({
+          ...escenario,
+          id: String(escenario.id)  // Convertir el id a string si necesario
+        }));
       }
     );
   }
 
-  onFileSelected(event:any): void {
+  onFileSelected(event: any): void {
     this.imagenSeleccionada = event.target.files[0] as File;
     this.base64(this.imagenSeleccionada).then((imagen: any) => {
       this.previsualizacion = imagen.base;
@@ -67,14 +60,15 @@ export class EscenarioComponent implements OnInit {
     });
   }
 
-  crearEscenario(): void{
-    this.escenario.id = this.escenar.escenarios.length;
+  crearEscenario(): void {
+    this.escenario.id = String(this.escenario.id); // Aseguramos que sea string
     this.escenar.createEscenario(this.escenario).subscribe(
       (response) => {
-      console.log('Escenario agregado:', response);
-      this.listarEscenarios();
-      this.escenario = new Escenario(0, "", "", "", "", "", "");
-    });
+        console.log('Escenario agregado:', response);
+        this.listarEscenarios();
+        this.escenario = new Escenario("0", "", "", "", "", "", ""); // Limpiar el formulario
+      }
+    );
   }
 
   base64 = async ($event: any): Promise<any> => {
@@ -101,36 +95,56 @@ export class EscenarioComponent implements OnInit {
         };
         reader.readAsDataURL($event);
       } catch (e) {
-        reject(e); // Rechaza la promesa en caso de error
+        reject(e);
       }
     });
   };
+
+  eliminarEscenario(id: string) {
+    const idAsNumber = Number(id); // Convertir el ID a número
+    if (!isNaN(idAsNumber)) { // Verificar que el ID convertido sea válido
+      this.escenar.eliminarEscenario(idAsNumber).subscribe(
+        (response) => {
+          console.log('El escenario se eliminó:', response);
+          this.listarEscenarios();
+          this.escenario = new Escenario("0", "", "", "", "", "", ""); // Limpiar el formulario
+        }
+      );
+    } else {
+      console.error('ID inválido para eliminación:', id);
+    }
+  }
   
-  eliminarEscenario(id: number) {
-    this.escenar.eliminarEscenario(id).subscribe(
-      (response) => {
-        console.log('El escenario se elimino', response);
-        this.listarEscenarios();
-        this.escenario = new Escenario(0, "", "", "", "", "", "");
-      }
-    );
-  }
 
-  consultarEscenario(id: number) {
-    this.escenar.consultarEscenario(id).subscribe(
-      (data) => {
-        this.escenario = data;
-      }
-    );
+  consultarEscenario(id: string) {
+    const idAsNumber = Number(id); // Convertir el ID a número
+    if (!isNaN(idAsNumber)) { // Validar que la conversión sea correcta
+      this.escenar.consultarEscenario(idAsNumber).subscribe(
+        (data) => {
+          this.escenario = data; // Asignar los datos al modelo
+        },
+        (error) => {
+          console.error('Error al consultar el escenario:', error);
+        }
+      );
+    } else {
+      console.error('ID inválido para consulta:', id);
+    }
   }
+  
 
-  actualizarEscenario(id: number, datosActualizados: any) {
-    this.escenar.actualizarEscenario(id, datosActualizados).subscribe(
-      (response) => {
-        console.log('Escenario actualizado', response);
-        this.listarEscenarios();
-        this.escenario = new Escenario(0, "", "", "", "", "", "");
-      }
-    );
+  actualizarEscenario() {
+    const idAsNumber = Number(this.escenario.id); // Convertir el ID a número
+    if (!isNaN(idAsNumber)) {
+      this.escenar.actualizarEscenario(idAsNumber, this.escenario).subscribe(
+        (response) => {
+          console.log('Escenario actualizado:', response);
+          this.listarEscenarios();
+          this.escenario = new Escenario("0", "", "", "", "", "", ""); // Limpiar el formulario
+        }
+      );
+    } else {
+      console.error('ID inválido para actualización:', this.escenario.id);
+    }
   }
 }

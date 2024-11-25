@@ -203,29 +203,29 @@
   ],
   "escenario": [
     {
-      "id": "1",
-      "coordenadaX": "10.401396071970622",
-      "coordenadaY": "-75.50477045601278",
-      "direccion": "Andalucia, Cartagena de Indias, Provincia de Cartagena, Bolívar",
-      "estado": "Activo",
-      "nombre": "Coliceo Northon Madrid",
-      "imagen": "base64_encoded_image_data"
-    },
-    {
       "id": "2",
       "nombre": "Estadio Olímpico Jaime Morón León",
-      "direccion": "Cl. 31b, Villa Olímpica, Cartagena de Indias, Provincia de Cartagena, Bolívar",
+      "direccion": "Villa Olímpica, Cartagena de Indias",
       "coordenadaX": "10.405430562771016",
       "coordenadaY": "-75.49823682738449",
       "estado": "Activo",
       "imagen": ""
     },
     {
-      "id": "3",
-      "nombre": "Estadio de Beisbol",
-      "direccion": "Cl. 31 #55-35, Villa Olímpica, Cartagena de Indias, Provincia de Cartagena, Bolívar",
-      "coordenadaX": "10.403820077717809",
-      "coordenadaY": "-75.49578013447683",
+      "id": 0,
+      "nombre": "estadio",
+      "direccion": "12345ggg",
+      "coordenadaX": "gfgfgfg6464",
+      "coordenadaY": "hfhf6364",
+      "estado": "Inactivo",
+      "imagen": ""
+    },
+    {
+      "id": 0,
+      "nombre": "hola",
+      "direccion": "hola",
+      "coordenadaX": "hola",
+      "coordenadaY": "hola",
       "estado": "Activo",
       "imagen": ""
     }

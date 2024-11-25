@@ -1,21 +1,20 @@
 export class Escenario {
-    id: number = 0;
-    nombre: String = "";
-    direccion: String = "";
-    coordenadaX: String = "";
-    coordenadaY: String = "";
-    estado: String = "";
-    imagen: String = ""; 
+    id: string = "";  
+    nombre: string = "";
+    direccion: string = "";
+    coordenadaX: string = "";
+    coordenadaY: string = "";
+    estado: string = "";
+    imagen: string = "";
 
-    constructor(id: number, nombre: String, direccion: String, 
-        coordenadaX: String, coordenadaY: String, estado: String, idata: String) {
+    constructor(id: string, nombre: string, direccion: string,
+        coordenadaX: string, coordenadaY: string, estado: string, imagen: string) {
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
         this.coordenadaX = coordenadaX;
         this.coordenadaY = coordenadaY;
         this.estado = estado;
-        this.imagen = idata;
+        this.imagen = imagen;
     }
-
 }
