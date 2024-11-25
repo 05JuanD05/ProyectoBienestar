@@ -1,36 +1,55 @@
 import { Disciplina } from "./Disciplina";
-import { Usuario } from "./Usuario";
+
 export class Instructor {
     id: number = 0;
-    nombre: string = "";
-    apellido: string = "";
-    identificacion: string = "";
-    email: string = "";
-    telefono: string = "";
-    tipo: string = "";//Para saber que tipo de usuario ingresa al sistema
-    estado: string = "";
+    nombreProfe: string = "";
+    apellidoProfe: string = "";
+    cedula: string = "";
+    emailProfe: string = "";
+    estadoProfe: string = "";
+    numeroTelefono: string = "";
     especialidad: string = "";
+    tipoI: string = ""; // Para saber qué tipo de usuario es
     disciplina: Disciplina = new Disciplina(0, "", "", "");
-    usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "", "")
+    loginP: string = "";
+    passwordP: string = "";
 
-    constructor(esp: string, dis: Disciplina, idu: number, usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "", "")) {
+    constructor(
+        id: number, 
+        nombrep: string, 
+        apellidop: string, 
+        cedula: string, 
+        numero: string, 
+        tipo: string, 
+        estado: string, 
+        esp: string, 
+        dis: Disciplina, 
+        login: string, 
+        password: string
+    ) {
+        this.id = id;
+        this.nombreProfe = nombrep;
+        this.apellidoProfe = apellidop;
+        this.cedula = cedula;
+        this.numeroTelefono = numero;
+        this.tipoI = tipo;
+        this.estadoProfe = estado;
         this.especialidad = esp;
         this.disciplina = dis;
-        this.id = idu;
-        this.usuario = usuario;
-    } 
+        this.loginP = login;
+        this.passwordP = password;
+    }
 
     public validar(): boolean {
         return (
-            this.especialidad.trim() !== "" &&
-            this.disciplina.id > 0 &&
-            this.usuario.validar()
+            this.nombreProfe.trim() !== "" &&
+            this.apellidoProfe.trim() !== "" &&
+            this.cedula.trim() !== "" &&
+            this.emailProfe.trim() !== "" &&
+            this.numeroTelefono.trim() !== "" &&
+            this.loginP.trim() !== "" &&
+            this.disciplina.nombre.trim() !== "" &&
+            this.passwordP.trim() !== ""
         );
     }
-
-    public sincronizarConUsuario(): void {
-        this.especialidad = this.usuario.nombre + "" + this.usuario.apellido;
-        this.disciplina = new Disciplina(0, this.usuario.disciplina, "", "");
-    }
-
 }

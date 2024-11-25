@@ -5,7 +5,6 @@ import { Disciplina } from 'src/app/modelo/Disciplina';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { InstructorService } from 'src/app/servicios/instructor.service';
 import { Instructor } from 'src/app/modelo/Instructor';
-import { Usuario } from 'src/app/modelo/Usuario';
 
 @Component({
   selector: 'app-edit-dis',
@@ -13,15 +12,16 @@ import { Usuario } from 'src/app/modelo/Usuario';
   styleUrls: ['./edit-dis.component.scss']
 })
 export class EditDisComponent implements OnInit {
-  public instructor: Instructor = new Instructor("",new Disciplina(0, "", "",""), 0, new Usuario(0, "", "", "", "", "", "", "", "", "", ""));
-  public usuario: Usuario = new Usuario(0, "", "","","","","","","","","");
-  disciplinas: Disciplina[] = []; // Lista de disciplinas disponibles
+  public instructor: Instructor = new Instructor(0, "", "", "", "", "", "", "",new Disciplina(0, "", "",""), "", "");
+  public disciplinas: Disciplina[] = []; // Lista de disciplinas disponibles
   public showEditModal: boolean = false;
 
   constructor(
     public dialogRef: MatDialogRef<EditDisComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { instructor: any },
-    private disciplinaService: DisciplinaService, private readonly snackBar: MatSnackBar, private readonly instructorService: InstructorService // Servicio para obtener disciplinas
+    private disciplinaService: DisciplinaService,
+    private readonly snackBar: MatSnackBar,
+    private readonly instructorService: InstructorService // Servicio para obtener disciplinas
   ) {}
 
   ngOnInit(): void {
@@ -41,7 +41,7 @@ export class EditDisComponent implements OnInit {
 
   cerrarModal() {
     this.showEditModal = false;
-    this.usuario = new Usuario(0, "", "","","","","","","","","");
+    this.instructor = new Instructor(0, "", "", "", "", "", "", "",new Disciplina(0, "", "",""), "", "");
   }
 
   editarInstructor(): void {
@@ -65,7 +65,5 @@ export class EditDisComponent implements OnInit {
       }
     );
   }
-  
-  
   
 }

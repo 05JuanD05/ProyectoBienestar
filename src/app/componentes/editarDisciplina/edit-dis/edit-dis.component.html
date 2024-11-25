@@ -1,45 +1,61 @@
 <h2 mat-dialog-title>Editar Instructor</h2>
 <mat-dialog-content>
-  <form>
-    <mat-form-field class="full-width">
-      <mat-label>Nombre</mat-label>
-      <input matInput [(ngModel)]="data.instructor.nombre" name="nombre">
-    </mat-form-field>
+  <mat-accordion>
+    <!-- Sección de información personal -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Información Personal</mat-panel-title>
+      </mat-expansion-panel-header>
+      <form>
+        <mat-form-field class="full-width">
+          <mat-label>Nombre</mat-label>
+          <input matInput [(ngModel)]="data.instructor.nombreProfe" name="nombre">
+        </mat-form-field>
 
-    <mat-form-field class="full-width">
-      <mat-label>Apellido</mat-label>
-      <input matInput [(ngModel)]="data.instructor.apellido" name="apellido">
-    </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>Apellido</mat-label>
+          <input matInput [(ngModel)]="data.instructor.apellidoProfe" name="apellido">
+        </mat-form-field>
 
-    <mat-form-field class="full-width">
-      <mat-label>Identificación</mat-label>
-      <input matInput [(ngModel)]="data.instructor.identificacion" name="identificacion">
-    </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>Identificación</mat-label>
+          <input matInput [(ngModel)]="data.instructor.cedula" name="identificacion">
+        </mat-form-field>
 
-    <mat-form-field class="full-width">
-      <mat-label>Email</mat-label>
-      <input matInput [(ngModel)]="data.instructor.email" name="email">
-    </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput [(ngModel)]="data.instructor.emailProfe" name="email">
+        </mat-form-field>
 
-    <mat-form-field class="full-width">
-      <mat-label>Teléfono</mat-label>
-      <input matInput [(ngModel)]="data.instructor.telefono" name="telefono">
-    </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>Teléfono</mat-label>
+          <input matInput [(ngModel)]="data.instructor.numeroTelefono" name="telefono">
+        </mat-form-field>
+      </form>
+    </mat-expansion-panel>
 
-    <mat-form-field class="full-width">
-      <mat-label>Especialidad</mat-label>
-      <input matInput [value]="data.instructor.especialidad" name="especialidad" disabled>
-    </mat-form-field>
+    <!-- Sección de información profesional -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Información Profesional</mat-panel-title>
+      </mat-expansion-panel-header>
+      <form>
+        <mat-form-field class="full-width">
+          <mat-label>Especialidad</mat-label>
+          <input matInput [(ngModel)]="data.instructor.especialidad" name="especialidad" disabled>
+        </mat-form-field>
 
-    <mat-form-field class="full-width">
-      <mat-label>Disciplina</mat-label>
-      <mat-select [(ngModel)]="data.instructor.disciplina" name="disciplina">
-        <mat-option *ngFor="let disciplina of disciplinas" [value]="disciplina.nombre">
-          {{ disciplina.nombre }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </form>
+        <mat-form-field class="full-width">
+          <mat-label>Disciplina</mat-label>
+          <mat-select [(ngModel)]="data.instructor.disciplina" name="disciplina">
+            <mat-option *ngFor="let disciplina of disciplinas" [value]="disciplina.nombre">
+              {{ disciplina.nombre }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+    </mat-expansion-panel>
+  </mat-accordion>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">

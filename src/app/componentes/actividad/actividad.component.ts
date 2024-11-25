@@ -47,7 +47,7 @@ export class ActividadComponent implements OnInit {
 
   public actividades: Actividad[] = this.acti.actividades;
   public semes: Periodo | null = null;
-  public instructor: Instructor = new Instructor("", new Disciplina(0, "", "",""), 0);
+  public instructor: Instructor = new Instructor(0, "", "", "", "", "", "", "",new Disciplina(0, "", "",""), "", "");
   public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "", "");
   public tipo: TipoActividad = new TipoActividad(0,"", "", "");
   public escenario: Escenario = new Escenario(0, "", "", "", "", "","");
@@ -63,15 +63,15 @@ export class ActividadComponent implements OnInit {
   ngOnInit() {
     this.usuario=this.sesSer.getUser()
     this.listarActividades();
-    this.listarUsuarios();
+    this.listarInstructores();
     this.listarEscenarios();
     this.listarTiposActividad();
     this.consultarPeriodo();
   }
 
-  seleccionarInstructor(inst: Usuario) {
-    this.usuario = inst;
-    this.actividad.instructor_id = this.usuario.id;
+  seleccionarInstructor(inst: Instructor) {
+    this.instructor = inst;
+    this.actividad.instructor_id = this.instructor.id;
   }
 
   seleccionarTipoActividad(tipo: TipoActividad) {
@@ -96,10 +96,10 @@ export class ActividadComponent implements OnInit {
     );
   }
 
-  listarUsuarios() {
-    this.instser.obtenerUsuarios().subscribe(
+  listarInstructores() {
+    this.instser.obtenerInstructores().subscribe(
       (data) => {
-        this.usuarios = data;
+        this.instructores = data;
       }
     );
   }
@@ -130,7 +130,7 @@ export class ActividadComponent implements OnInit {
         !this.actividad.estado ||
         !this.escenario?.nombre ||
         !this.tipo?.titulo ||
-        !this.usuario?.nombre) {
+        !this.instructor?.nombreProfe) {
           // Si algún campo está vacío, muestra un mensaje de error
           this.mensajeError = 'Por favor, completa todos los campos requeridos.';
           return;
