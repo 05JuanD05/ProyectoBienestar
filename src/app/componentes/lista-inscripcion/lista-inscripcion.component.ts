@@ -15,118 +15,133 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
   styleUrls: ['./lista-inscripcion.component.scss']
 })
 export class ListaInscripcionComponent {
-  public fechaHoy2 = new Date();
   public fechaHoy = new Date();
-  public misIncripciones: Inscripcion[] = this.inscripcion.inscripcion;
+  public misIncripciones: Inscripcion[] = [];
   public incripcionesActividad: Inscripcion[] = [];
-  public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "");
-  public insc: Inscripcion | undefined;
-  public _usuario: Usuario[] = [];
-  public _actividad: Actividad = new Actividad();
-  public nuevaAsistencia: Asistencia | undefined;
-  public actividades: Actividad[] = this.acti.actividades;
-  public asistencias: Asistencia[] = this.asistencia.asistencia;
-  public usuariosList: Usuario[] = this.usua.usuarios;
-
-  // Arreglo para almacenar los IDs de las inscripciones seleccionadas
+  public usuario: Usuario = new Usuario(0, '', '', '', '', '', '', '', '', '');
+  public actividades: Actividad[] = [];
+  public asistencias: Asistencia[] = [];
+  public usuariosList: Usuario[] = [];
+  public inscripcionesFiltradas: Inscripcion[] = [];
   public seleccionados: number[] = [];
 
   constructor(
-    private inscripcion: InscripcionService,
-    private sesSer: SessionService,
-    private asistencia: AsistenciaService,
-    private acti: ActividadService,
-    private usua: UsuarioService
+    private inscripcionService: InscripcionService,
+    private sessionService: SessionService,
+    private asistenciaService: AsistenciaService,
+    private actividadService: ActividadService,
+    private usuarioService: UsuarioService
   ) {}
 
   ngOnInit() {
-    this.listarAsistencia();
     this.listarIncripciones();
-    this.usuario = this.sesSer.getUser();
     this.listarActividades();
+    this.listarUsuarios();
+    this.listarAsistencia();
+    this.usuario = this.sessionService.getUser();
   }
 
+  // Método para manejar el cambio en los checkboxes
   onCheckboxChange(event: any, id: number) {
     if (event.target.checked) {
-      this.seleccionados.push(id); // Añadir el ID si el checkbox está marcado
+      this.seleccionados.push(id); // Añadir ID seleccionado
     } else {
-      this.seleccionados = this.seleccionados.filter(item => item !== id); // Remover el ID si se desmarca
+      this.seleccionados = this.seleccionados.filter(item => item !== id); // Eliminar ID desmarcado
     }
   }
 
+  // Guardar asistencia para los seleccionados
   guardarAsistencia() {
     const confirmacion = window.confirm('¿Deseas guardar la asistencia para los estudiantes seleccionados?');
     if (!confirmacion) return;
 
-    // Crear las instancias de asistencia para cada ID seleccionado
-    const asistencias = this.seleccionados.map(id => new Asistencia(this.usuariosList.length + 1, true, new Date(), id));
+    const asistencias = this.seleccionados.map(id => {
+      return new Asistencia(this.asistencias.length + 1, true, new Date(), id);
+    });
 
-    // Enviar los datos de asistencia al servicio
     asistencias.forEach(asistencia => {
-      this.asistencia.createAsistencia(asistencia).subscribe(
-        response => {
-          console.log('Asistencia guardada:', response);
-        },
-        error => {
-          console.error('Error al guardar la asistencia:', error);
-        }
+      this.asistenciaService.createAsistencia(asistencia).subscribe(
+        response => console.log('Asistencia guardada:', response),
+        error => console.error('Error al guardar la asistencia:', error)
       );
     });
+
     alert('Asistencia guardada correctamente');
-    this.seleccionados = []; // Limpia los seleccionados después de guardar
+    this.seleccionados = []; // Limpiar seleccionados
   }
 
+  // Filtrar inscripciones por actividad seleccionada
+  filtrarPorActividad(valorSeleccionado: string): void {
+    if (!valorSeleccionado) {
+      this.inscripcionesFiltradas = this.misIncripciones; // Mostrar todo si no hay filtro
+      return;
+    }
+
+    const actividadId = parseInt(valorSeleccionado, 10);
+    this.inscripcionesFiltradas = this.misIncripciones.filter(inscripcion => inscripcion.actividad_id === actividadId);
+
+    console.log('Inscripciones filtradas:', this.inscripcionesFiltradas);
+  }
+
+  // Listar inscripciones desde el servicio
   listarIncripciones() {
-    this.inscripcion.obtenerInscripcion().subscribe((data) => {
-      this.misIncripciones = data;
-    });
-  }
-
-  listarUsuarios() {
-    this.usua.obtenerUsuarios().subscribe((data) => {
-      this.usuariosList = data;
-    });
-  }
-
-  listarActividades() {
-    this.acti.obtenerActividades().subscribe((data) => {
-      this.actividades = data;
-    });
-  }
-
-  listarAsistencia() {
-    this.asistencia.obtenerAsistencia().subscribe((data) => {
-      this.asistencias = data;
-    });
-  }
-
-  consultaAsistenciaE(id: number) {
-    return this.asistencias.some(
-      asistencia => asistencia.inscripcion_id === id && asistencia.fecha === this.fechaHoy
+    this.inscripcionService.obtenerInscripcion().subscribe(
+      (data: Inscripcion[]) => {
+        this.misIncripciones = data;
+        this.inscripcionesFiltradas = data; // Mostrar todo por defecto
+      },
+      error => console.error('Error al obtener inscripciones:', error)
     );
   }
 
-  agregarAsistencia(idAS: number) {
-    const confirmacion = window.confirm('¿Estás seguro de que deseas crear la asistencia?');
-    if (confirmacion && !this.consultaAsistenciaE(idAS)) {
-      this.nuevaAsistencia = new Asistencia(this.usuariosList.length + 1, true, new Date(), idAS);
-      this.asistencia.createAsistencia(this.nuevaAsistencia).subscribe(
-        response => console.log('Actividad agregada:', response),
-        error => console.error('Error al agregar la actividad:', error)
-      );
-    } else {
-      window.confirm('La asistencia ya existe');
-    }
+  // Listar usuarios desde el servicio
+  listarUsuarios() {
+    this.usuarioService.obtenerUsuarios().subscribe(
+      (data: Usuario[]) => (this.usuariosList = data),
+      error => console.error('Error al obtener usuarios:', error)
+    );
   }
 
+  // Listar actividades desde el servicio
+  listarActividades() {
+    this.actividadService.obtenerActividades().subscribe(
+      (data: Actividad[]) => {
+        console.log('Actividades recibidas:', data);
+        this.actividades = data;
+      },
+      error => console.error('Error al obtener actividades:', error)
+    );
+  }
+
+  // Listar asistencias desde el servicio
+  listarAsistencia() {
+    this.asistenciaService.obtenerAsistencia().subscribe(
+      (data: Asistencia[]) => (this.asistencias = data),
+      error => console.error('Error al obtener asistencias:', error)
+    );
+  }
+
+  // Verificar si existe asistencia para un estudiante en una fecha
+  consultaAsistenciaE(id: number) {
+    return this.asistencias.some(asistencia => asistencia.inscripcion_id === id && asistencia.fecha.toDateString() === this.fechaHoy.toDateString());
+  }
+  
+
+  // Eliminar asistencia
   eliminarEscenario(id: number) {
     const confirmacion = window.confirm('¿Estás seguro de que deseas eliminar la asistencia?');
     if (confirmacion) {
-      this.asistencia.eliminarAsistencia(id).subscribe(response => {
-        console.log('Asistencia eliminada:', response);
-        this.listarAsistencia();
-      });
+      this.asistenciaService.eliminarAsistencia(id).subscribe(
+        response => {
+          console.log('Asistencia eliminada:', response);
+          this.listarAsistencia(); // Refrescar lista
+        },
+        error => console.error('Error al eliminar asistencia:', error)
+      );
     }
   }
-}
 
+  actualizarAsistencia(inscripcion: Inscripcion) {
+    console.log('Estado de asistencia actualizado:', inscripcion.asistencia);
+  }
+}

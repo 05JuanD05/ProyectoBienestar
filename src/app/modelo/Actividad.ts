@@ -21,6 +21,7 @@ export class Actividad {
     periodo_id: number = 0;
     coordinador_id: number = 0;
     instructor_id: number = 0;
+    nombre!: string; ;
 
 constructor(
         id: number = 0,
@@ -37,7 +38,8 @@ constructor(
         tipoActividad_id: number = 0,
         periodo_id: number = 0,
         coordinador_id: number = 0,
-        instructor_id: number = 0
+        instructor_id: number = 0,
+        
     ) {
         this.id = id;
         this.titulo = titulo;

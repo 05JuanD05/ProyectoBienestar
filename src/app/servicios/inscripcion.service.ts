@@ -22,8 +22,8 @@ export class InscripcionService {
     return this.http.post(this.apiUrlInscripcion, actividad_inscrita);
   }
   
-  obtenerInscripcion(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrlInscripcion);
+  obtenerInscripcion(): Observable<Inscripcion[]> {
+    return this.http.get<Inscripcion[]>(this.apiUrlInscripcion);
   }
 
   eliminarInscripcion(id: number): Observable<void> {

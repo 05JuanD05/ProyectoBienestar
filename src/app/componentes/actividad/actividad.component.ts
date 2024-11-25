@@ -20,9 +20,8 @@ import { SessionService } from 'src/app/servicios/session.service';
   styleUrls: ['./actividad.component.scss']
 })
 export class ActividadComponent implements OnInit {
-
+ 
   public usuarios: Usuario[] = [];
-
   public actividad: Actividad = new Actividad(
     0,
     " ",
@@ -41,7 +40,6 @@ export class ActividadComponent implements OnInit {
     0
   );
   public actividades: Actividad[] = this.acti.actividades;
-
   public instructor: Instructor = new Instructor("", new Disciplina(0, "", "",""), 0);
   public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "");
   public tipo: TipoActividad = new TipoActividad(0,"", "", "");
@@ -52,8 +50,15 @@ export class ActividadComponent implements OnInit {
   public instructores: Instructor[] = [];
   public tipoActividades: TipoActividad [] = [];
   public tipos: TipoActividad[] = this.tipaser.tipos;
+  public nombre: string = '';
 
-  constructor(private acti: ActividadService, private instser: InstructorService, private escenar: EscenarioService, private tipaser: TipoActividadService, private sesSer: SessionService ) { }
+  constructor(
+    private acti: ActividadService, 
+    private instser: InstructorService, 
+    private escenar: EscenarioService, 
+    private tipaser: TipoActividadService, 
+    private sesSer: SessionService 
+  ) { }
  
   ngOnInit() {
     this.usuario=this.sesSer.getUser()
