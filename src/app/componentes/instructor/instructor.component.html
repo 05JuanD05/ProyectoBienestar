@@ -3,50 +3,58 @@
         <h1>Gestión de Instructores y Disciplinas</h1>
     </header>
     <main class="container">
-        <div class="row">
-            <!-- Columna izquierda: Instructores -->
-            <aside class="izquierda col-2">
-                <section>
-                    <h2>Instructores</h2>
-                    <hr>
-                    <div class="cinst table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">Apellido</th>
-                                    <th scope="col">Identificación</th>
-                                    <th scope="col">Tipo</th>
-                                    <th scope="col">Disciplina</th>
-                                    <th scope="col">Opciones</th>
-                                </tr>
-                            </thead>
-                            <tbody *ngFor="let usuario of usuarios">
-                                <tr *ngIf="usuario.tipo == 'Instructor'">
-                                    <td scope="row">{{ usuario.id }}</td>
-                                    <td>{{ usuario.nombre }}</td>
-                                    <td>{{ usuario.apellido }}</td>
-                                    <td>{{ usuario.identificacion }}</td>
-                                    <td>{{ usuario.tipo }}</td>
-                                    <td>Disciplina</td>
-                                    <td>
-                                        <button type="button" (click)="editarInstructor(usuario)" class="bi bi-pencil btn btn-primary m-1"></button>
-                                        <button type="button" (click)="eliminarInstructor(usuario.id);" class="bi bi-trash btn btn-danger m-1"></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+        <div class="accordion" id="accordionExample">
+            <!-- Instructores -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingInstructores">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructores" aria-expanded="true" aria-controls="collapseInstructores">
+                        Instructores
+                    </button>
+                </h2>
+                <div id="collapseInstructores" class="accordion-collapse collapse show" aria-labelledby="headingInstructores" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Apellido</th>
+                                        <th scope="col">Identificación</th>
+                                        <th scope="col">Tipo</th>
+                                        <th scope="col">Disciplina</th>
+                                        <th scope="col">Opciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let instructor of instructores">
+                                    <tr *ngIf="instructor.tipoI == 'Instructor'">
+                                        <td scope="row">{{ instructor.id }}</td>
+                                        <td>{{ instructor.nombreProfe }}</td>
+                                        <td>{{ instructor.apellidoProfe }}</td>
+                                        <td>{{ instructor.cedula }}</td>
+                                        <td>{{ instructor.tipoI }}</td>
+                                        <td>{{ instructor.disciplina.nombre }}</td>
+                                        <td>
+                                            <button mat-raised-button color="primary" class="btn-outline-primary" (click)="abrirDialogoEditar(instructor)">Editar</button>
+                                            <button type="button" class="btn-outline-danger" (click)="eliminarInstructor(instructor.id);">Eliminar</button>
+                                        </td>                                        
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </section>
-            </aside>
+                </div>
+            </div>
 
-            <!-- Columna derecha: Disciplinas y Formulario -->
-            <section class="derecha col-10">
-                <!-- Disciplinas disponibles -->
-                <article class="cdis">
-                    <h3 style="text-align: center;">Disciplinas Disponibles</h3>
-                    <div class="lim">
+            <!-- Disciplinas -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingDisciplinas">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDisciplinas" aria-expanded="false" aria-controls="collapseDisciplinas">
+                        Disciplinas Disponibles
+                    </button>
+                </h2>
+                <div id="collapseDisciplinas" class="accordion-collapse collapse" aria-labelledby="headingDisciplinas" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
                         <table class="table table-bordered">
                             <thead>
                                 <tr style="text-align: center;">
@@ -64,58 +72,62 @@
                             </tbody>
                         </table>
                     </div>
-                </article>
+                </div>
+            </div>
 
-                <!-- Formulario de instructor -->
-                <article class="cform card p-3 mt-3">
-                    <h3 style="text-align: center;">Datos de Instructor</h3>
-                    <div class="row gy-4 gy-xl-2 p-xl-2 cdar">
-                        <!-- Campos del formulario -->
-                        <div class="col-12 col-md-6">
-                            <label>Nombre:</label>
-                            <input type="text" [(ngModel)]="usuario.nombre" placeholder="Nombre" class="form-control">
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label>Apellido:</label>
-                            <input type="text" [(ngModel)]="usuario.apellido" placeholder="Apellido" class="form-control">
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label>Identificación:</label>
-                            <input type="text" [(ngModel)]="usuario.identificacion" placeholder="Identificación" class="form-control">
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label>Email:</label>
-                            <input type="text" [(ngModel)]="usuario.email" placeholder="Email" class="form-control">
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label>Teléfono:</label>
-                            <input type="text" [(ngModel)]="usuario.telefono" placeholder="Teléfono" class="form-control">
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label>Especialidad:</label>
-                            <input type="text" [(ngModel)]="instructor.especialidad" placeholder="Especialidad" class="form-control">
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label>Login:</label>
-                            <input type="text" [(ngModel)]="usuario.login" placeholder="Login" class="form-control">
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label>Password:</label>
-                            <input type="password" [(ngModel)]="usuario.password" placeholder="Password" class="form-control">
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label>Disciplina:</label>
-                            <input type="text" value="{{instructor.disciplina.nombre}}" class="form-control" disabled>
-                        </div>
-                        <!-- Botones -->
-                        <div>
-                            <button (click)="crearInstructor()" class="btn btn-outline-success m-1">Crear</button>
-                            <button type="button" (click)="editarInstructor(usuario)" class="bi bi-pencil btn btn-primary m-1"></button>
-                            <button (click)="guardarCambios()" class="btn btn-outline-primary m-1" id="esta2" disabled>Editar</button>
+            <!-- Formulario -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFormulario">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFormulario" aria-expanded="false" aria-controls="collapseFormulario">
+                        Datos de Instructor
+                    </button>
+                </h2>
+                <div id="collapseFormulario" class="accordion-collapse collapse" aria-labelledby="headingFormulario" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="row gy-4 gy-xl-2 p-xl-2 cdar">
+                            <div class="col-12 col-md-6">
+                                <label>Nombre:</label>
+                                <input type="text" [(ngModel)]="instructor.nombreProfe" placeholder="Nombre" class="form-control">
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label>Apellido:</label>
+                                <input type="text" [(ngModel)]="instructor.apellidoProfe" placeholder="Apellido" class="form-control">
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label>Identificación:</label>
+                                <input type="text" [(ngModel)]="instructor.cedula" placeholder="Identificación" class="form-control">
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label>Email:</label>
+                                <input type="text" [(ngModel)]="instructor.emailProfe" placeholder="Email" class="form-control">
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label>Teléfono:</label>
+                                <input type="text" [(ngModel)]="instructor.numeroTelefono" placeholder="Teléfono" class="form-control">
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label>Especialidad:</label>
+                                <input type="text" [(ngModel)]="instructor.especialidad" placeholder="Instructor" class="form-control" disabled>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label>Login:</label>
+                                <input type="text" [(ngModel)]="instructor.loginP" placeholder="Login" class="form-control">
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label>Password:</label>
+                                <input type="password" [(ngModel)]="instructor.passwordP" placeholder="Password" class="form-control">
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label>Disciplina:</label>
+                                <input type="text" [(ngModel)]="instructor.disciplina.nombre" class="form-control" disabled>
+                            </div>
+                            <div>
+                                <button (click)="crearInstructor()" class="btn btn-outline-success m-1">Crear</button>
+                            </div>
                         </div>
                     </div>
-                </article>
-            </section>
+                </div>
+            </div>
         </div>
     </main>
 </div>

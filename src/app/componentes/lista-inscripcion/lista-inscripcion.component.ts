@@ -19,7 +19,7 @@ export class ListaInscripcionComponent {
   public fechaHoy = new Date();
   public misIncripciones: Inscripcion[] = this.inscripcion.inscripcion;
   public incripcionesActividad: Inscripcion[] = [];
-  public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "");
+  public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "", "");
   public insc: Inscripcion | undefined;
   public _usuario: Usuario[] = [];
   public _actividad: Actividad = new Actividad();

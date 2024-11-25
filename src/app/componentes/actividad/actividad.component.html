@@ -16,15 +16,15 @@
                             <th scope="col">Opciones</th>
                         </tr>
                     </thead>
-                    <tbody *ngFor="let usuario of usuarios">
-                        <tr *ngIf="usuario.tipo == 'Instructor'">
+                    <tbody *ngFor="let instructor of instructores">
+                        <tr *ngIf="instructor.tipoI == 'Instructor'">
                             <td scope="row"><img src="/assets/usuariosImagenes/1.jpg" width="80px"></td>
-                            <td>{{ usuario.nombre }}</td>
-                            <td>{{ usuario.apellido }}</td>
-                            <td>{{ usuario.tipo }}</td>
-                            <td>Disciplina</td>
+                            <td>{{ instructor.nombreProfe }}</td>
+                            <td>{{ instructor.apellidoProfe }}</td>
+                            <td>{{ instructor.tipoI }}</td>
+                            <td>{{ instructor.disciplina.nombre }} </td>
                             <td>
-                                <button type="button" class="btn btn-primary m-1" (click)="seleccionarInstructor(usuario)">Seleccionar</button>
+                                <button type="button" class="btn btn-primary m-1" (click)="seleccionarInstructor(instructor)">Seleccionar</button>
                             </td>
                         </tr>
                     </tbody>
@@ -132,10 +132,10 @@
               </div>
               <div class="col-12 col-md-6">
                   <label>Instructor:</label>
-                  <input type="text" value="{{usuario.nombre}}" disabled class="form-control form-control-sm me-2">
+                  <input type="text" value="{{instructor.nombreProfe}}" disabled class="form-control form-control-sm me-2">
               </div>
               <div class="col-12 col-md-6" hidden>
-                  <input type="text" value="{{usuario.id}}" disabled class="form-control form-control-sm me-2">
+                  <input type="text" value="{{instructor.id}}" disabled class="form-control form-control-sm me-2">
               </div>
               <div *ngIf="mensajeError" class="alert alert-danger">
                 {{ mensajeError }}

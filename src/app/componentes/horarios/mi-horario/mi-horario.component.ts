@@ -15,7 +15,7 @@ export class MiHorarioComponent {
 
   public actividades: Actividad[] = this.acti.actividades;
 
-  public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "");
+  public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "", "");
 
   public MisIncripciones: Inscripcion[] = this.inscripcion.inscripcion;
 
