@@ -28,12 +28,21 @@
 
     <mat-form-field class="full-width">
       <mat-label>Especialidad</mat-label>
-      <input matInput [(ngModel)]="data.instructor.especialidad" name="especialidad">
+      <input matInput [value]="data.instructor.especialidad" name="especialidad" disabled>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Disciplina</mat-label>
+      <mat-select [(ngModel)]="data.instructor.disciplina" name="disciplina">
+        <mat-option *ngFor="let disciplina of disciplinas" [value]="disciplina.nombre">
+          {{ disciplina.nombre }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
   </form>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancelar</button>
-  <button mat-button color="primary" (click)="guardar()">Guardar</button>
+  <button mat-button color="primary" (click)="editarInstructor()">Guardar</button>
 </mat-dialog-actions>
