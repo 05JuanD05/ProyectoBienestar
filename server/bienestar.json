@@ -191,13 +191,7 @@
     {
       "id": "2",
       "nombre": "Ajedrez",
-      "descripcion": "Ajedrez",
-      "estado": "Activo"
-    },
-    {
-      "id": "3",
-      "nombre": "Voleybol",
-      "descripcion": "Voleybol",
+      "descripcion": "nose",
       "estado": "Activo"
     }
   ],
