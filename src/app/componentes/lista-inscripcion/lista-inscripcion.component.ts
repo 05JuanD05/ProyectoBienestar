@@ -8,6 +8,8 @@ import { AsistenciaService } from 'src/app/servicios/asistencia.service';
 import { InscripcionService } from 'src/app/servicios/inscripcion.service';
 import { SessionService } from 'src/app/servicios/session.service';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
+import { forkJoin } from 'rxjs';
+
 
 @Component({
   selector: 'app-lista-inscripcion',
@@ -17,7 +19,7 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
 export class ListaInscripcionComponent {
   public fechaHoy = new Date();
   public misIncripciones: Inscripcion[] = [];
-  public incripcionesActividad: Inscripcion[] = [];
+  public inscripcionesActividad: Inscripcion[] = [];
   public usuario: Usuario = new Usuario(0, '', '', '', '', '', '', '', '', '');
   public actividades: Actividad[] = [];
   public asistencias: Asistencia[] = [];
@@ -34,11 +36,23 @@ export class ListaInscripcionComponent {
   ) {}
 
   ngOnInit() {
-    this.listarIncripciones();
-    this.listarActividades();
-    this.listarUsuarios();
-    this.listarAsistencia();
-    this.usuario = this.sessionService.getUser();
+    forkJoin({
+      inscripciones: this.inscripcionService.obtenerInscripcion(),
+      actividades: this.actividadService.obtenerActividades(),
+      usuarios: this.usuarioService.obtenerUsuarios(),
+      asistencias: this.asistenciaService.obtenerAsistencia()
+    }).subscribe(
+
+      ({ inscripciones, actividades, usuarios, asistencias }) => {
+        this.misIncripciones = inscripciones;
+        this.inscripcionesFiltradas = inscripciones;
+        this.actividades = actividades;
+        this.usuariosList = usuarios;
+        this.asistencias = asistencias;
+        this.usuario = this.sessionService.getUser();
+      },
+      error => console.error('Error al cargar los datos:', error)
+    );
   }
 
   // Método para manejar el cambio en los checkboxes
@@ -79,53 +93,7 @@ export class ListaInscripcionComponent {
 
     const actividadId = parseInt(valorSeleccionado, 10);
     this.inscripcionesFiltradas = this.misIncripciones.filter(inscripcion => inscripcion.actividad_id === actividadId);
-
-    console.log('Inscripciones filtradas:', this.inscripcionesFiltradas);
   }
-
-  // Listar inscripciones desde el servicio
-  listarIncripciones() {
-    this.inscripcionService.obtenerInscripcion().subscribe(
-      (data: Inscripcion[]) => {
-        this.misIncripciones = data;
-        this.inscripcionesFiltradas = data; // Mostrar todo por defecto
-      },
-      error => console.error('Error al obtener inscripciones:', error)
-    );
-  }
-
-  // Listar usuarios desde el servicio
-  listarUsuarios() {
-    this.usuarioService.obtenerUsuarios().subscribe(
-      (data: Usuario[]) => (this.usuariosList = data),
-      error => console.error('Error al obtener usuarios:', error)
-    );
-  }
-
-  // Listar actividades desde el servicio
-  listarActividades() {
-    this.actividadService.obtenerActividades().subscribe(
-      (data: Actividad[]) => {
-        console.log('Actividades recibidas:', data);
-        this.actividades = data;
-      },
-      error => console.error('Error al obtener actividades:', error)
-    );
-  }
-
-  // Listar asistencias desde el servicio
-  listarAsistencia() {
-    this.asistenciaService.obtenerAsistencia().subscribe(
-      (data: Asistencia[]) => (this.asistencias = data),
-      error => console.error('Error al obtener asistencias:', error)
-    );
-  }
-
-  // Verificar si existe asistencia para un estudiante en una fecha
-  consultaAsistenciaE(id: number) {
-    return this.asistencias.some(asistencia => asistencia.inscripcion_id === id && asistencia.fecha.toDateString() === this.fechaHoy.toDateString());
-  }
-  
 
   // Eliminar asistencia
   eliminarEscenario(id: number) {
@@ -134,7 +102,7 @@ export class ListaInscripcionComponent {
       this.asistenciaService.eliminarAsistencia(id).subscribe(
         response => {
           console.log('Asistencia eliminada:', response);
-          this.listarAsistencia(); // Refrescar lista
+          this.listarAsistencia() // Refrescar lista
         },
         error => console.error('Error al eliminar asistencia:', error)
       );
@@ -143,5 +111,15 @@ export class ListaInscripcionComponent {
 
   actualizarAsistencia(inscripcion: Inscripcion) {
     console.log('Estado de asistencia actualizado:', inscripcion.asistencia);
+  }
+
+  listarAsistencia() {
+    this.asistenciaService.obtenerAsistencia().subscribe(
+      (data: Asistencia[]) => {
+        this.asistencias = data;
+        console.log('Asistencias actualizadas:', this.asistencias);
+      },
+      error => console.error('Error al obtener asistencias:', error)
+    );
   }
 }

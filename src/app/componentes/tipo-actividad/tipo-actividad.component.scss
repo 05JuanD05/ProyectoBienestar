@@ -1,31 +1,120 @@
+/* Estilo para la columna izquierda */
 .izquierda {
     width: 70%;
     height: 700px;
     overflow-y: auto;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    padding: 15px;
+    border-radius: 10px; /* Bordes redondeados */
+    background-color: #ffffff; /* Fondo blanco */
 }
 
+/* Estilo para la columna derecha */
 .derecha {
     width: 30%;
+    padding: 15px;
+    background-color: #f9f9f9; /* Fondo gris claro */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    border-radius: 10px; /* Bordes redondeados */
 }
 
+/* Estilo para la tabla */
 .table {
     width: 100%;
+    border-collapse: collapse; /* Elimina los espacios entre celdas */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra en la tabla */
+    border-radius: 10px;
+    background-color: #ffffff; /* Fondo blanco */
 }
 
+/* Estilo para las celdas de la tabla */
+.table th, .table td {
+    text-align: center;
+    padding: 12px; /* Espaciado mayor */
+    border-bottom: 1px solid #ddd;
+    box-shadow: 4px 8px 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Estilo para el encabezado de la tabla */
+.table thead {
+    background-color: #007bff; /* Color de fondo azul */
+    color: white; /* Texto blanco */
+    font-weight: bold; /* Texto en negrita */
+    border-radius: 10px;
+    box-shadow: 4px 8px 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Estilo para las filas de la tabla */
+.table tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.1); /* Resalta las filas */
+    cursor: pointer;
+    box-shadow: 4px 8px 5px rgba(0, 123, 255, 0.3);
+    border: 24px;
+    
+}
+
+/* Estilo para los textos con overflow */
 .text-overflow {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 250px;
+    max-width: 250px; /* Limita el ancho de las celdas */
 }
 
+/* Estilo para los botones de opciones */
 .btnOp {
     display: flex;
     justify-content: center;
-    padding: 2px;
+    padding: 5px;
+    box-shadow: 4px 8px 5px rgba(0, 123, 255, 0.3);
 }
 
+/* Estilo para los títulos */
 h1 {
-    text-align:center;
-    color:rgb(48, 48, 48);
+    text-align: center;
+    color: rgb(48, 48, 48);
+    margin-bottom: 20px; /* Añadir margen inferior */
+    font-size: 2rem; /* Aumentar el tamaño de la fuente */
+    font-weight: 500; /* Negrita */
+    font-family: arial;
+    box-shadow:4px 8px 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Efecto hover para los botones */
+button {
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: 4px 8px 5px rgba(0, 123, 255, 0.3);
+    display: 24px;
+   
+}
+
+button:hover {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra al pasar el mouse */
+    transform: translateY(-2px); /* Levanta el botón ligeramente */
+}
+
+/* Estilo general para los inputs */
+input[type="text"] {
+    border: 1px solid #ccc; /* Borde sutil */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado dentro del input */
+    width: 100%;
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+    transition: border-color 0.3s ease;
+    box-shadow: 4px 8px 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Efecto hover en los inputs */
+input[type="text"]:focus {
+    border-color: #007bff; /* Color de borde azul al hacer foco */
+    box-shadow: 4px 8px 5px rgba(0, 123, 255, 0.3); /* Sombra en el input */
+}
+
+/* Sombra en el contenedor general */
+.Container-fluid {
+    padding: 20px;
+    box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.1); /* Sombra más grande */
+    border-radius: 15px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Fondo gris claro */
+    box-shadow: 4px 8px 5px rgba(0, 123, 255, 0.3);
 }

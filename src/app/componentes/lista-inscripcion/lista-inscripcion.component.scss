@@ -1,86 +1,76 @@
-/* Global Styles */
-h1 {
-    text-align: center;
-    color: #333;
-    font-size: 2rem;
+/* Encabezado fijo */
+#main-header {
+  background-color: #f8f9fa; /* Fondo claro */
+  padding: 20px; /* Espaciado interno */
+  border-bottom: 1px solid #ddd; /* Línea divisoria */
+  position: sticky; /* Fija el encabezado en la parte superior */
+  top: 0; /* Posición superior para sticky */
+  z-index: 10; /* Asegura que esté por encima de otros elementos */
 }
 
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 20px;
+#main-header h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 2rem;
+  color: #333;
 }
 
-/* Card Styles */
-.carta {
-    flex: 1 0 30%;
-    margin: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
-
-    &:hover {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transform: translateY(-2px);
-    }
+#main-header .form-group {
+  margin-top: 10px;
 }
 
-/* Table Styles */
+/* Contenedor de la lista de inscripciones */
+#main-content {
+  margin-top: 80px; /* Espacio suficiente debajo del encabezado */
+}
+
+/* Tabla */
 .table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;  /* Ocupa todo el ancho disponible */
+  border-collapse: collapse;
+  margin: 0;  /* Elimina márgenes */
 }
 
-.table th, .table td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+.table th,
+.table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
 }
 
 .table th {
-    background-color: #f2f2f2;
-    font-weight:   
- bold;
+  background-color: #f2f2f2;
+  font-weight: bold;
+  text-align: center;
 }
 
-/* Button Styles */
-.btnOp {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 10px;
+.table td {
+  text-align: center;
 }
 
-.delete, .edit, .estado {
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
+/* Checkboxes */
+input[type="checkbox"] {
+  transform: scale(1.2);  /* Agrandar el tamaño del checkbox */
 }
 
-.delete {
-    background-color: #ff6666;
-    color: #fff;
+/* Estilos de botón */
+button {
+  width: 100%;  /* Botón ocupa todo el ancho */
+  padding: 10px;
 }
 
-.edit {
-    background-color: #6666ff;
-    color: #fff;
-}
-
-.estado {
-    background-color: #99ff99;
-    color: #000;
-}
-.izquierda {
-    display: flex;
-    flex-direction: column;
-    /* Additional styles */
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  #main-header h1 {
+    font-size: 1.5rem;  /* Ajustar tamaño del título en pantallas pequeñas */
   }
-  
-  @media (max-width: 768px) {
-    .table th,
-    .table td {
-      font-size: 14px;
-      padding: 5px; /* Adjust padding if needed */
-    }
+
+  .table th,
+  .table td {
+    font-size: 14px;
+    padding: 8px;
   }
+
+  button {
+    width: 100%;  /* Asegura que el botón ocupe todo el ancho */
+  }
+}
