@@ -120,7 +120,7 @@
       "instructor_id": "8"
     },
     {
-      "id": 1,
+      "id": "1",
       "titulo": " asd",
       "dia": "Martes",
       "estado": "Inactivo",
@@ -137,7 +137,7 @@
       "instructor_id": 0
     },
     {
-      "id": 2,
+      "id": "2",
       "titulo": "rgrg",
       "dia": "Jueves",
       "estado": "Inactivo",
@@ -235,7 +235,7 @@
       "estado": "Activo"
     },
     {
-      "id": 0,
+      "id": "0",
       "nombre": "asd",
       "descripcion": "asd",
       "estado": "Activo"
@@ -252,20 +252,11 @@
       "imagen": ""
     },
     {
-      "id": 0,
-      "nombre": "estadio",
-      "direccion": "12345ggg",
-      "coordenadaX": "gfgfgfg6464",
-      "coordenadaY": "hfhf6364",
-      "estado": "Inactivo",
-      "imagen": ""
-    },
-    {
-      "id": 0,
-      "nombre": "hola",
-      "direccion": "hola",
-      "coordenadaX": "hola",
-      "coordenadaY": "hola",
+      "id": "0",
+      "nombre": "Coliseo De Voleibol Norton Madrid",
+      "direccion": "Andalucia, Cartagena de Indias",
+      "coordenadaX": "10.402180121974027",
+      "coordenadaY": "-75.50501641866154",
       "estado": "Activo",
       "imagen": ""
     }
@@ -526,7 +517,7 @@
       }
     },
     {
-      "id": 0,
+      "id": "0",
       "nombreProfe": "Juan",
       "apellidoProfe": "Juan",
       "cedula": "231323",
@@ -545,7 +536,7 @@
       "passwordP": "juan"
     },
     {
-      "id": 0,
+      "id": "0",
       "nombreProfe": "Martin",
       "apellidoProfe": "Martin",
       "cedula": "12121212",
@@ -564,7 +555,7 @@
       "passwordP": "martin"
     },
     {
-      "id": 0,
+      "id": "0",
       "nombreProfe": "Carmen",
       "apellidoProfe": "Jesus",
       "cedula": "1312121",
@@ -583,7 +574,7 @@
       "passwordP": "carmen"
     },
     {
-      "id": 1,
+      "id": "1",
       "nombreProfe": "Harry",
       "apellidoProfe": "Osborn",
       "cedula": "12212",
@@ -602,7 +593,7 @@
       "passwordP": "harry"
     },
     {
-      "id": 2,
+      "id": "2",
       "nombreProfe": "Luis",
       "apellidoProfe": "Nose",
       "cedula": "828282",
@@ -685,7 +676,7 @@
       "estado": "Activo"
     },
     {
-      "id": 0,
+      "id": "0",
       "codigo": "Hhah",
       "nombre": "haha",
       "estado": "Activo"
@@ -705,7 +696,7 @@
       "descripcion": "Si"
     },
     {
-      "id": 0,
+      "id": "0",
       "titulo": "asd",
       "objetivo": "asd",
       "descripcion": "asd"

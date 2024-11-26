@@ -46,7 +46,7 @@ export class EscenarioComponent implements OnInit {
       (data) => {
         this.escenarios = data.map((escenario: any) => ({
           ...escenario,
-          id: String(escenario.id)  // Convertir el id a string si necesario
+          id: String(escenario.id)
         }));
       }
     );
@@ -61,12 +61,17 @@ export class EscenarioComponent implements OnInit {
   }
 
   crearEscenario(): void {
-    this.escenario.id = String(this.escenario.id); // Aseguramos que sea string
+    if (!this.escenario.nombre.trim() || !this.escenario.direccion.trim() || 
+      !this.imagenSeleccionada || !this.escenario.estado){
+      alert('Por favor, completa todos los campos requeridos.');
+      return;
+    }
+    this.escenario.id = String(this.escenario.id);
     this.escenar.createEscenario(this.escenario).subscribe(
       (response) => {
         console.log('Escenario agregado:', response);
         this.listarEscenarios();
-        this.escenario = new Escenario("0", "", "", "", "", "", ""); // Limpiar el formulario
+        this.escenario = new Escenario("0", "", "", "", "", "", "");
       }
     );
   }
@@ -101,13 +106,13 @@ export class EscenarioComponent implements OnInit {
   };
 
   eliminarEscenario(id: string) {
-    const idAsNumber = Number(id); // Convertir el ID a número
-    if (!isNaN(idAsNumber)) { // Verificar que el ID convertido sea válido
+    const idAsNumber = Number(id);
+    if (!isNaN(idAsNumber)) {
       this.escenar.eliminarEscenario(idAsNumber).subscribe(
         (response) => {
           console.log('El escenario se eliminó:', response);
           this.listarEscenarios();
-          this.escenario = new Escenario("0", "", "", "", "", "", ""); // Limpiar el formulario
+          this.escenario = new Escenario("0", "", "", "", "", "", "");
         }
       );
     } else {
@@ -117,11 +122,11 @@ export class EscenarioComponent implements OnInit {
   
 
   consultarEscenario(id: string) {
-    const idAsNumber = Number(id); // Convertir el ID a número
-    if (!isNaN(idAsNumber)) { // Validar que la conversión sea correcta
+    const idAsNumber = Number(id);
+    if (!isNaN(idAsNumber)) {
       this.escenar.consultarEscenario(idAsNumber).subscribe(
         (data) => {
-          this.escenario = data; // Asignar los datos al modelo
+          this.escenario = data;
         },
         (error) => {
           console.error('Error al consultar el escenario:', error);
@@ -134,13 +139,13 @@ export class EscenarioComponent implements OnInit {
   
 
   actualizarEscenario() {
-    const idAsNumber = Number(this.escenario.id); // Convertir el ID a número
+    const idAsNumber = Number(this.escenario.id);
     if (!isNaN(idAsNumber)) {
       this.escenar.actualizarEscenario(idAsNumber, this.escenario).subscribe(
         (response) => {
           console.log('Escenario actualizado:', response);
           this.listarEscenarios();
-          this.escenario = new Escenario("0", "", "", "", "", "", ""); // Limpiar el formulario
+          this.escenario = new Escenario("0", "", "", "", "", "", "");
         }
       );
     } else {

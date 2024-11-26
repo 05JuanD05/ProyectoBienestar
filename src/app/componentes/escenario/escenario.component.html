@@ -41,9 +41,9 @@
                 <div class="card p-3 mt-3">
                     <div><h1>Nuevo Escenario</h1></div>
                     <div>Nombre</div>
-                    <div><input type="text" [(ngModel)]="escenario.nombre" placeholder="Nombre" class="form-control me-2"></div>
+                    <div><input type="text" [(ngModel)]="escenario.nombre" placeholder="Nombre" class="form-control me-2" [ngClass]="{'is-invalid': !escenario.nombre.trim()}"></div>
                     <div>Direccion</div>
-                    <div><input type="text" [(ngModel)]="escenario.direccion" placeholder="Direccion" class="form-control me-2"></div>
+                    <div><input type="text" [(ngModel)]="escenario.direccion" placeholder="Direccion" class="form-control me-2" [ngClass]="{'is-invalid': !escenario.direccion.trim()}"></div>
                     <div>CoordenadasX</div>
                     <div><input type="text" [(ngModel)]="escenario.coordenadaX" placeholder="CoordenadasX" class="form-control me-2"></div>
                     <div>CoordenadasY</div>
@@ -63,17 +63,19 @@
 
                     <!-- Estado del escenario -->
                     <form action="#">
-                        <select [(ngModel)]="escenario.estado" name="lenguajes" id="lang" style="width: auto;" class="form-select form-select-sm">
+                        <select [(ngModel)]="escenario.estado" name="lenguajes" id="lang" style="width: auto;" class="form-select form-select-sm" [ngClass]="{'is-invalid': !escenario.estado.trim()}">
                             <option value="" disabled selected hidden>Selecciona estado</option>
                             <option value="Activo">Activo</option>
                             <option value="Inactivo">Inactivo</option>
                         </select>
                     </form>
 
-                    <!-- Botones -->
                     <br>
                     <div>
-                        <button type="button" (click)="crearEscenario()" class="btn btn-outline-success m-1" id="add">Agregar</button>
+                        <button type="button" (click)="crearEscenario()" class="btn btn-outline-success m-1" id="add"
+                        [disabled]="!escenario.nombre.trim()|| !escenario.direccion.trim()||
+                        !escenario.estado.trim() || !previsualizacion.trim()"
+                        >Agregar</button>
                         <button type="button" (click)="actualizarEscenario()" class="btn btn-outline-primary m-1" id="esta2" [disabled]="!escenario.id">Editar</button>
                     </div>
                 </div>

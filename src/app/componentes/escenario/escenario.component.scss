@@ -23,6 +23,8 @@ input[type="text"]:hover,
 .form-select:hover,
 #formFileSm:hover{
     transform: translateY(-3px);
+    width: 100%;
+    border-collapse: collapse;
 
 }
 
@@ -49,7 +51,6 @@ input[type="text"]:focus,
 .cards:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.199);
-
 }
 
 .carta {
@@ -67,3 +68,17 @@ input[type="text"]:focus,
     text-overflow: ellipsis;
     max-width: 250px;
 }
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline-success, .btn-outline-primary {
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+.is-invalid {
+    border: 2px solid red;
+  }
