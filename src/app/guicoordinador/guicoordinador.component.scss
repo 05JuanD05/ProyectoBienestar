@@ -1,81 +1,79 @@
-.left{
-  height: 100vh;
+.left {
+  background-color: #343a40; /* Fondo negro */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Ajusta los elementos al inicio */
+  width: 300px; /* Ancho fijo del menú lateral */
 }
 
-.contcoordinador{
+.contcoordinador {
   display: grid;
-  grid-template-columns: auto 1fr;
-  height: 100%;
+  grid-template-columns: 300px 1fr; /* Diseño de dos columnas: menú y contenido */
+  min-height: 100vh; /* Asegura que el contenedor ocupe toda la pantalla */
 }
 
 .contenido {
-  height: 100%;
+  padding: 1rem;
+  background-color: #f8f9fa; /* Fondo claro para el área de contenido */
+  min-height: 100vh; /* Asegura que también ocupe toda la pantalla */
+}
+
+.scroll-content {
+  overflow-y: auto; /* Habilita el desplazamiento vertical */
+  height: auto; /* Permite que el contenido determine la altura */
+}
+
+.user-container {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.user-avatar1 img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
 }
 
 .btn1 {
   display: block;
   width: 100%;
   padding: 10px;
-  text-align: center;
+  text-align: left;
   background-color: transparent;
-  color: antiquewhite;
+  color: #fff;
   border: none;
   border-radius: 3px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  text-decoration: none; /* Si se trata de un enlace */
 }
 
 .btn1:hover {
   background-color: #0056b3;
 }
 
-
-.user-container {
-  position: relative;
-  width: 100%;
-  height: 150px;
-  display: block
-}
-
-.user-avatar1 img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.user-avatar1 {
-  width: 155px;
-  height: 130px;
-}
-
-
-.sesion{
-  display: block;
-  margin-top: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
-  width: 100px;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  display: block;
-  padding: 0px;
-  position: absolute;
-  top: 95%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.dropdown-menu {
+  font-size: 0.9rem;
 }
 
 a {
-  display: block;
   text-decoration: none;
-  padding: 0px 0px;
   color: white;
+  padding: 0.5rem;
   border-radius: 5px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
+}
+
+a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .contcoordinador {
+      grid-template-columns: 1fr; /* Elimina la barra lateral */
+  }
+
+  .left {
+      width: 100%;
+      height: auto;
+  }
 }

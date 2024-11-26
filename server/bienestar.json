@@ -118,6 +118,23 @@
       "periodo_id": 0,
       "coordinador_id": 0,
       "instructor_id": "8"
+    },
+    {
+      "id": 1,
+      "titulo": " ",
+      "dia": " ",
+      "estado": " ",
+      "horaInicial": "2024-11-26T21:35:36.235Z",
+      "horaFinal": "2024-11-26T21:35:36.235Z",
+      "fechaCreacion": "2024-11-26T21:35:36.235Z",
+      "fechaPublicacion": "2024-11-26T21:35:36.235Z",
+      "fechaInicioInscripcion": "2024-11-26T21:35:36.235Z",
+      "fechaFinalInscripcion": "2024-11-26T21:35:36.235Z",
+      "escenario_id": 2,
+      "tipoActividad_id": "1",
+      "periodo_id": "1",
+      "coordinador_id": 0,
+      "instructor_id": "0"
     }
   ],
   "area": [
@@ -412,12 +429,6 @@
       "descripcion": "Practica de Futbol",
       "objetivo": "Practica deportiva",
       "titulo": "Practica de Futbol"
-    },
-    {
-      "id": "2",
-      "titulo": "Practica de voleivol",
-      "objetivo": "Practicar",
-      "descripcion": "Si"
     }
   ],
   "usuario": [

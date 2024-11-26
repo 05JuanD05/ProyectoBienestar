@@ -13,6 +13,7 @@ import { Usuario } from 'src/app/modelo/Usuario';
 import { InstructorService } from 'src/app/servicios/instructor.service';
 import { SessionService } from 'src/app/servicios/session.service';
 import { PeriodoService } from 'src/app/servicios/periodo.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-actividad',
@@ -59,7 +60,7 @@ export class ActividadComponent implements OnInit {
   public tipoActividades: TipoActividad [] = [];
   public tipos: TipoActividad[] = this.tipaser.tipos;
 
-  constructor(private acti: ActividadService, private instser: InstructorService, private escenar: EscenarioService, private tipaser: TipoActividadService, private sesSer: SessionService, private semestre: PeriodoService) { }
+  constructor(private acti: ActividadService, private instser: InstructorService, private escenar: EscenarioService, private tipaser: TipoActividadService, private sesSer: SessionService, private semestre: PeriodoService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.usuario=this.sesSer.getUser()
@@ -121,6 +122,10 @@ export class ActividadComponent implements OnInit {
     );
   }
 
+  mostrarSnackbar(mensaje: string, duracion: number = 3000) {
+    this.snackBar.open(mensaje, 'Cerrar', { duration: duracion });
+  }
+
   crearActividad(): void {
     // Verifica que todos los campos obligatorios estén llenos
     if (!this.actividad.titulo ||
@@ -133,18 +138,15 @@ export class ActividadComponent implements OnInit {
         !this.tipo?.titulo ||
         !this.instructor?.nombreProfe) {
           // Si algún campo está vacío, muestra un mensaje de error
-          this.mensajeError = 'Por favor, completa todos los campos requeridos.';
+          this.mostrarSnackbar('Por favor, completa todos los campos requeridos.');
           return;
         }
-
-      // Limpia el mensaje de error si todos los campos están llenos
       this.mensajeError = '';
 
-      // Si todos los campos están completos, crea la actividad
-      this.actividad.id = this.idContador++; // Asegúrate de que esto es correcto
+      this.actividad.id = this.idContador++;
       this.acti.createActividad(this.actividad).subscribe(
         (response) => {
-          console.log('Actividad agregada: ', response);
+          this.mostrarSnackbar('Actividad agregada: ');
           this.listarActividades();
 
           // Reinicia el objeto actividad después de crearla
@@ -165,6 +167,10 @@ export class ActividadComponent implements OnInit {
             0,
             0
           );
+        },
+        (error) => {
+          console.error('Error al crear actividad:', error);
+          this.mostrarSnackbar('Ocurrió un error al crear la actividad.');
         }
       );
   }
@@ -178,11 +184,13 @@ export class ActividadComponent implements OnInit {
     console.log('ID a eliminar:', id);
     this.acti.eliminarActividad(id).subscribe(
       (response) => {
+        this.mostrarSnackbar('Actividad eliminada exitosamente.');
         console.log(' La actividad se eliminó con éxito ', response);
         this.listarActividades();
       },
       (error) => {
-        console.error('Revisa bien', error);
+        console.error('Error al eliminar actividad:', error);
+        this.mostrarSnackbar('Ocurrió un error al eliminar la actividad.');
       }
     );
   }
