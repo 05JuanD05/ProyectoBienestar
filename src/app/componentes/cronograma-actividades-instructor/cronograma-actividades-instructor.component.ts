@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Inscripcion } from 'src/app/modelo/Inscripcion';
 import { InscripcionService } from 'src/app/servicios/inscripcion.service';
 import { SessionService } from 'src/app/servicios/session.service';
@@ -10,9 +10,9 @@ import { ActividadService } from 'src/app/servicios/actividad.service';
   templateUrl: './cronograma-actividades-instructor.component.html',
   styleUrls: ['./cronograma-actividades-instructor.component.scss']
 })
-export class CronogramaActividadesInstructorComponent implements OnInit {
-    mostrarCronogramaActividadInstructor: boolean = true;
-    mostrarListarInscripcion: boolean = false;
+export class CronogramaActividadesInstructorComponent {
+
+
 
   public MisIncripciones: Inscripcion[] = this.inscripcion.inscripcion;
   public actividades: Actividad[] = this.acti.actividades;
@@ -44,10 +44,4 @@ export class CronogramaActividadesInstructorComponent implements OnInit {
       }
     );
   }
-
-  _mostrarListarInscripcion() {
-    this.mostrarCronogramaActividadInstructor = false;
-    this.mostrarListarInscripcion = true;
-  }
 }
-

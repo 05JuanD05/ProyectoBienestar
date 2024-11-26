@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Programa } from 'src/app/modelo/Programa';
-import { ProgramaService } from 'src/app/servicios/programa.service'
+import { ProgramaService } from 'src/app/servicios/programa.service';
 
 @Component({
   selector: 'app-programa',
@@ -8,31 +8,14 @@ import { ProgramaService } from 'src/app/servicios/programa.service'
   styleUrls: ['./programa.component.scss']
 })
 export class ProgramaComponent {
-
   public programa: Programa = new Programa(0, "", "", "");
   public programas: Programa[] = this.program.programas;
+  public showEditModal: boolean = false;
 
-  constructor(private program: ProgramaService) {
+  constructor(private program: ProgramaService) { }
 
-  }
-
-  ngOnInit(){
+  ngOnInit() {
     this.listarProgramas();
-  }
-
-  cambioEstado(event: Event) {
-    const id = (event.target as HTMLElement).id;
-    
-    const boton = document.getElementById('esta2') as HTMLButtonElement;
-    const boton2 = document.getElementById('add') as HTMLButtonElement;
-
-    if (id === 'esta') {
-      boton2.disabled = true;
-      boton.disabled = false;
-    } else if (id === 'esta2') {
-      boton2.disabled = false;
-      boton.disabled = true;
-    }
   }
 
   listarProgramas() {
@@ -40,17 +23,28 @@ export class ProgramaComponent {
       (data) => {
         this.programas = data;
       }
-    )
+    );
   }
 
-  crearPrograma(): void{
+  abrirModal(id: number) {
+    this.consultarPrograma(id);
+    this.showEditModal = true;
+  }
+
+  cerrarModal() {
+    this.showEditModal = false;
+    this.programa = new Programa(0, "", "", "");  
+  }
+
+  crearPrograma(): void {
     this.programa.id = this.program.programas.length;
     this.program.createPrograma(this.programa).subscribe(
       (response) => {
-      console.log('Programa creado: ', response);
-      this.listarProgramas();
-      this.programa = new Programa(0, "", "", "");
-    });
+        console.log('Programa creado: ', response);
+        this.listarProgramas();
+        this.programa = new Programa(0, "", "", "");
+      }
+    );
   }
 
   eliminarPrograma(id: number) {
@@ -76,7 +70,7 @@ export class ProgramaComponent {
       (response) => {
         console.log('Programa actualizado', response);
         this.listarProgramas();
-        this.programa = new Programa(0, "", "", "");
+        this.cerrarModal();  // Cierra la modal después de guardar
       }
     );
   }

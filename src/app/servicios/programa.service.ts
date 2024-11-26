@@ -15,9 +15,11 @@ export class ProgramaService {
 
 
     createPrograma(programa: Programa): Observable<any> {
-        return this.http.post(this.apiUrlPrograma, programa);
+      
+        const { id, ...programaSinId } = programa;
+        return this.http.post(this.apiUrlPrograma, programaSinId);
     }
-
+    
     obtenerProgramas(): Observable<any[]> {
         return this.http.get<any[]>(this.apiUrlPrograma);
     }

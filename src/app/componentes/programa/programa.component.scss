@@ -1,80 +1,233 @@
-h1 {
-    text-align:center;
-    color:rgb(48, 48, 48);
-}
-
-.container {
-    width: 99.5%;
-    height: 100%;
-    overflow-y: auto;
-}
-
-.izquierda{
-    width: 70%;
-    height: 700px;
-    overflow-y: auto;
-}
-
-.derecha{
-    width: 30%;
-}
-
-
-.carta {
-    width: calc(33.33% - 10px);
-    margin-bottom: 10px;
-    border: 2px solid #e7e7e7;
-    border-radius: 4px;
-    padding: .5rem;
-    box-sizing: border-box;
-}
-
-.table {
-    width: 100%;
-}
-
-.delete {
-    border-radius: 5px;
-    background: rgb(255, 61, 61);
-    height: 100%;
-    width: 80px;
-}
-
-.delete:hover {
-    background: #ff0000;
-}
-
-.edit {
-    border-radius: 5px;
-    background: rgb(72, 65, 255);
-    height: 100%;
-    width: 80px;
-}
-
-.edit:hover {
-    background: #0522ff;
-}
-
-.estado {
-    border-radius: 5px;
-    background: rgb(139, 255, 159);
-    height: 100%;
-    width: 80px;
-}
-
-.estado:hover {
-    background: rgb(0, 255, 42);
-}
-
-.btnOp{
-    display: flex;
-    justify-content: center;  
-    padding: 2px;
+/* General Styles */
+.container-fluid {
+    padding: 30px;
 }
 
 .text-overflow {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 250px; /* Ajusta el valor de acuerdo a tu diseño y preferencia */
-  }
+    max-width: 250px;
+}
+
+/* Button Styling */
+.btnOp {
+    display: flex;
+    justify-content: center;
+    padding: 2px;
+}
+
+.btnOp button {
+    transition: transform 0.2s ease-in-out;
+}
+
+.btnOp button:hover {
+    transform: scale(1.1);
+}
+
+/* Card Styling */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card p {
+    font-size: 18px;
+}
+
+/* Hover Effects for Buttons */
+.bi-pencil:hover {
+    color: #fff;
+    background-color: #007bff;
+}
+
+.bi-trash:hover {
+    color: #fff;
+    background-color: #dc3545;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .izquierda, .derecha {
+        width: 100%;
+    }
+}
+
+/* Layout Adjustment */
+.izquierda {
+    width: 70%;
+    height: 700px;
+    overflow-y: auto;
+}
+
+.derecha {
+    width: 30%;
+}
+
+/* Table Styling */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 10px;
+    text-align: center;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+/* Shadow for Card */
+.card.p-3 {
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+/* Input and Select Styling */
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-select {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.btn-outline-success, .btn-outline-primary {
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+/* Panel Styling */
+#main-content {
+    margin-top: 20px;
+    background-color: #f4f7fc;
+    border-radius: 10px;
+}
+
+/* Modal Styling */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050;
+    transition: opacity 0.3s ease;
+}
+
+.modal-content {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 8px 20px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 90%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: translateY(-20px);
+    opacity: 0;
+    animation: fadeInModal 0.3s forwards;
+}
+
+/* Animation for Modal */
+@keyframes fadeInModal {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Professional Input Styling in Modal */
+.modal-content .form-control,
+.modal-content .form-select {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+.modal-content .form-control:focus,
+.modal-content .form-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+    outline: none;
+    background-color: #fff;
+}
+
+.modal-content label {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.modal-content .form-group {
+    margin-bottom: 20px;
+}
+
+/* Button Styling Inside Modal */
+.modal-content .btn {
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.modal-content .btn-secondary {
+    background-color: #f6513f;
+    border: none;
+}
+
+.modal-content .btn-secondary:hover {
+    background-color: #dee2e6;
+    color: #343a40;
+}
+
+.modal-content .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+}
+
+.modal-content .btn-primary:hover {
+    background-color: #0069d9;
+}
+
+/* Responsive Adjustment */
+@media (max-width: 600px) {
+    .modal-content {
+        padding: 20px;
+        max-width: 90%;
+    }
+}
+
+/* Typography - Professional Titles */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    color: #333;
+}
+
+h1 {
+    font-size: 2rem; /* Adjust size for h1 */
+}
+
+h2 {
+    font-size: 1.8rem; /* Adjust size for h2 */
+    margin-bottom: 10px;
+}

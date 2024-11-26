@@ -18,9 +18,12 @@ export class InscripcionService {
   constructor(private http: HttpClient) { }
 
   
-  createInscripcion(actividad_inscrita:Inscripcion): Observable<any>  {
-    return this.http.post(this.apiUrlInscripcion, actividad_inscrita);
+  createInscripcion(actividad_inscrita: Inscripcion): Observable<any> {
+    // Se elimina el id antes de realizar la petición
+    const { id, ...inscripcionSinId } = actividad_inscrita;
+    return this.http.post(this.apiUrlInscripcion, inscripcionSinId);
   }
+  
   
   obtenerInscripcion(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrlInscripcion);
@@ -41,10 +44,10 @@ export class InscripcionService {
     return this.http.get<Actividad[]>(url);
   } */
 
-  actualizarInscripcion(id: number, datosActualizados: any): Observable<any> {
-    const url = `${this.apiUrlInscripcion}/${id}`;
-    return this.http.put(url, datosActualizados);
-  }
+    actualizarInscripcion(id: number, cambios: Partial<Inscripcion>): Observable<any> {
+      return this.http.patch(`${this.apiUrlInscripcion}/${id}`, cambios); // PATCH para actualizar campos específicos
+    }
+    
 
   
   obtenerActividades(): Observable<any[]> {

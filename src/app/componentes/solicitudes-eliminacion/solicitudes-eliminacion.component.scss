@@ -1,0 +1,78 @@
+/* solicitud-eliminacion.component.css */
+
+/* Contenedor principal de las solicitudes */
+.solicitudes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Tabla de solicitudes */
+table {
+  width: 100%;
+  border-collapse: collapse; /* Elimina los espacios entre las celdas */
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+th {
+  background-color: #007bff; /* Azul para el encabezado */
+  color: white;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2; /* Fondo gris claro para filas pares */
+}
+
+tr:hover {
+  background-color: #e1f5ff; /* Resaltar fila al pasar el mouse */
+}
+
+/* Botón de aceptar (verde) */
+button.aceptar {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.aceptar:hover {
+  background-color: #218838;
+}
+
+/* Botón de rechazar (rojo) */
+button.rechazar {
+  background-color: #dc3545;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.rechazar:hover {
+  background-color: #c82333;
+}
+
+/* Mensaje sin solicitudes */
+.sin-solicitudes {
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+  margin-top: 30px;
+}

@@ -199,18 +199,6 @@
       "nombre": "Voleybol",
       "descripcion": "Voleybol",
       "estado": "Activo"
-    },
-    {
-      "id": "0",
-      "nombre": "Tenis",
-      "descripcion": "Tenis",
-      "estado": "Activo"
-    },
-    {
-      "id": "0",
-      "nombre": "Natacion",
-      "descripcion": "Natacion",
-      "estado": "Activo"
     }
   ],
   "escenario": [
@@ -308,6 +296,14 @@
       "fechaInscripcion": "2024-10-31T20:34:52.955Z",
       "usuario": "3",
       "actividad_id": "5"
+    },
+    {
+      "id": "105b",
+      "tipoVinculacion": "Estudiante",
+      "fechaInscripcion": "2024-11-26T05:06:54.318Z",
+      "usuario": "3",
+      "actividad_id": "3",
+      "estado": "activo"
     }
   ],
   "instructor": [

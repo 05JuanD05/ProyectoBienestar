@@ -1,0 +1,27 @@
+<div class="solicitudes-container">
+  <!-- Tabla de solicitudes -->
+  <table>
+    <thead>
+      <tr>
+        <th>ID Inscripción</th>
+        <th>Usuario</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="solicitudes.length === 0">
+        <td colspan="4" class="sin-datos">No hay solicitudes disponibles</td>
+      </tr>
+      <tr *ngFor="let inscripcion of solicitudes">
+        <td>{{ inscripcion.id }}</td>
+        <td>{{ inscripcion.usuario }}</td>
+        <td>{{ inscripcion.estado }}</td>
+        <td>
+          <button (click)="aceptarSolicitud(inscripcion.id)" class="aceptar">Aceptar</button>
+          <button (click)="rechazarSolicitud(inscripcion.id)" class="rechazar">Rechazar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

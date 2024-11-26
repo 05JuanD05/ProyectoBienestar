@@ -10,10 +10,6 @@ import { SessionService } from '../servicios/session.service';
 })
 
 export class GUICoordinadorComponent implements OnInit {
-mostrarSolicitudesDesvinculacion: any;
-mostrarComponenteDesvincular() {
-throw new Error('Method not implemented.');
-}
   mostrarParea: boolean = false;
   mostrarPinstructor: boolean = false;
   mostrarPescenario: boolean = false;
@@ -21,6 +17,7 @@ throw new Error('Method not implemented.');
   mostrarPprograma: boolean = false;
   mostrarPtipoActividad: boolean = false;
   mostrarPactividad: boolean = true;
+  mostrarPsolicitudeseliminacion: boolean = true;
   public usuario: Usuario = new Usuario(0, "", "", "", "", "", "", "", "", "", "");
 
   constructor(private sesSer: SessionService) {
@@ -39,6 +36,7 @@ throw new Error('Method not implemented.');
     this.mostrarPprograma = false;
     this.mostrarPtipoActividad = false;
     this.mostrarPactividad = false;
+    this.mostrarPsolicitudeseliminacion= true;
   }
 
   mostrarComponenteEscenario() {
@@ -49,6 +47,7 @@ throw new Error('Method not implemented.');
     this.mostrarPprograma = false;
     this.mostrarPtipoActividad = false;
     this.mostrarPactividad = false;
+    this.mostrarPsolicitudeseliminacion= true;
   }
   mostrarComponenteInstructor() {
     this.mostrarParea = false;
@@ -58,6 +57,7 @@ throw new Error('Method not implemented.');
     this.mostrarPprograma = false;
     this.mostrarPtipoActividad = false;
     this.mostrarPactividad = false;
+    this.mostrarPsolicitudeseliminacion= true;
   }
   mostrarComponenteDisciplina() {
     this.mostrarParea = false;
@@ -67,6 +67,7 @@ throw new Error('Method not implemented.');
     this.mostrarPprograma = false;
     this.mostrarPtipoActividad = false;
     this.mostrarPactividad = false;
+    this.mostrarPsolicitudeseliminacion= true;
   }
 
   mostrarComponentePrograma() {
@@ -77,6 +78,7 @@ throw new Error('Method not implemented.');
     this.mostrarPprograma = true;
     this.mostrarPtipoActividad = false;
     this.mostrarPactividad = false;
+    this.mostrarPsolicitudeseliminacion= true;
   }
 
   mostrarComponenteTipoActividad(){
@@ -87,6 +89,7 @@ throw new Error('Method not implemented.');
     this.mostrarPprograma = false;
     this.mostrarPtipoActividad = true;
     this.mostrarPactividad = false;
+    this.mostrarPsolicitudeseliminacion= true;
   }
 
   mostrarComponenteActividad(){
@@ -97,5 +100,18 @@ throw new Error('Method not implemented.');
     this.mostrarPprograma = false;
     this.mostrarPtipoActividad = false;
     this.mostrarPactividad = true;
+    this.mostrarPsolicitudeseliminacion= true;
+  }
+  mostrarComponenteSolicitudeseliminacion(){
+    this.mostrarParea = false;
+    this.mostrarParea = false;
+    this.mostrarPinstructor = false;
+    this.mostrarPescenario = false;
+    this.mostrarPdisciplina = false;
+    this.mostrarPprograma = false;
+    this.mostrarPtipoActividad = false;
+    this.mostrarPactividad = true;
+    this.mostrarPsolicitudeseliminacion= true;
+
   }
 }

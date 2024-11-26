@@ -31,13 +31,14 @@ ngOnInit() {
 
 
 
-  listarActividades() {
-    this.acti.obtenerActividades().subscribe(
-      (data) => {
-        this.actividades = data;
-      }
+listarActividades() {
+  this.acti.obtenerActividades().subscribe((data) => {
+    // Filtramos para mostrar solo actividades "Activas" o "En proceso de eliminación"
+    this.actividades = data.filter(actividad => 
+      actividad.estado === 'Activo' || actividad.estado === 'En proceso de eliminación'
     );
-  }
+  });
+}
 
   listarIncripciones() {
     this.inscripcion.obtenerInscripcion().subscribe(
@@ -47,11 +48,28 @@ ngOnInit() {
       }
     );
   }
-   // Función para cambiar el estado a "En proceso de eliminación"
-   marcarEnProceso(id: number): void {
-    const actividad = this.actividades.find(acti => acti.id === id);
-    if (actividad) {
-      actividad.estado = 'En proceso de eliminación'; // Cambia el estado de la actividad
-    }
+
+  solicitarEliminacion(inscripcionId: number) {
+    const nuevoEstado = 'En proceso de eliminación'; // Nuevo estado
+  
+    // Actualizar el estado en el servidor
+    this.inscripcion.actualizarInscripcion(inscripcionId, { estado: nuevoEstado }).subscribe(
+      (response) => {
+        console.log('Inscripción actualizada en el servidor', response);
+  
+        // Encontrar la inscripción localmente y actualizar solo el estado
+        const inscripcion = this.MisIncripciones.find((insc) => insc.id === inscripcionId);
+        if (inscripcion) {
+          inscripcion.estado = nuevoEstado; // Actualizar solo el estado
+        }
+  
+        console.log('Estado actualizado correctamente.');
+      },
+      (error) => {
+        console.error('Error al actualizar el estado:', error);
+      }
+    );
   }
+  
+  
 }

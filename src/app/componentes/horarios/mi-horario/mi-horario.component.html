@@ -23,15 +23,19 @@
                         <h5 class="card-subtitle m-0">{{ acti.horaFinal }}</h5>
                       </div>
                     </div>
-                    <!-- Mostrar el estado actual de la actividad -->
-                    <div class="alert" 
-                         [ngClass]="{'alert-success': acti.estado === 'Activo', 
-                                     'alert-warning': acti.estado === 'En proceso de eliminación'}" 
-                         role="alert">
-                      Estado: {{ acti.estado }}
-                    </div>
-                    <!-- Botón de eliminar que cambia el estado a "En proceso de eliminación" -->
-                    <button class="btn btn-danger" (click)="marcarEnProceso(acti.id)">Eliminar</button>
+                    <!-- Mostrar el estado de inscripción -->
+                  <div class="alert" 
+                  [ngClass]="{'alert-success': inscripcion.estado == 'Activo', 
+                              'alert-warning': inscripcion.estado === 'En proceso de eliminación'}" 
+                  role="alert">
+               Estado: {{ inscripcion.estado }}
+             </div>
+             <!-- Botón para solicitar eliminación -->
+             <button *ngIf="inscripcion.estado == 'activo'" 
+                     (click)="solicitarEliminacion(inscripcion.id)" 
+                     class="btn btn-warning">
+               Solicitar Eliminación
+             </button>
                   </div>
                 </div>
               </div>
@@ -62,15 +66,19 @@
                         <h5 class="card-subtitle m-0">{{ acti.horaFinal }}</h5>
                       </div>
                     </div>
-                    <!-- Mostrar el estado actual de la actividad -->
-                    <div class="alert" 
-                         [ngClass]="{'alert-success': acti.estado === 'Activo', 
-                                     'alert-warning': acti.estado === 'En proceso de eliminación'}" 
-                         role="alert">
-                      Estado: {{ acti.estado }}
-                    </div>
-                    <!-- Botón de eliminar que cambia el estado a "En proceso de eliminación" -->
-                    <button class="btn btn-danger" (click)="marcarEnProceso(acti.id)">Eliminar</button>
+                    <!-- Mostrar el estado de inscripción -->
+                  <div class="alert" 
+                  [ngClass]="{'alert-success': inscripcion.estado == 'Activo', 
+                              'alert-warning': inscripcion.estado === 'En proceso de eliminación'}" 
+                  role="alert">
+               Estado: {{ inscripcion.estado }}
+             </div>
+             <!-- Botón para solicitar eliminación -->
+             <button *ngIf="inscripcion.estado == 'activo'" 
+                     (click)="solicitarEliminacion(inscripcion.id)" 
+                     class="btn btn-warning">
+               Solicitar Eliminación
+             </button>
                   </div>
                 </div>
               </div>
@@ -101,15 +109,19 @@
                         <h5 class="card-subtitle m-0">{{ acti.horaFinal }}</h5>
                       </div>
                     </div>
-                    <!-- Mostrar el estado actual de la actividad -->
-                    <div class="alert" 
-                         [ngClass]="{'alert-success': acti.estado === 'Activo', 
-                                     'alert-warning': acti.estado === 'En proceso de eliminación'}" 
-                         role="alert">
-                      Estado: {{ acti.estado }}
-                    </div>
-                    <!-- Botón de eliminar que cambia el estado a "En proceso de eliminación" -->
-                    <button class="btn btn-danger" (click)="marcarEnProceso(acti.id)">Eliminar</button>
+                     <!-- Mostrar el estado de inscripción -->
+                  <div class="alert" 
+                  [ngClass]="{'alert-success': inscripcion.estado == 'Activo', 
+                              'alert-warning': inscripcion.estado === 'En proceso de eliminación'}" 
+                  role="alert">
+               Estado: {{ inscripcion.estado }}
+             </div>
+             <!-- Botón para solicitar eliminación -->
+             <button *ngIf="inscripcion.estado == 'activo'" 
+                     (click)="solicitarEliminacion(inscripcion.id)" 
+                     class="btn btn-warning">
+               Solicitar Eliminación
+             </button>
                   </div>
                 </div>
               </div>
@@ -140,15 +152,19 @@
                         <h5 class="card-subtitle m-0">{{ acti.horaFinal }}</h5>
                       </div>
                     </div>
-                    <!-- Mostrar el estado actual de la actividad -->
-                    <div class="alert" 
-                         [ngClass]="{'alert-success': acti.estado === 'Activo', 
-                                     'alert-warning': acti.estado === 'En proceso de eliminación'}" 
-                         role="alert">
-                      Estado: {{ acti.estado }}
-                    </div>
-                    <!-- Botón de eliminar que cambia el estado a "En proceso de eliminación" -->
-                    <button class="btn btn-danger" (click)="marcarEnProceso(acti.id)">Eliminar</button>
+                    <!-- Mostrar el estado de inscripción -->
+                  <div class="alert" 
+                  [ngClass]="{'alert-success': inscripcion.estado == 'Activo', 
+                              'alert-warning': inscripcion.estado === 'En proceso de eliminación'}" 
+                  role="alert">
+               Estado: {{ inscripcion.estado }}
+             </div>
+             <!-- Botón para solicitar eliminación -->
+             <button *ngIf="inscripcion.estado == 'activo'" 
+                     (click)="solicitarEliminacion(inscripcion.id)" 
+                     class="btn btn-warning">
+               Solicitar Eliminación
+             </button>
                   </div>
                 </div>
               </div>
@@ -179,15 +195,19 @@
                         <h5 class="card-subtitle m-0">{{ acti.horaFinal }}</h5>
                       </div>
                     </div>
-                    <!-- Mostrar el estado actual de la actividad -->
-                    <div class="alert" 
-                         [ngClass]="{'alert-success': acti.estado === 'Activo', 
-                                     'alert-warning': acti.estado === 'En proceso de eliminación'}" 
-                         role="alert">
-                      Estado: {{ acti.estado }}
-                    </div>
-                    <!-- Botón de eliminar que cambia el estado a "En proceso de eliminación" -->
-                    <button class="btn btn-danger" (click)="marcarEnProceso(acti.id)">Eliminar</button>
+                    <!-- Mostrar el estado de inscripción -->
+                  <div class="alert" 
+                  [ngClass]="{'alert-success': inscripcion.estado =='Activo', 
+                              'alert-warning': inscripcion.estado === 'En proceso de eliminación'}" 
+                  role="alert">
+               Estado: {{ inscripcion.estado }}
+             </div>
+             <!-- Botón para solicitar eliminación -->
+             <button *ngIf="inscripcion.estado == 'activo'" 
+                     (click)="solicitarEliminacion(inscripcion.id)" 
+                     class="btn btn-warning">
+               Solicitar Eliminación
+             </button>
                   </div>
                 </div>
               </div>

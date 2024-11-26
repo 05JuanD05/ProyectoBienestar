@@ -43,6 +43,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select'
 import { MatExpansionModule } from '@angular/material/expansion';
+import { SolicitudesEliminacionComponent } from './componentes/solicitudes-eliminacion/solicitudes-eliminacion.component';
+
 
 @NgModule({
   declarations: [
@@ -76,6 +78,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     DesvinculacionComponent,
     GestionJobsComponent,
     EditDisComponent,
+    SolicitudesEliminacionComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +94,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDialogModule
+    
   ],
   providers: [DisciplinaComponent,InformadorComponent],
   bootstrap: [AppComponent]

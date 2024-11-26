@@ -1,69 +1,109 @@
-<div class="Container-fluid" id="main-content">
+<div class="container-fluid" id="main-content">
     <div class="container">
         <div class="row" style="overflow-y: auto;">
-            <div class="izquierda col-2">
-                <h1>Programas</h1>
-                <div class="cartas">
-                    <div class="cards">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col" class="text-center" style="width: 100px;">#</th>
-                                    <th scope="col" class="text-center">Codigo</th>
-                                    <th scope="col" class="text-center">Nombre</th>
-                                    <th scope="col" class="text-center">Estado</th>
-                                    <th scope="co" class="text-center">Opciones</th>
-                                </tr>
-                            </thead>
-                            <tbody *ngFor="let a of programas">
-                                <tr style="width: 100%;">
-                                    <th scope="row" class="text-center text-overflow">{{a.id}}</th>
-                                    <td class="text-center text-overflow">{{a.codigo}}</td>
-                                    <td class="text-center text-overflow" style="width: 200px;">{{a.nombre}}</td>
-                                    <td class="text-center text-overflow" style="width: 200px;">{{a.estado}}</td>
-                                    <td class="btnOp">
-                                        <button type="button" 
-                                            id="esta"
-                                            (click)="consultarPrograma(a.id)"
-                                            (click)="cambioEstado($event)"
-                                            class="bi bi-pencil btn btn-primary m-1"></button>
-                                        <button type="button" 
-                                            (click)="eliminarPrograma(a.id)"
-                                            class="bi bi-trash btn btn-danger m-1">
-                                        </button>
-                                    </td>
-                                </tr>
-                        </table>
-                    </div>
+
+            <!-- Panel Izquierdo -->
+            <div class="col-12 col-md-3 izquierda">
+                <h1 class="text-center">Programas</h1>
+                <div class="card p-3 shadow-lg">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center" style="width: 100px;">ID</th>
+                                <th scope="col" class="text-center">Código</th>
+                                <th scope="col" class="text-center">Nombre</th>
+                                <th scope="col" class="text-center">Estado</th>
+                                <th scope="col" class="text-center">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let a of programas">
+                            <tr class="align-middle">
+                                <th scope="row" class="text-center text-overflow">{{a.id}}</th>
+                                <td class="text-center text-overflow">{{a.codigo}}</td>
+                                <td class="text-center text-overflow">{{a.nombre}}</td>
+                                <td class="text-center text-overflow">{{a.estado}}</td>
+                                <td class="btnOp">
+                                    <button (click)="abrirModal(a.id)" class="btn btn-primary m-1 bi bi-pencil"></button>
+                                    <button (click)="eliminarPrograma(a.id)" class="btn btn-danger m-1 bi bi-trash"></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-            <div class="derecha col-10 mt-5">
-                <div class="card p-3 mt-5">
-                    <div>
-                        <h1>Nuevo Programa</h1>
+            <!-- Panel Derecho -->
+            <div class="col-12 col-md-9 derecha mt-5">
+                <div class="card p-4 shadow-lg">
+                    <h2 class="mb-3">Nuevo Programa</h2>
+                    <div class="mb-3">
+                        <label for="codigo">Código</label>
+                        <input type="text" [(ngModel)]="programa.codigo" id="codigo" class="form-control" placeholder="Código">
                     </div>
-                    <div>Codigo</div>
-                    <div><input type="text" [(ngModel)]="programa.codigo" placeholder="Codigo"
-                            class="form-control me-2"></div>
-                    <div>Nombre</div>
-                    <div><input type="text" [(ngModel)]="programa.nombre" placeholder="Nombre"
-                            class="form-control me-2"></div>
-                    <label for="lang">Estado</label>
-                    <form action="#">
-                        <select [(ngModel)]="programa.estado" name="lenguajes" id="lang" style="width: auto;" class="form-select form-select-sm">
-                            <option value="" disabled selected hidden>Selecciona una opción</option>
+                    <div class="mb-3">
+                        <label for="nombre">Nombre</label>
+                        <select [(ngModel)]="programa.nombre" id="nombre" class="form-select">
+                            <option value="Licenciatura en Bilingüismo con énfasis en Inglés">Licenciatura en Bilingüismo con énfasis en Inglés</option>
+                            <option value="Contaduría Pública">Contaduría Pública</option>
+                            <option value="Administración de Empresas">Administración de Empresas</option>
+                            <option value="Derecho">Derecho</option>
+                            <option value="Ingeniería Industrial">Ingeniería Industrial</option>
+                            <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
+                            <option value="Administración de empresas turísticas y hoteleras">Administración de empresas turísticas y hoteleras</option>
+                            <option value="Tecnología En Sistemas De Gestión De Calidad">Tecnología En Sistemas De Gestión De Calidad</option>
+                            <option value="Tecnología En Desarrollo De Sistemas De Información Y De Software">Tecnología En Desarrollo De Sistemas De Información Y De Software</option>
+                            <option value="Tecnología En Gestión De Servicios Turísticos Y Hoteleros">Tecnología En Gestión De Servicios Turísticos Y Hoteleros</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="estado">Estado</label>
+                        <select [(ngModel)]="programa.estado" id="estado" class="form-select">
                             <option value="Activo">Activo</option>
                             <option value="Inactivo">Inactivo</option>
                         </select>
-                    </form>
-
-                    <hr>
-                    <div>
-                        <button (click)="crearPrograma()" class="btn btn-outline-success" id="add">Agregar</button>
-                        <button (click)="actualizarPrograma(programa.id, programa)" (click)="cambioEstado($event)" class="btn btn-outline-primary m-1" id="esta2" disabled>Editar</button>
+                    </div>
+                    <div class="d-flex justify-content-between mt-3">
+                        <button (click)="crearPrograma()" class="btn btn-outline-success">Agregar</button>
+                        <button (click)="actualizarPrograma(programa.id, programa)" class="btn btn-outline-primary" [disabled]="!programa.id">Editar</button>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Editar Programa -->
+    <div *ngIf="showEditModal" class="modal-overlay">
+        <div class="modal-content card shadow-lg">
+            <h2 class="mb-3">Editar Programa</h2>
+            <div class="mb-3">
+                <label for="codigo">Código</label>
+                <input type="text" [(ngModel)]="programa.codigo" id="codigo" class="form-control" placeholder="Código">
+            </div>
+            <div class="mb-3">
+                <label for="nombre">Nombre</label>
+                <select [(ngModel)]="programa.nombre" id="nombre" class="form-select">
+                    <option value="Licenciatura en Bilingüismo con énfasis en Inglés">Licenciatura en Bilingüismo con énfasis en Inglés</option>
+                    <option value="Contaduría Pública">Contaduría Pública</option>
+                    <option value="Administración de Empresas">Administración de Empresas</option>
+                    <option value="Derecho">Derecho</option>
+                    <option value="Ingeniería Industrial">Ingeniería Industrial</option>
+                    <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
+                    <option value="Administración de empresas turísticas y hoteleras">Administración de empresas turísticas y hoteleras</option>
+                    <option value="Tecnología En Sistemas De Gestión De Calidad">Tecnología En Sistemas De Gestión De Calidad</option>
+                    <option value="Tecnología En Desarrollo De Sistemas De Información Y De Software">Tecnología En Desarrollo De Sistemas De Información Y De Software</option>
+                    <option value="Tecnología En Gestión De Servicios Turísticos Y Hoteleros">Tecnología En Gestión De Servicios Turísticos Y Hoteleros</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="estado">Estado</label>
+                <select [(ngModel)]="programa.estado" id="estado" class="form-select">
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
+                </select>
+            </div>
+            <div class="d-flex justify-content-end mt-3">
+                <button (click)="cerrarModal()" class="btn btn-secondary me-2">Cancelar</button>
+                <button (click)="actualizarPrograma(programa.id, programa)" class="btn btn-primary">Guardar Cambios</button>
             </div>
         </div>
     </div>
