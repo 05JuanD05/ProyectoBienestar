@@ -404,6 +404,12 @@
       "codigo": "34566",
       "nombre": "Administración de Empresas",
       "estado": "Activo"
+    },
+    {
+      "id": "aa5e",
+      "codigo": "100",
+      "nombre": "Contaduría Pública",
+      "estado": "Activo"
     }
   ],
   "tipoactividad": [
