@@ -55,16 +55,14 @@ export class ListaInscripcionComponent {
     );
   }
 
-  // Método para manejar el cambio en los checkboxes
   onCheckboxChange(event: any, id: number) {
     if (event.target.checked) {
-      this.seleccionados.push(id); // Añadir ID seleccionado
+      this.seleccionados.push(id); 
     } else {
-      this.seleccionados = this.seleccionados.filter(item => item !== id); // Eliminar ID desmarcado
+      this.seleccionados = this.seleccionados.filter(item => item !== id); 
     }
   }
 
-  // Guardar asistencia para los seleccionados
   guardarAsistencia() {
     const confirmacion = window.confirm('¿Deseas guardar la asistencia para los estudiantes seleccionados?');
     if (!confirmacion) return;
@@ -81,13 +79,12 @@ export class ListaInscripcionComponent {
     });
 
     alert('Asistencia guardada correctamente');
-    this.seleccionados = []; // Limpiar seleccionados
+    this.seleccionados = []; 
   }
 
-  // Filtrar inscripciones por actividad seleccionada
   filtrarPorActividad(valorSeleccionado: string): void {
     if (!valorSeleccionado) {
-      this.inscripcionesFiltradas = this.misIncripciones; // Mostrar todo si no hay filtro
+      this.inscripcionesFiltradas = this.misIncripciones; 
       return;
     }
 
@@ -95,14 +92,13 @@ export class ListaInscripcionComponent {
     this.inscripcionesFiltradas = this.misIncripciones.filter(inscripcion => inscripcion.actividad_id === actividadId);
   }
 
-  // Eliminar asistencia
   eliminarEscenario(id: number) {
     const confirmacion = window.confirm('¿Estás seguro de que deseas eliminar la asistencia?');
     if (confirmacion) {
       this.asistenciaService.eliminarAsistencia(id).subscribe(
         response => {
           console.log('Asistencia eliminada:', response);
-          this.listarAsistencia() // Refrescar lista
+          this.listarAsistencia() 
         },
         error => console.error('Error al eliminar asistencia:', error)
       );
