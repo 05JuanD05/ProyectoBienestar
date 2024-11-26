@@ -50,25 +50,31 @@ listarActividades() {
   }
 
   solicitarEliminacion(inscripcionId: number) {
-    const nuevoEstado = 'En proceso de eliminación'; // Nuevo estado
-  
-    // Actualizar el estado en el servidor
-    this.inscripcion.actualizarInscripcion(inscripcionId, { estado: nuevoEstado }).subscribe(
-      (response) => {
-        console.log('Inscripción actualizada en el servidor', response);
-  
-        // Encontrar la inscripción localmente y actualizar solo el estado
-        const inscripcion = this.MisIncripciones.find((insc) => insc.id === inscripcionId);
-        if (inscripcion) {
-          inscripcion.estado = nuevoEstado; // Actualizar solo el estado
+    const confirmacion = window.confirm('¿Estás seguro de que deseas solicitar la eliminación de esta inscripción?');
+    
+    if (confirmacion) {
+      const nuevoEstado = 'En proceso de eliminación'; // Nuevo estado
+    
+      // Actualizar el estado en el servidor
+      this.inscripcion.actualizarInscripcion(inscripcionId, { estado: nuevoEstado }).subscribe(
+        (response) => {
+          console.log('Inscripción actualizada en el servidor', response);
+    
+          // Encontrar la inscripción localmente y actualizar solo el estado
+          const inscripcion = this.MisIncripciones.find((insc) => insc.id === inscripcionId);
+          if (inscripcion) {
+            inscripcion.estado = nuevoEstado; // Actualizar solo el estado
+          }
+    
+          console.log('Estado actualizado correctamente.');
+        },
+        (error) => {
+          console.error('Error al actualizar el estado:', error);
         }
-  
-        console.log('Estado actualizado correctamente.');
-      },
-      (error) => {
-        console.error('Error al actualizar el estado:', error);
-      }
-    );
+      );
+    } else {
+      console.log('El usuario canceló la solicitud de eliminación.');
+    }
   }
   
   
