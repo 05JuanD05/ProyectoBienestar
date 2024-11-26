@@ -85,8 +85,8 @@ export class PeriodoComponent implements OnInit {
         this.mostrarMensaje(this.goodMensaje, 'success');
       setTimeout(() => { this.loading = false;}, 2000);
 
-        // Establecer el nuevo periodo como activo
-        this.peri.setPeriodoActivo(response); // Asegúrate de que `response` contenga el nuevo periodo creado
+        
+        this.peri.setPeriodoActivo(response);
       },
       (error) => {
         console.error('Error al crear el Periodo: ', error);

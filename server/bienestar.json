@@ -250,15 +250,6 @@
       "coordenadaY": "-75.49823682738449",
       "estado": "Activo",
       "imagen": ""
-    },
-    {
-      "id": "0",
-      "nombre": "Coliseo De Voleibol Norton Madrid",
-      "direccion": "Andalucia, Cartagena de Indias",
-      "coordenadaX": "10.402180121974027",
-      "coordenadaY": "-75.50501641866154",
-      "estado": "Activo",
-      "imagen": ""
     }
   ],
   "estudiante": [
@@ -660,6 +651,14 @@
       "denominacion": "II",
       "fechaInicial": "2024-10-24",
       "fechaFinal": "2024-11-01"
+    },
+    {
+      "id": 0,
+      "anio": "2023",
+      "actual": false,
+      "denominacion": "I",
+      "fechaInicial": "2022-02-22",
+      "fechaFinal": "2220-02-22"
     }
   ],
   "programa": [

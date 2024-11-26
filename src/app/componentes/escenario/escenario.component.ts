@@ -66,10 +66,11 @@ export class EscenarioComponent implements OnInit {
       alert('Por favor, completa todos los campos requeridos.');
       return;
     }
-    this.escenario.id = String(this.escenario.id);
+    const nextId = Math.max(...this.escenarios.map((e)=> Number(e.id)),0);
+    this.escenario.id = String(nextId +1);
     this.escenar.createEscenario(this.escenario).subscribe(
       (response) => {
-        console.log('Escenario agregado:', response);
+        alert('Escenario agregado');
         this.listarEscenarios();
         this.escenario = new Escenario("0", "", "", "", "", "", "");
       }
