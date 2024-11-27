@@ -29,4 +29,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 
-https://youtu.be/mOqhYHL7814?si=OhC5viIzmnPgY7Jz
+https://youtu.be/mOqhYHL7814?si=OhC5viIzmnPgY7Jz PAT
+https://youtu.be/nuHUTToftoQ?si=CiKnSfpsg3nD9_k9 enrutamiento dinamico y estatico 
+
